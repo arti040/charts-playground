@@ -9,3 +9,6 @@ Samanta front-end based on Angular 4. Build tool - Webpack. Tests - Karma/Jasmin
 5. npm run test -> run karma tests
 
 (see webpack.opts.js for additional config options)
+
+## TODO
+- add Karma/Jasmine related stuff to Webpack (optional)
