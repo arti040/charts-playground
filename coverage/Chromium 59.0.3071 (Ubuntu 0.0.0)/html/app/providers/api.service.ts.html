@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for app/providers/api.service.ts</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">app/providers/</a> api.service.ts
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">3.33% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>1/30</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/11</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">4% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>1/25</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// === Api HTTP Service
+// @name ApiService
+// @desc Implements low-level HTTP related actions for API.
+// @params none
+// @returns none
+&nbsp;
+<span class="cstat-no" title="statement not covered" >import { Injectable } from '@angular/core';</span>
+<span class="cstat-no" title="statement not covered" >import { Config } from '../app.config';</span>
+<span class="cstat-no" title="statement not covered" >import { </span>
+  Http,
+  Headers, 
+  RequestOptions, 
+  RequestOptionsArgs,
+  Response,
+  RequestMethod,
+  Request
+} from '@angular/http';
+<span class="cstat-no" title="statement not covered" >import { Observable } from 'rxjs';</span>
+&nbsp;
+@Injectable()
+<span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >export class <span class="cstat-no" title="statement not covered" ><span class="cstat-no" title="statement not covered" >ApiService </span>{</span></span></span>
+<span class="fstat-no" title="function not covered" >  constructor (private <span class="cstat-no" title="statement not covered" >config: Config,</span> private <span class="cstat-no" title="statement not covered" >http: Http)</span></span> {}
+  
+<span class="fstat-no" title="function not covered" >  public <span class="cstat-no" title="statement not covered" >get(endpoint: string, body?: string, options?: RequestOptionsArgs)</span> {</span>
+<span class="cstat-no" title="statement not covered" >    return this.request(RequestMethod.Get, this.getHost() + endpoint, null, options);</span>
+  }
+<span class="fstat-no" title="function not covered" >  public <span class="cstat-no" title="statement not covered" >post(endpoint: string, body: string, options?: RequestOptionsArgs)</span> {</span>
+<span class="cstat-no" title="statement not covered" >    return this.request(RequestMethod.Post, this.getHost() + endpoint, body, options);</span>
+  }
+<span class="fstat-no" title="function not covered" >  public <span class="cstat-no" title="statement not covered" >put(endpoint: string, body: string, options?: RequestOptionsArgs)</span> {</span>
+<span class="cstat-no" title="statement not covered" >    return this.request(RequestMethod.Put, this.getHost() + endpoint, body, options);</span>
+  }
+<span class="fstat-no" title="function not covered" >  public <span class="cstat-no" title="statement not covered" >delete(endpoint: string, body?: string, options?: RequestOptionsArgs)</span> {</span>
+<span class="cstat-no" title="statement not covered" >    return this.request(RequestMethod.Delete, this.getHost() + endpoint, null, options);</span>
+  }
+<span class="fstat-no" title="function not covered" >  public <span class="cstat-no" title="statement not covered" >update(endpoint: string, body?: string, options?: RequestOptionsArgs)</span> {</span>
+<span class="cstat-no" title="statement not covered" >    return this.request(RequestMethod.Patch, this.getHost() + endpoint, body, options);</span>
+  }
+<span class="fstat-no" title="function not covered" >  public <span class="cstat-no" title="statement not covered" >head(endpoint: string, body?: string, options?: RequestOptionsArgs)</span> {</span>
+<span class="cstat-no" title="statement not covered" >    return this.request(RequestMethod.Head, this.getHost() + endpoint, null, options);</span>
+  }
+&nbsp;
+<span class="fstat-no" title="function not covered" >  private <span class="cstat-no" title="statement not covered" >getHost() { <span class="cstat-no" title="statement not covered" ></span>return this.config.apiUrl; </span>}</span>
+<span class="fstat-no" title="function not covered" >  private <span class="cstat-no" title="statement not covered" >request(</span></span>
+      method: RequestMethod, 
+      url: string, 
+      body?: string, 
+      options?: RequestOptionsArgs
+    ): Observable&lt;Response&gt; {
+    
+<span class="cstat-no" title="statement not covered" >    let opts = {</span>
+      method: method,
+      url: url,
+      body: body
+    }    
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    let requestOptions = new RequestOptions(Object.assign(opts, options));</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >    return this.http.request(new Request(requestOptions))</span>
+    .catch(<span class="fstat-no" title="function not covered" >(err: Response, caught)</span> =&gt; {
+<span class="cstat-no" title="statement not covered" >      return Observable.throw(err);</span>
+    })
+&nbsp;
+  }
+<span class="cstat-no" title="statement not covered" >}</span></pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Wed Nov 29 2017 12:57:03 GMT+0100 (CET)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>
