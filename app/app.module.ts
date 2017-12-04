@@ -12,12 +12,20 @@ import { ChartComponent } from './components/chart/chart.component';
 import { ApiService } from './providers//api.service';
 import { Config } from './app.config';
 
+import { ChartModule } from 'angular2-highcharts';
+
+
 const routes: Routes = appRoutes;
 
 @NgModule({
   declarations: [ AppComponent, HomePageComponent, DummyComponent, ChartComponent ],
   entryComponents: [ DummyComponent ],
-  imports: [ BrowserModule, HttpClientModule, RouterModule.forRoot(routes) ],
+  imports: [ 
+    BrowserModule, 
+    HttpClientModule, 
+    RouterModule.forRoot(routes),
+    ChartModule.forRoot(require('highcharts'))
+  ],
   bootstrap: [ AppComponent ],
   providers: [ ApiService, Config ]
 })
