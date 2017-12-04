@@ -1,6 +1,6 @@
 
 import { Component, Input, OnInit, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
-import { ChartData } from '../../models/chartData.model';
+import { chartDataModel } from '../../models/chartData.model';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -12,11 +12,10 @@ import { Observable } from 'rxjs/Observable';
 
 export class ChartComponent implements OnInit, OnDestroy {
 
-	@Input() data: Observable<ChartData>; // main data object
+	@Input() data: Observable<Array<chartDataModel>>; // main data object
 	@Input() modificator: string; // CSS BEM class modificator
 
-	public options: ChartData;
-
+	public options: Array<chartDataModel>;
 	private alive: boolean = true;
 
 	constructor() { console.log('Chart component created.') }
@@ -24,7 +23,10 @@ export class ChartComponent implements OnInit, OnDestroy {
 	ngOnInit() {
 		this.data
 		.takeWhile(() => this.alive )
-		.subscribe(r => this.options = r);	
+		.subscribe((r) => {
+			console.log(r);
+			this.options = r
+		});	
 	}
 
 	ngOnDestroy() { this.alive = false; }

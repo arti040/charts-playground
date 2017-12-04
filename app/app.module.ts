@@ -11,7 +11,6 @@ import { ChartComponent } from './components/chart/chart.component';
 
 import { ApiService } from './providers//api.service';
 import { Config } from './app.config';
-
 import { ChartModule } from 'angular2-highcharts';
 
 

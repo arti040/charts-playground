@@ -1,25 +1,40 @@
+export class ChartData {
+	constructor(
+			public chart = {},
+			public title = {},
+			public xAxis = {},
+			public yAxis = {},
+			public series = []
+	) {}
+}
 
-export interface ChartData {
-	id: string,
+
+export interface chartDataModel {
+	marginRight?: number,
+	legend?: any
 	chart: {
-		type: string,
+		type?: string,
 		renderTo?: string
 	},
 	title: {
-		text: string
+		text?: string
 	},
 	xAxis: {
-		categories: Array<string>
+		categories?: Array<string>
 	},
 	yAxis: {
-		title: {
-			text: string
+		title?: {
+			text?: string
 		}
 	},
-	series: Array<Serie>
+	series?: Array<Serie>
 }
 
 export interface Serie {
-	name: string,
-	data: Array<number>
+	name?: string,
+	color?: string,
+	zIndex?: number,
+	type?: string,
+	fillOpacity?: number,
+	data?: Array<any>
 }
