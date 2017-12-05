@@ -25,7 +25,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 		.takeWhile(() => this.alive )
 		.subscribe((r) => {
 			console.log(r);
-			this.options = r
+			this.options = r;
 		});	
 	}
 
