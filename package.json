@@ -12,6 +12,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@types/jasmine": "~2.8.2",
     "@types/node": "^7.0.22",
     "angular2-highcharts": "^0.5.5",
     "highcharts": "^6.0.3",
@@ -62,7 +63,8 @@
     "test": "export NODE_ENV=test && karma start",
     "server": "webpack-dev-server --env dev --history-api-fallback --progress",
     "start": "export NODE_ENV=dev && npm run server",
-    "build": "export NODE_ENV=prod && rimraf dist && webpack --env prod --bail --progress --profile"
+    "build": "export NODE_ENV=prod && rimraf dist && webpack --env prod --bail --progress --profile",
+    "wstart": "cross-env NODE_ENV=dev npm run server"
   },
   "author": "Piotr Potera",
   "license": "UNLICENSED"
