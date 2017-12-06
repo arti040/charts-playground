@@ -2,7 +2,7 @@ export class ChartData {
 	constructor(
 			public chart = {},
 			public title = {},
-			public xAxis = {},
+			public xAxis = { breaks: [] },
 			public yAxis = {},
 			public series = []
 	) {}
@@ -20,7 +20,9 @@ export interface chartDataModel {
 		text?: string
 	},
 	xAxis: {
-		categories?: Array<string>
+		title?: string,
+		categories?: Array<string>,
+		breaks?: Array<any>
 	},
 	yAxis: {
 		title?: {

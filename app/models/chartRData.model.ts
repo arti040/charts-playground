@@ -11,6 +11,7 @@ export interface chartRDataItemModel {
 	CI_INDICATOR: number,
 	INTERCEPT?: number,
 	SLOPE?: number,
+	TREND?: number,
 	BREAKPOINT_SHIFTS_ABS?: number,
 	EARLY_WARNING_INDICATOR: number
 }

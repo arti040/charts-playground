@@ -11,6 +11,17 @@ export function parseChartData(rdata) {
 		range: { color: '#9DC3E3', data: [], name: 'Range' }
 	}
 
+	let breaksOpts = {
+		text: 'BREAK', 
+		rotation: 90, 
+		align: 'center', 
+		verticalAlign: 'top', 
+		textAlign: 'left', 
+		x: -5,
+		borderWidth: 10,
+		borderColor: null
+	}
+
 	var trend: number = null;
 	
 	chartData.marginRight = 220;
@@ -27,28 +38,38 @@ export function parseChartData(rdata) {
 		
 		chartData.series[0].data.push(item.TARGET_VAR);
 		chartData.series[1].data.push(trend);
-		chartData.series[2].data.push(countLocalOutliner(item.LOCAL_OUTLIER_INDICATOR, item.TARGET_VAR));
-		chartData.series[3].data.push(countLocalOutliner(item.OUTLIER_INDICATOR, item.TARGET_VAR));
+		chartData.series[2].data.push(countLocalOutlier(item.LOCAL_OUTLIER_INDICATOR, item.TARGET_VAR));
+		chartData.series[3].data.push(countLocalOutlier(item.OUTLIER_INDICATOR, item.TARGET_VAR));
 		chartData.series[4].data.push(countRange(trend, item.LOCAL_STANDARD_ERROR));
 		chartData.series[4].type = 'arearange';
 		chartData.series[4].fillOpacity = 0.3;
 		chartData.series[4].zIndex= -1;
-
+		
+		chartData.xAxis.breaks.push(addPlotBreaks(breaksOpts, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFT_ABS, item.OUTLIER_INDICATOR));
+	
 	});
 	return chartData;
 }
 
-function countTrend(data: any, trend: number, idx: number, val: number, brk_ind: number, slope: number, intercept: number) {	
-	if(idx === 0) {
-		return intercept ? 
-			intercept + slope : 
-				data[idx+1].INTERCEPT + slope + data[idx+1].SLOPE;
-	}
-	else {
-		return data[idx-1].BREAKPOINT_INDICATOR == 1 ?
-						trend + data[idx-1].SLOPE :
-							!slope ? trend + data[idx-1].slope : trend + slope
-	}
+function countTrend(
+		data: any, 
+		trend: number, 
+		idx: number, 
+		val: number, 
+		brk_ind: number, 
+		slope: number, 
+		intercept: number
+	) {	
+			if(idx === 0) {
+				return intercept ? 
+					intercept + slope : 
+						data[idx+1].INTERCEPT + slope + data[idx+1].SLOPE;
+			}
+			else {
+				return data[idx-1].BREAKPOINT_INDICATOR == 1 ?
+								intercept + slope :
+									!slope ? trend + data[idx-1].slope : trend + slope
+			}
 }
 
 function countRange(trend: number, loc_st_err: number) {
@@ -58,28 +79,25 @@ function countRange(trend: number, loc_st_err: number) {
 	return { low: low, high: high };
 }
 
-function countLocalOutliner(loc_out_ind: number, val: number) {
+function countLocalOutlier(loc_out_ind: number, val: number) {
 	return !loc_out_ind || loc_out_ind == 0 ? null : val;
 }
 
-function countOutlinerIndicator(out_ind, val) {
+function countOutlierIndicator(out_ind, val) {
 	return !out_ind || out_ind == 0 ? null : val;
 }
 
-function addPlotBreaks(idx: number, brk_ind: number, wrn_ind: number, brk_shift_abs) { // from idx-1 to idx
-	// if(brk_ind || wrn_ind != 0) { 
-	// 	let opts = { 
-	// 		text: 'BREAK', 
-	// 		rotation: 90, 
-	// 		align: 'center', 
-	// 		verticalAlign: 'top', 
-	// 		textAlign: 'left', 
-	// 		x: -5,
-	// 		borderWidth: 10,
-	// 		borderColor: null
-	// 	}
-	// 	brk_shift_abs > 0 ? opts.borderColor = '#066F07' : opts.borderColor = '#FF3366';
-	// }
+function addPlotBreaks(
+		opts: any,
+		brk_ind: number, 
+		brk_shift_abs: number,
+		out_ind: number
+	) {
+		if(brk_ind === 1) {
+			brk_shift_abs > 0 ? opts.borderColor = '#066F07' : opts.borderColor = '#FF3366';
+			return opts;
+		}
+		return null;		
 }
 
 function addPeriodToAnal(idx: number, brk_ind: number, wrn_ind: number, before: boolean) {
@@ -113,5 +131,4 @@ function addSlopeAddnotation() {
 	// szukam "BREAKPOINT_INDICATOR": 1
 	// liczę do góry
 	// w połowie wstawia label -> API
-
 }

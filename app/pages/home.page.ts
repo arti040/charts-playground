@@ -42,7 +42,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0 
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6101
 				},
 				{
 					"DATE": "2014-10-31",
@@ -57,7 +58,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.612
 				},
 				{
 					"DATE": "2014-11-30",
@@ -72,7 +74,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6139
 				},
 				{
 					"DATE": "2014-12-31",
@@ -87,7 +90,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6157
 				},
 				{
 					"DATE": "2015-01-31",
@@ -102,9 +106,10 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6176
 				},
-				{
+			 {
 					"DATE": "2015-02-28",
 					"MARKET": "TOTAL GREAT BRITAIN",
 					"BRAND": "ARIEL",
@@ -117,7 +122,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6195
 				},
 				{
 					"DATE": "2015-03-31",
@@ -132,7 +138,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6214
 				},
 				{
 					"DATE": "2015-04-30",
@@ -147,7 +154,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6233
 				},
 				{
 					"DATE": "2015-05-31",
@@ -162,7 +170,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6251
 				},
 				{
 					"DATE": "2015-06-30",
@@ -177,7 +186,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.627
 				},
 				{
 					"DATE": "2015-07-31",
@@ -192,7 +202,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6289
 				},
 				{
 					"DATE": "2015-08-31",
@@ -207,7 +218,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6308
 				},
 				{
 					"DATE": "2015-09-30",
@@ -222,7 +234,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6327
 				},
 				{
 					"DATE": "2015-10-31",
@@ -237,7 +250,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6345
 				},
 				{
 					"DATE": "2015-11-30",
@@ -252,7 +266,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6364
 				},
 				{
 					"DATE": "2015-12-31",
@@ -267,7 +282,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6383
 				},
 				{
 					"DATE": "2016-01-31",
@@ -283,7 +299,8 @@ export class HomePageComponent {
 					"INTERCEPT": 12.6082,
 					"SLOPE": 0.0019,
 					"BREAKPOINT_SHIFTS_ABS": 1.2913,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.6402
 				},
 				{
 					"DATE": "2016-02-29",
@@ -298,7 +315,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 13.9801
 				},
 				{
 					"DATE": "2016-03-31",
@@ -313,7 +331,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.0287
 				},
 				{
 					"DATE": "2016-04-30",
@@ -328,7 +347,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.0772
 				},
 				{
 					"DATE": "2016-05-31",
@@ -343,7 +363,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.1258
 				},
 				{
 					"DATE": "2016-06-30",
@@ -358,7 +379,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.1744
 				},
 				{
 					"DATE": "2016-07-31",
@@ -373,7 +395,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.2229
 				},
 				{
 					"DATE": "2016-08-31",
@@ -388,7 +411,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.2715
 				},
 				{
 					"DATE": "2016-09-30",
@@ -403,7 +427,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.3201
 				},
 				{
 					"DATE": "2016-10-31",
@@ -418,7 +443,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.3687
 				},
 				{
 					"DATE": "2016-11-30",
@@ -433,7 +459,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.4172
 				},
 				{
 					"DATE": "2016-12-31",
@@ -448,7 +475,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.4658
 				},
 				{
 					"DATE": "2017-01-31",
@@ -463,7 +491,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.5144
 				},
 				{
 					"DATE": "2017-02-28",
@@ -479,7 +508,8 @@ export class HomePageComponent {
 					"INTERCEPT": 13.9315,
 					"SLOPE": 0.0486,
 					"BREAKPOINT_SHIFTS_ABS": 1.8304,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.5629
 				},
 				{
 					"DATE": "2017-03-31",
@@ -494,7 +524,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 1,
 					"INTERCEPT": 16.3933,
 					"SLOPE": -1.8005,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 14.5929
 				},
 				{
 					"DATE": "2017-04-30",
@@ -509,7 +540,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 16.3933,
 					"SLOPE": -1.8005,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 12.7924
 				},
 				{
 					"DATE": "2017-05-31",
@@ -524,7 +556,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 16.3933,
 					"SLOPE": -1.8005,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 10.9919
 				},
 				{
 					"DATE": "2017-06-30",
@@ -539,7 +572,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 16.3933,
 					"SLOPE": -1.8005,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 9.1915
 				},
 				{
 					"DATE": "2017-07-31",
@@ -554,7 +588,8 @@ export class HomePageComponent {
 					"CI_INDICATOR": 0,
 					"INTERCEPT": 16.3933,
 					"SLOPE": -1.8005,
-					"EARLY_WARNING_INDICATOR": 0
+					"EARLY_WARNING_INDICATOR": 0,
+					"TREND": 7.391
 				},
 				{
 					"DATE": "2017-08-31",
@@ -566,7 +601,7 @@ export class HomePageComponent {
 					"OUTLIER_INDICATOR": -1,
 					"LOCAL_OUTLIER_INDICATOR": 0,
 					"CI_INDICATOR": 0,
-					"EARLY_WARNING_INDICATOR": 0
+				 "EARLY_WARNING_INDICATOR": 0
 				},
 				{
 					"DATE": "2017-09-30",
