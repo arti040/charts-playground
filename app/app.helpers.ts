@@ -13,7 +13,7 @@ export function parseChartData(rdata) {
 		}
 	}
 
-	let opts = {
+	let seriesOpts = {
 		valShr: { color: '#06c', data: [], name: 'Val Shr' },	
 		trend: { color: '#036', data: [], name: 'Trend' },
 		localOutliner: { color: '#ffa500', data: [], type: 'scatter', dataLabels: { enabled: true, format: '{ point.y:.2f }' }, name: 'Local Outliner' },
@@ -43,11 +43,11 @@ export function parseChartData(rdata) {
 	chartData.marginRight = chartOpts.marginRight;
 	chartData.legend = chartOpts.legend;
 
-	chartData.series.push(opts.valShr, opts.trend, opts.localOutliner, opts.globalOutliner, opts.range);
+	chartData.series.push(seriesOpts.valShr, seriesOpts.trend, seriesOpts.localOutliner, seriesOpts.globalOutliner, seriesOpts.range);
 
 	rdata.forEach((item, idx, rdata) => {
 		let oldTrend = trend;		
-		trend = countTrend(rdata, oldTrend, idx, item.TARGET_VAR, item.INTERCEPT, item.SLOPE, item.INTERCEPT);		
+		trend = countTrend(rdata, oldTrend, idx, item.SLOPE, item.INTERCEPT);		
 
 		chartData.title.text = [item.MARKET,item.BRAND,item.MEASURE].join(' ');
 		chartData.xAxis.categories = [];
@@ -71,8 +71,6 @@ function countTrend(
 		data: any, 
 		trend: number, 
 		idx: number, 
-		val: number, 
-		brk_ind: number, 
 		slope: number, 
 		intercept: number
 	) {	
