@@ -62,11 +62,6 @@ export function parseChartData(rdata) {
 	chartData.xAxis.categories = [];
 
 	chartData = Object.assign({}, chartData, chartOpts);
-	console.log(chartData);
-
-	//chartData.marginRight = chartOpts.marginRight;
-	//chartData.legend = chartOpts.legend;
-
 	chartData.series.push(seriesOpts.valShr, seriesOpts.trend, seriesOpts.localOutliner, seriesOpts.globalOutliner, seriesOpts.range);
 	chartData.series[4] = Object.assign({}, chartData.series[4], rangeOpts);
 
@@ -89,8 +84,12 @@ export function parseChartData(rdata) {
 		breaks = breaks.concat(addPeriods(periodOpts, idx, item.BREAKPOINT_INDICATOR, item.EARLY_WARNING_INDICATOR));
 		
 	});
+	
 	console.log(breaks.filter((e) => { return e; }));
+
+	// Remove empty elements from Array
 	chartData.xAxis.plotBands = breaks.filter((e) => { return e; });
+
 	return chartData;
 }
 
