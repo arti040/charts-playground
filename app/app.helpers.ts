@@ -3,6 +3,16 @@ import { ChartData, chartDataModel } from './models/chartData.model';
 export function parseChartData(rdata) {
 	let chartData: chartDataModel = new ChartData();
 
+	let chartOpts= {
+		marginRight: 220,
+		legend: {
+			align: 'right', 
+			verticalAlign: 'middle', 
+			layout: 'vertical', 
+			floating: false
+		}
+	}
+
 	let opts = {
 		valShr: { color: '#06c', data: [], name: 'Val Shr' },	
 		trend: { color: '#036', data: [], name: 'Trend' },
@@ -22,10 +32,17 @@ export function parseChartData(rdata) {
 		borderColor: null
 	}
 
+	let rangeOpts = {
+		type: 'arearange',
+		fillOpacity: 0.3,
+		zIndex: -1
+	}
+
 	var trend: number = null;
 	
-	chartData.marginRight = 220;
-	chartData.legend = { align: 'right', verticalAlign: 'middle', layout: 'vertical', floating: false }
+	chartData.marginRight = chartOpts.marginRight;
+	chartData.legend = chartOpts.legend;
+
 	chartData.series.push(opts.valShr, opts.trend, opts.localOutliner, opts.globalOutliner, opts.range);
 
 	rdata.forEach((item, idx, rdata) => {
@@ -40,10 +57,9 @@ export function parseChartData(rdata) {
 		chartData.series[1].data.push(trend);
 		chartData.series[2].data.push(countLocalOutlier(item.LOCAL_OUTLIER_INDICATOR, item.TARGET_VAR));
 		chartData.series[3].data.push(countLocalOutlier(item.OUTLIER_INDICATOR, item.TARGET_VAR));
+
 		chartData.series[4].data.push(countRange(trend, item.LOCAL_STANDARD_ERROR));
-		chartData.series[4].type = 'arearange';
-		chartData.series[4].fillOpacity = 0.3;
-		chartData.series[4].zIndex= -1;
+		Object.assign(chartData.series[4], rangeOpts);
 		
 		chartData.xAxis.breaks.push(addPlotBreaks(breaksOpts, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFT_ABS, item.OUTLIER_INDICATOR));
 	
