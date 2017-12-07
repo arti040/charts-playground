@@ -21,15 +21,19 @@ export function parseChartData(rdata) {
 		range: { color: '#9DC3E3', data: [], name: 'Range' }
 	}
 
-	let breaksOpts = {
-		text: 'BREAK', 
-		rotation: 90, 
-		align: 'center', 
-		verticalAlign: 'top', 
-		textAlign: 'left', 
-		x: -5,
-		borderWidth: 10,
-		borderColor: null
+	let breakOpts = {
+		//borderWidth: 10,
+		color: null,
+		label: {
+			text: 'BREAK', 
+			rotation: 90, 
+			align: 'center', 
+			verticalAlign: 'top', 
+			textAlign: 'left', 
+			x: -5
+		},
+		from: null,
+		to: null
 	}
 
 	let rangeOpts = {
@@ -38,15 +42,26 @@ export function parseChartData(rdata) {
 		zIndex: -1
 	}
 
+	let periodsOpts = {
+		text: '',
+		rotation: 90,
+		textAlign: 'left',
+		color: '#cce6ff',
+		from: null,
+		to: null
+	}
+
 	var trend: number = null;
-	
+	var breaks: Array<any> = [];
+
 	chartData.marginRight = chartOpts.marginRight;
 	chartData.legend = chartOpts.legend;
 
 	chartData.series.push(seriesOpts.valShr, seriesOpts.trend, seriesOpts.localOutliner, seriesOpts.globalOutliner, seriesOpts.range);
 
 	rdata.forEach((item, idx, rdata) => {
-		let oldTrend = trend;		
+		let oldTrend = trend;	
+		let len = rdata.length;	
 		trend = countTrend(rdata, oldTrend, idx, item.SLOPE, item.INTERCEPT);		
 
 		chartData.title.text = [item.MARKET,item.BRAND,item.MEASURE].join(' ');
@@ -57,13 +72,12 @@ export function parseChartData(rdata) {
 		chartData.series[1].data.push(trend);
 		chartData.series[2].data.push(countLocalOutlier(item.LOCAL_OUTLIER_INDICATOR, item.TARGET_VAR));
 		chartData.series[3].data.push(countLocalOutlier(item.OUTLIER_INDICATOR, item.TARGET_VAR));
-
 		chartData.series[4].data.push(countRange(trend, item.LOCAL_STANDARD_ERROR));
-		Object.assign(chartData.series[4], rangeOpts);
 		
-		chartData.xAxis.breaks.push(addPlotBreaks(breaksOpts, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFT_ABS, item.OUTLIER_INDICATOR));
-	
+		breaks.push(addPlotBreaks(breakOpts, idx, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFT_ABS));
 	});
+	console.log(breaks.filter((e) => { return e; }));
+	chartData.xAxis.plotBands = breaks.filter((e) => { return e; });
 	return chartData;
 }
 
@@ -101,44 +115,34 @@ function countOutlierIndicator(out_ind, val) {
 	return !out_ind || out_ind == 0 ? null : val;
 }
 
-function addPlotBreaks(
-		opts: any,
-		brk_ind: number, 
-		brk_shift_abs: number,
-		out_ind: number
-	) {
-		if(brk_ind === 1) {
-			brk_shift_abs > 0 ? opts.borderColor = '#066F07' : opts.borderColor = '#FF3366';
-			return opts;
+function addPlotBreaks(breakOpts: any, idx: number, brk_ind: number, brk_shift_abs: number) {	
+		let copy = JSON.parse(JSON.stringify(breakOpts));
+		if(brk_ind === 1) {		
+			copy.from = idx-1;
+			copy.to = idx;
+			brk_shift_abs > 0 ? copy.color = '#066F07' : copy.color = '#FF3366';
+			return copy;
 		}
-		return null;		
+		return null;
 }
 
-function addPeriodToAnal(idx: number, brk_ind: number, wrn_ind: number, before: boolean) {
-	// if(brk_ind || wrn_ind != 0) {
-	// 	if(before) {
-	// 		let opts = {
-	// 			text: '3 Months before',
-	// 			rotation: 90,
-	// 			textAlign: 'left',
-	// 			color: '#cce6ff',
-	// 			from: idx - 3,
-	// 			to: idx - 1
-	// 		}
-	// 	}
-	// 	else {
-	// 		let opts = {
-	// 			text: '3 Months after',
-	// 			rotation: 90,
-	// 			textAlign: 'left',
-	// 			color: '#cce6ff',
-	// 			from: idx,
-	// 			to: idx + 2
-	// 		}
-	// 	}
-		
-	// }
-	// return opts;
+function addPeriodToAnal(opts: any, idx: number, early_wrn_ind: number, before: boolean) {
+	if(early_wrn_ind !== 0) {		
+		if(before) {
+			console.log(true);
+			opts.text = '3 Months before';
+			opts.from = idx - 3;
+			opts.to = idx - 1;
+		}
+		else {
+			console.log(false);
+			opts.text = '3 Months after';
+			opts.from = idx;
+			opts.to = idx + 2;
+		}
+		return opts;		
+	}	
+	else { return null };
 }
 
 function addSlopeAddnotation() {
@@ -146,3 +150,6 @@ function addSlopeAddnotation() {
 	// liczę do góry
 	// w połowie wstawia label -> API
 }
+
+		// breaks[idx+1] = Object.assign(periodsOpts, { text: '3 Months before', from: idx-3, to: idx-1 });
+			// breaks[idx+2] = Object.assign(periodsOpts, { text: '3 Months after', from: idx, to: idx+2 });
