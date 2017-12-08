@@ -4,7 +4,8 @@ export class ChartData {
 			public title = {},
 			public xAxis = { plotBands: [] },
 			public yAxis = {},
-			public series = []
+			public series = [],
+			public annotations = []
 	) {}
 }
 
@@ -12,6 +13,7 @@ export class ChartData {
 export interface chartDataModel {
 	marginRight?: number,
 	legend?: any
+	annotations?: Array<any>
 	chart: {
 		type?: string,
 		renderTo?: string

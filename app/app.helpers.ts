@@ -58,7 +58,9 @@ export function parseChartData(rdata) {
 
 	var trend: number = null;
 	var breaks: Array<any> = [];
-
+	var annotations: Array<any> = [];
+	var slopes: Array<any> = [];
+	
 	chartData.xAxis.categories = [];
 
 	chartData = Object.assign({}, chartData, chartOpts);
@@ -82,14 +84,16 @@ export function parseChartData(rdata) {
 		
 		breaks.push(addPlotBreaks(breakOpts, idx, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFT_ABS));
 		breaks = breaks.concat(addPeriods(periodOpts, idx, item.BREAKPOINT_INDICATOR, item.EARLY_WARNING_INDICATOR));
-		
+
+		slopes.push(getSlopes(idx, item.SLOPE));	
 	});
-	
-	console.log(breaks.filter((e) => { return e; }));
+
 
 	// Remove empty elements from Array
 	chartData.xAxis.plotBands = breaks.filter((e) => { return e; });
+	chartData.annotations.push(addSlopeAnnotations(groupSlopes(slopes)));
 
+	console.log(chartData);
 	return chartData;
 }
 
@@ -119,12 +123,12 @@ function countRange(trend: number, loc_st_err: number) {
 	return { low: low, high: high };
 }
 
-function countLocalOutlier(loc_out_ind: number, val: number) {
-	return !loc_out_ind || loc_out_ind == 0 ? null : val;
+function countLocalOutlier(loc_out_ind: number, target_var: number) {
+	return !loc_out_ind || loc_out_ind == 0 ? null : target_var;
 }
 
-function countOutlierIndicator(out_ind, val) {
-	return !out_ind || out_ind == 0 ? null : val;
+function countOutlierIndicator(out_ind, target_var) {
+	return !out_ind || out_ind == 0 ? null : target_var;
 }
 
 function addPlotBreaks(opts: any, idx: number, brk_ind: number, brk_shift_abs: number) {	
@@ -168,8 +172,61 @@ function addPeriods(opts: any, idx: number, brk_ind: number, early_warn_ind: num
 	return periods.length ? periods : null;
 }
 
-function addSlopeAddnotation() {
-	// szukam "BREAKPOINT_INDICATOR": 1
-	// liczę do góry
-	// w połowie wstawia label -> API
+function getSlopes(idx: number, slope: number) {
+	return { idx, slope: slope || null };
+}
+
+function groupSlopes(slopes: Array<any>) {
+	let groups: Array<any> = [];
+	let i: number = 0;
+
+	while(slopes.length) {
+		let item: any = slopes.shift();		
+
+		if(i === 0) { groups.push([item]); }
+		else {
+			let set = false;			
+			for(let x = 0; x < groups.length; ++x) {
+				if(groups[x][0].slope == item.slope) { 
+					groups[x].push(item); 
+					set = true;
+				}
+			}
+			if(!set) {
+				groups.push([item]);
+			}
+		}
+		++i;
+	}
+	return groups;
+}
+
+function addSlopeAnnotations(slopesByGroup) {
+	let label = 'Slopes: ';
+	let labels: Array<any> = [];
+	slopesByGroup.forEach((item) => {
+		if(item[0].slope) {
+			labels.push({ point: { x: Math.floor(item.length/2 + item[0].idx), y: 1 }, text: label + item[0].slope });
+		}
+	});
+	return { labels: labels };
+}
+
+function addSlopeAnnotation(label: string, trend: number, target_var: number, brk_ind: number, local_std_err:number, slope: number) {
+
+		if(brk_ind === 0) {
+			return(slope);
+		}
+
+		// let yPos = 10;
+		// let xPos = Math.min(trend - 1.5 * local_std_err, target_var).toFixed();
+		// let value = slope.toFixed(2); 
+
+		// return {
+		// 	labels: {
+		// 		text: label + value,
+		// 		x: xPos,
+		// 		y: yPos
+		// 	}
+		// }
 }
