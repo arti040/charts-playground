@@ -2,7 +2,7 @@ export class ChartData {
 	constructor(
 			public chart = {},
 			public title = {},
-			public xAxis = { plotBands: [] },
+			public xAxis = { plotBands: [], categories: [] },
 			public yAxis = {},
 			public series = [],
 			public annotations = []

@@ -23,7 +23,7 @@ const routes: Routes = appRoutes;
     BrowserModule, 
     HttpClientModule, 
     RouterModule.forRoot(routes),
-    ChartModule.forRoot(require('highcharts'), require('highcharts-more'))
+    ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))
   ],
   bootstrap: [ AppComponent ],
   providers: [ ApiService, Config ]

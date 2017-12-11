@@ -1,97 +1,61 @@
+
+import { labels } from './constants/labels';
+import { colors } from './constants/chartColors';
 import { ChartData, chartDataModel } from './models/chartData.model';
+import { chartOpts, breakLabelOpts, rangeOpts, periodLabelOpts, serieOpts, breakOpts, periodOpts } from './constants/chartOpts';  
+
 
 export function parseChartData(rdata) {
 	let chartData: chartDataModel = new ChartData();
-
-	let chartOpts = {
-		chart: { 		
-			width: 900,
-			marginRight: 220			
-		},
-		legend: {
-			align: 'right', 
-			verticalAlign: 'middle', 
-			layout: 'vertical', 
-			floating: false
-		}
-	}
-
-	let seriesOpts = {
-		valShr: { color: '#06c', data: [], name: 'Val Shr' },	
-		trend: { color: '#036', data: [], name: 'Trend' },
-		localOutliner: { color: '#ffa500', data: [], type: 'scatter', dataLabels: { enabled: true, format: '{ point.y:.2f }' }, name: 'Local Outliner' },
-		globalOutliner: { color: '#f00', data: [], type: 'scatter', dataLabels: { enabled: true, format: '{ point.y:.2f }' }, name: 'Global Outliner' },
-		range: { color: '#9DC3E3', data: [], name: 'Range' }
-	}
-
-	let breakOpts = {
-		color: null,
-		label: {
-			text: 'BREAK', 
-			rotation: 90, 
-			align: 'center', 
-			verticalAlign: 'top', 
-			textAlign: 'left', 
-			x: -5
-		},
-		from: null,
-		to: null
-	}
-
-	let rangeOpts = {
-		type: 'arearange',
-		fillOpacity: 0.3,
-		zIndex: -1
-	}
-
-	let periodOpts = {
-		label: {
-			text: null,
-			rotation: 90,
-			textAlign: 'left',
-			color: '#cce6ff',
-			x: -5
-		},
-		from: null,
-		to: null
-	}
 
 	var trend: number = null;
 	var breaks: Array<any> = [];
 	var annotations: Array<any> = [];
 	var slopes: Array<any> = [];
 	
-	chartData.xAxis.categories = [];
-
-	chartData = Object.assign({}, chartData, chartOpts);
-	chartData.series.push(seriesOpts.valShr, seriesOpts.trend, seriesOpts.localOutliner, seriesOpts.globalOutliner, seriesOpts.range);
+	chartData.chart = Object.assign(chartData, chartOpts);
+	Object.keys(serieOpts).map(key => chartData.series.push(serieOpts[key]));
 	chartData.series[4] = Object.assign({}, chartData.series[4], rangeOpts);
 
-
 	rdata.forEach((item, idx, rdata) => {
-		let oldTrend = trend;	
-		let len = rdata.length;	
-		trend = countTrend(rdata, oldTrend, idx, item.SLOPE, item.INTERCEPT);		
 
+		// Counting trend
+		let oldTrend = trend;
+		trend = countTrend(rdata, oldTrend, idx, item.SLOPE, item.INTERCEPT);		
+		let len = rdata.length;	
+		
+		// Creating charts' title
 		chartData.title.text = [item.MARKET,item.BRAND,item.MEASURE].join(' ');
+
+		// Pushing series' dates as xAxis
 		chartData.xAxis.categories.push(item.DATE);
 		
-		chartData.series[0].data.push(item.TARGET_VAR);
-		chartData.series[1].data.push(trend);
-		chartData.series[2].data.push(countLocalOutlier(item.LOCAL_OUTLIER_INDICATOR, item.TARGET_VAR));
-		chartData.series[3].data.push(countLocalOutlier(item.OUTLIER_INDICATOR, item.TARGET_VAR));
-		chartData.series[4].data.push(countRange(trend, item.LOCAL_STANDARD_ERROR));
+		// Pushing series` data in an order: 
+		// target_var, trend, local_outlier, global_outlier, range
+		let series = [
+			item.TARGET_VAR,
+			trend,
+			countOutlier(item.LOCAL_OUTLIER_INDICATOR, item.TARGET_VAR),
+			countOutlier(item.OUTLIER_INDICATOR, item.TARGET_VAR),
+			countRange(trend, item.LOCAL_STANDARD_ERROR)
+		];
+
+		chartData.series.forEach((item, idx) => {
+			item.data.push(series[idx]);
+		})
 		
-		breaks.push(addPlotBreaks(breakOpts, idx, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFT_ABS));
+		// Generating breaks and periods
+		breaks.push(addPlotBreaks(breakOpts, idx, item.BREAKPOINT_INDICATOR, item.BREAKPOINT_SHIFTS_ABS));
 		breaks = breaks.concat(addPeriods(periodOpts, idx, item.BREAKPOINT_INDICATOR, item.EARLY_WARNING_INDICATOR));
 
-		slopes.push(getSlopes(idx, item.SLOPE));	
+		slopes.push(getSlope(idx, item.SLOPE));	
 	});
-
 
 	// Remove empty elements from Array
 	chartData.xAxis.plotBands = breaks.filter((e) => { return e; });
-	chartData.annotations.push(addSlopeAnnotations(groupSlopes(slopes)));
+
+	// Generating slopes` labels
+	chartData.annotations = addSlopeAnnotations(groupSlopes(slopes));
 
 	console.log(chartData);
 	return chartData;
@@ -123,20 +87,20 @@ function countRange(trend: number, loc_st_err: number) {
 	return { low: low, high: high };
 }
 
-function countLocalOutlier(loc_out_ind: number, target_var: number) {
-	return !loc_out_ind || loc_out_ind == 0 ? null : target_var;
+function countOutlier(out_ind: number, target_var: number) {
+	return !out_ind || out_ind == 0 ? null : target_var;
 }
 
 function countOutlierIndicator(out_ind, target_var) {
 	return !out_ind || out_ind == 0 ? null : target_var;
 }
 
-function addPlotBreaks(opts: any, idx: number, brk_ind: number, brk_shift_abs: number) {	
+function addPlotBreaks(opts: any, idx: number, brk_ind: number, brk_shifts_abs: number) {	
 		let copy = JSON.parse(JSON.stringify(opts));
 		if(brk_ind === 1) {		
 			copy.from = idx-1;
 			copy.to = idx;
-			brk_shift_abs > 0 ? copy.color = '#066F07' : copy.color = '#FF3366';
+			brk_shifts_abs > 0 ? copy.color = colors.green : copy.color = colors.rose;
 			return copy;
 		}
 		return null;
@@ -172,28 +136,29 @@ function addPeriods(opts: any, idx: number, brk_ind: number, early_warn_ind: num
 	return periods.length ? periods : null;
 }
 
-function getSlopes(idx: number, slope: number) {
-	return { idx, slope: slope || null };
+function getSlope(idx: number, slope: number) {
+	return { idx, value: slope || null };
 }
 
 function groupSlopes(slopes: Array<any>) {
+
 	let groups: Array<any> = [];
 	let i: number = 0;
 
 	while(slopes.length) {
-		let item: any = slopes.shift();		
+		let slope: any = slopes.shift();		
 
-		if(i === 0) { groups.push([item]); }
+		if(i === 0) { groups.push([slope]); }
 		else {
 			let set = false;			
 			for(let x = 0; x < groups.length; ++x) {
-				if(groups[x][0].slope == item.slope) { 
-					groups[x].push(item); 
+				if(groups[x][0].value == slope.value) { 
+					groups[x].push(slope); 
 					set = true;
 				}
 			}
 			if(!set) {
-				groups.push([item]);
+				groups.push([slope]);
 			}
 		}
 		++i;
@@ -202,31 +167,18 @@ function groupSlopes(slopes: Array<any>) {
 }
 
 function addSlopeAnnotations(slopesByGroup) {
-	let label = 'Slopes: ';
-	let labels: Array<any> = [];
-	slopesByGroup.forEach((item) => {
-		if(item[0].slope) {
-			labels.push({ point: { x: Math.floor(item.length/2 + item[0].idx), y: 1 }, text: label + item[0].slope });
+	console.log(slopesByGroup)
+	let text = labels.slopes + ': ';
+	let anns = [];
+	slopesByGroup.forEach((group) => {
+		if(group[0].value) {
+			anns.push({
+				xValue: group.length/2 + group[0].idx, 
+				yValue: 0,
+				xAxis: 0,
+				title: { text: text + group[0].value }
+			});
 		}
 	});
-	return { labels: labels };
-}
-
-function addSlopeAnnotation(label: string, trend: number, target_var: number, brk_ind: number, local_std_err:number, slope: number) {
-
-		if(brk_ind === 0) {
-			return(slope);
-		}
-
-		// let yPos = 10;
-		// let xPos = Math.min(trend - 1.5 * local_std_err, target_var).toFixed();
-		// let value = slope.toFixed(2); 
-
-		// return {
-		// 	labels: {
-		// 		text: label + value,
-		// 		x: xPos,
-		// 		y: yPos
-		// 	}
-		// }
+	return anns;
 }

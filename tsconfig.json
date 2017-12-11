@@ -9,7 +9,8 @@
             "jasmine",
             "node"
         ],
-        "allowJs": true        
+        "allowJs": true,
+        "lib": [ "es2017", "dom" ] 
     },
     "exclude": [
         "node_modules"
