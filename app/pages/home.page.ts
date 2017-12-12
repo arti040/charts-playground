@@ -5,7 +5,7 @@ import { ChartData, chartDataModel } from '../models/chartData.model';
 import { chartRDataItemModel } from '../models/chartRData.model';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs';
-import { parseChartData } from '../app.helpers';
+import { parseChartData } from '../components/chart/chart.parser';
 
 
 @Component({
@@ -621,36 +621,4 @@ export class HomePageComponent {
 		});
 	}
 
-	getDataMock() {
-		return new Observable<chartDataModel>((observer) => {
-			let chart: chartDataModel = {
-				chart: {
-					type: "bar"
-				},
-				title: {
-					text: "Test Chart"
-				},
-				xAxis: {
-					categories: ['Apples', 'Bananas', 'Oranges']
-				},
-				yAxis: {
-					title: {
-						text: 'Fruit eaten'
-					}
-				},
-				series: [
-					{
-						name: 'Jane',
-						data: [1, 0, 4]
-					}, 
-					{
-						name: 'John',
-						data: [5, 7, 3]
-					}
-				]
-			}
-			observer.next(chart);
-			observer.complete();
-		});
-	}
 }
