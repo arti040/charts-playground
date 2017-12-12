@@ -27,7 +27,7 @@ export class HomePageComponent {
 	public data: any;
 
 	ngOnInit() {
-		this.data = this.getRDataMock().map(data => parseChartData(data));
+		this.data = this.getRDataMock().map(res => parseChartData(res.json()));
 	}
 
 	getRDataMock() {

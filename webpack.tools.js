@@ -43,12 +43,12 @@ let webpackLoaders = {
         loader: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
     }),
     assetsLoader: {
-        test: /\.(png|jpg|jpeg|gif)$/,
+        test: /\.(png|jpg|jpeg|gif|json)$/,
         loader: 'file-loader'
     },
     fontsLoader: {
         test: /\.(woff|woff2|ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader"
+        loader: 'file-loader'
     },
     typeScriptLoader: {
         test: /\.ts$/,
@@ -94,7 +94,12 @@ exports.setDevServer = function (dir,filepath) {
       colors: true,
       chunk: false
     },
-    compress: false
+    compress: false,
+    headers: {
+        'Access-Control-Allow-Origin': 'localhost:8080',
+        'Access-Control-Allow-Methods': 'GET, POST',
+        'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    }
   };
   return devServer;
 };
