@@ -1,5 +1,5 @@
 export const labels = {
-  valShare: '',
+  valShare: 'Val Shr',
   trend: 'Trend',
   range: 'Range',
   locOutlier: 'Local Outlier',
