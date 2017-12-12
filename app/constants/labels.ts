@@ -5,5 +5,7 @@ export const labels = {
   locOutlier: 'Local Outlier',
   globOutlier: 'Global Outlier',
   slope: 'Slope',
-  slopes: 'Slopes'
+  slopes: 'Slopes',
+  monthsBefore: 'Months before',
+  monthsAfter: 'Months after'
 }

@@ -6,8 +6,8 @@ import { chartOpts, breakLabelOpts, rangeOpts, periodLabelOpts, serieOpts, break
 
 
 export function parseChartData(rdata) {
-	let chartData: chartDataModel = new ChartData();
 
+	let chartData: chartDataModel = new ChartData();
 	var trend: number = null;
 	var breaks: Array<any> = [];
 	var annotations: Array<any> = [];
@@ -57,7 +57,6 @@ export function parseChartData(rdata) {
 	// Generating slopes` labels
 	chartData.annotations = addSlopeAnnotations(groupSlopes(slopes));
 
-	console.log(chartData);
 	return chartData;
 }
 
@@ -110,10 +109,10 @@ function addPeriods(opts: any, idx: number, brk_ind: number, early_warn_ind: num
 	let before, after, periods = [];
 	before = JSON.parse(JSON.stringify(opts));
 	after = JSON.parse(JSON.stringify(opts));
-	before.label.text = '3 Months before';
-	after.label.text = '3 Months after';
-	before.color = '#cce6ff';
-	after.color = '#cce6ff';
+	before.label.text = '3' + labels.monthsBefore; // this will be configurable 
+	after.label.text = '3' + labels.monthsBefore; //	in the future probably
+	before.color = colors.skyBlue;
+	after.color = colors.skyBlue;
 	
 	if(brk_ind !== 0) {		
 		before.from = idx - 3;
@@ -140,6 +139,10 @@ function getSlope(idx: number, slope: number) {
 	return { idx, value: slope || null };
 }
 
+// groupSlopes() takes an array of slopes i.e. 
+// [{idx: 0, slope: 1.3131}, {idx: 1, slope:  1.3131}, {idx: 2, slope: 1.5324}, {idx: 3, slope: 1.000}]
+// and transforms them into groups by slopes: 
+// [ [{idx: 0, slope: 1.3131}, {idx: 1, slope: 1.3131}], [{idx: 2, slope: 1.5324}], [{idx: 3, slope: 1.000}] ]
 function groupSlopes(slopes: Array<any>) {
 
 	let groups: Array<any> = [];
@@ -167,7 +170,6 @@ function groupSlopes(slopes: Array<any>) {
 }
 
 function addSlopeAnnotations(slopesByGroup) {
-	console.log(slopesByGroup)
 	let text = labels.slopes + ': ';
 	let anns = [];
 	slopesByGroup.forEach((group) => {
