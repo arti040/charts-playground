@@ -4,8 +4,8 @@
 // @params none
 // @returns none
 
+/* Angular */
 import { Injectable } from '@angular/core';
-import { Config } from '../app.config';
 import { 
   Http,
   Headers, 
@@ -16,6 +16,10 @@ import {
   Request
 } from '@angular/http';
 import { Observable } from 'rxjs';
+
+/* Services */
+import { Config } from '../app.config';
+
 
 @Injectable()
 export class ApiService {

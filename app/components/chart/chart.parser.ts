@@ -1,8 +1,9 @@
 
-import { labels } from './constants/labels';
-import { colors } from './constants/chartColors';
-import { ChartData, chartDataModel } from './models/chartData.model';
-import { chartOpts, breakLabelOpts, rangeOpts, periodLabelOpts, serieOpts, breakOpts, periodOpts } from './constants/chartOpts';  
+/* Constants & Models */
+import { labels } from '../../constants/labels';
+import { colors } from '../../constants/chartColors';
+import { ChartData, chartDataModel } from '../../models/chartData.model';
+import { chartOpts, breakLabelOpts, rangeOpts, periodLabelOpts, serieOpts, breakOpts, periodOpts } from '../../constants/chartOpts';  
 
 
 export function parseChartData(rdata) {
