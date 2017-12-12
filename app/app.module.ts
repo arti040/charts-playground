@@ -13,6 +13,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home.page';
 import { DummyComponent } from './components/dummy.component';
 import { ChartComponent } from './components/chart/chart.component';
+import { SamantaAsksComponent } from './components/samanta-asks/samanta-asks.component';
 
 /* Services */
 import { ApiService } from './providers//api.service';
@@ -29,7 +30,7 @@ import { ChartModule } from 'angular2-highcharts';
 const routes: Routes = appRoutes;
 
 @NgModule({
-  declarations: [ AppComponent, HomePageComponent, DummyComponent, ChartComponent ],
+  declarations: [ AppComponent, HomePageComponent, DummyComponent, ChartComponent, SamantaAsksComponent ],
   entryComponents: [ DummyComponent ],
   imports: [
     HttpModule,     
