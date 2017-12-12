@@ -176,7 +176,7 @@ function addSlopeAnnotations(slopesByGroup) {
 	slopesByGroup.forEach((group) => {
 		if(group[0].value) {
 			anns.push({
-				xValue: group.length/2 + group[0].idx, 
+				xValue: Math.floor(group.length/2 + group[0].idx), 
 				yValue: 0,
 				xAxis: 0,
 				title: { text: text + group[0].value }
