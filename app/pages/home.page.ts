@@ -36,7 +36,8 @@ export class HomePageComponent {
 		['Nice night for a walk, he?', 'Wash day tomorrow. Nothing clean, right?'],
 		['Nothing clean. Right.'],
 		['I think this guy\'s a couple of cans short of a six-pack.'],
-		['Your clothes, give them to me.']
+		['Your clothes, give them to me.'],
+		['You won\'t be needing any clothes.']
 	];
 	private counter = 0;
 	public sentence = new Subject();
