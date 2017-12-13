@@ -15,7 +15,7 @@ import { sentence } from '../../constants/dialogs';
 
 export class SamantaComponent {
 
-  @Input() question: Observable<sentence>; // main data object
+  @Input() data: Observable<sentence>; // main data object
   @Input() typedOpts?: any; // TODO - custom opts for typed.js
   @Input() modificator: string; // CSS BEM class modificator
   @Output() onTypeEnded = new EventEmitter<{ data: Array<string> }>(); 
@@ -37,11 +37,12 @@ export class SamantaComponent {
   private next: any; 
   
   ngOnInit() {
-    if(!this.question) { return console.log('Samanta Component: no data provided.') }
-    this.question.subscribe((res) => {
+    if(!this.data) { return console.log('Samanta Component: no data provided.') }
+    this.data.subscribe((res) => {
+      if(!res) { return; }
       this.sentence && this.sentence.destroy();
-      this.opts.strings = res.text;
-      this.next = res.answers;
+      this.opts.strings = res[0].text;
+      this.next = res[0].answers;
       this.sentence = new Typed('span', this.opts);
     });   
   }

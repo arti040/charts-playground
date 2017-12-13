@@ -8,7 +8,7 @@ export interface sentence {
     name: string,
     text: Array<string>,
     action?: () => void,
-    answers: Array<string>
+    answers?: Array<string>
 }
 
 export const mainDialog: dialog = {
@@ -24,6 +24,23 @@ export const mainDialog: dialog = {
             text: ['I\'m 17, and you?'],
             action: () => {},
             answers: ['showAge']
+        },
+        {
+            name: 'noWay',
+            text: ['No way!'],
+            action: () => {},
+            answers: ['whyNoTits']
+        },
+        {
+            name: 'dontHaveAny',
+            text: ['Because I\'m a computer program and don\'t have any'],
+            action: () => {},
+            answers: ['showChart']
+        },
+        {
+            name: 'showChart',
+            text: ['Here you are:'],
+            action: () => { console.log('Showing chart...'); },
         }
     ],
     user: [
@@ -31,7 +48,7 @@ export const mainDialog: dialog = {
             name: 'getTits',
             text: ['Show me your tits!'],
             action: () => { console.log('Getting tits...'); },
-            answers: ['No way!']
+            answers: ['noWay']
         },
         {
             name: 'getAge',
@@ -41,9 +58,21 @@ export const mainDialog: dialog = {
         },
         {
             name: 'showAge',
-            text: ['I could be your father!','Bye!'],
+            text: ['I could be your father, bye!'],
             action: () => {},
             answers: []
+        },
+        {
+            name: 'whyNoTits',
+            text: ['But, why?!'],
+            action: () => {},
+            answers: ['dontHaveAny']
+        },
+        {
+            name: 'showChart',
+            text: ['Then show me some chart, please.'],
+            action: () => {},
+            answers: ['showChart']
         }
     ]
 }

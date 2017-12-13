@@ -12,8 +12,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Component({
     template: `
         <div class="dialog sentence--{{modificator}}">
-            <samanta-component [modificator]="'fullsize'" [question]="question" (onTypeEnded)="setAnswers($event)"></samanta-component>
-            <user-component [modificator]="'fullsize'" [answers]="answers" (onAnswerSelected)="setAnswers($event)"></user-component>
+            <samanta-component [modificator]="'fullsize'" [data]="samanta" (onTypeEnded)="setUserSentence($event)"></samanta-component>
+            <user-component [modificator]="'fullsize'" [data]="user" (onAnswerSelected)="setSamantaSentence($event)"></user-component>
         </div>
     `,
 	selector: 'dialog-component',
@@ -26,29 +26,29 @@ export class DialogComponent {
   @Input() dialog: any; // main data object
   @Input() modificator: string; // CSS BEM class modificator
   
-  private samanta: BehaviorSubject<sentence>;
+  private samanta: BehaviorSubject<Array<sentence>>;
   private user = new Subject<Array<sentence>>();
 
   constructor() { console.log('Dialog component created.') }
 
   ngOnInit() {
-    this.samanta = new BehaviorSubject<sentence>(this.dialog.samanta[0]);
-    this.samanta.next(this.dialog.samanta[0]);
+    this.samanta = new BehaviorSubject<Array<sentence>>([this.dialog.samanta[0]]);
   }
 
-  setUserAnswers(event) {
+  setUserSentence(event) {
       this.user.next(this.findAnswers(this.dialog.user, event.data));
   }
 
   setSamantaSentence(event) {
-    //this.samanta.next(this.findAnswers(this.dialog.samanta, event.data));
-    console.log(event.data);
+      console.log(event);
+    this.samanta.next(this.findAnswers(this.dialog.samanta, event.data));
   }
 
-  findAnswers(where, names) {
+  findAnswers(source, names) {
+    if(!names || !names.length) { return null; }
     let answers = [];
     names.forEach((name) => {
-        this.dialog[where].forEach((answer) => {
+        source.forEach((answer) => {
             if(answer.name === name) {
                 answers.push(answer);
             }

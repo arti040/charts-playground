@@ -3,11 +3,13 @@ import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ChangeDetect
 import { Observable } from 'rxjs/Observable';
 import * as Typed from 'typed.js';  
 
+/* Models & Constants */
+import { sentence } from '../../constants/dialogs';
 
 @Component({
   template: `
     <div class="user user--{{modificator}}">
-      <div *ngFor="let item of answers | async" (click)="askSamanta($event, { data: item })">
+      <div *ngFor="let item of data | async" (click)="askSamanta($event, { data: item.answers })">
         {{item.text}}
       </div>
     </div>`,
@@ -18,9 +20,9 @@ import * as Typed from 'typed.js';
 
 export class UserComponent {
 
-  @Input() answers: any; // main data object
+  @Input() data: any; // main data object
   @Input() modificator: string; // CSS BEM class modificator
-  @Output() onAnswerSeleced = new EventEmitter<{ data: Array<string> }>(); 
+  @Output() onAnswerSelected = new EventEmitter<Array<string>>(); 
   
 
   private alive: boolean = true;
@@ -33,10 +35,11 @@ export class UserComponent {
     // .subscribe((res) => {
     //   console.log(res);
     // });
+    if(!this.data) { return console.log('User Component: no data provided.') }
   }
 
   askSamanta(event, answers) {
-    this.onAnswerSeleced.emit({ data: answers });
+    this.onAnswerSelected.emit(answers);
   }
 
   ngOnDestroy() { this.alive = false; }
