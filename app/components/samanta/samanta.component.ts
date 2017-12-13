@@ -1,5 +1,5 @@
 /* Angular */
-import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as Typed from 'typed.js';  
 
@@ -32,6 +32,7 @@ export class SamantaComponent {
     }
   }
 
+  private alive: boolean = true;
   private sentence: any = null;
   private next: any; 
   
@@ -44,5 +45,7 @@ export class SamantaComponent {
       this.sentence = new Typed('span', this.opts);
     });   
   }
+
+  ngOnDestroy() { this.alive = false; }  
 
 }
