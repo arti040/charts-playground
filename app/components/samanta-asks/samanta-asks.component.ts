@@ -1,9 +1,7 @@
 /* Angular */
-import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import * as Typed from 'typed.js';
-
-/* Vendors */
+import * as Typed from 'typed.js';  
 
 @Component({
 	template: '<div class="sentence sentence--{{modificator}}"><span></span></div>',
@@ -15,7 +13,8 @@ import * as Typed from 'typed.js';
 export class SamantaAsksComponent {
 
   @Input() data: Observable<Array<string>>; // main data object
-	@Input() modificator: string; // CSS BEM class modificator
+  @Input() modificator: string; // CSS BEM class modificator
+  @Output() onTypeEnded = new EventEmitter<boolean>(); 
 
   constructor() { console.log('Samanta-asks component created.') }
   
@@ -25,7 +24,7 @@ export class SamantaAsksComponent {
     backSpeed: 0,
     fadeOut: true,
     onComplete: (self) => {
-      console.log('Transition completed.');
+      this.onTypeEnded.emit();
     }
   }
 

@@ -12,6 +12,7 @@ import { RDataSvc } from '../providers/rdata.service';
 import { chartRDataItemModel } from '../models/chartRData.model';
 import { parseChartData } from '../components/chart/chart.parser';
 import { ChartData, chartDataModel } from '../models/chartData.model';
+import { mainDialog } from '../constants/dialogs';
 
 
 @Component({
