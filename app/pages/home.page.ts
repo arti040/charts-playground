@@ -18,11 +18,8 @@ import { mainDialog } from '../constants/dialogs';
 @Component({
 	selector: '<home-page></home-page>',
 	template: `
-		<samanta-asks-component [modificator]="'fullsize'" [data]="sentence"></samanta-asks-component>
-
-		<div>
-			<button (click)="setSentence()">Talk to me!</button>
-		</div>
+		<dialog-component [dialog]="dialog"></dialog-component>
+		<!--<samanta-asks-component [modificator]="'fullsize'" [data]="sentence"></samanta-asks-component>-->	
 		<!-- <chart-component [modificator]="'fullsize'" [data]="data"></chart-component>-->
 	`
 })
@@ -30,6 +27,9 @@ import { mainDialog } from '../constants/dialogs';
 export class HomePageComponent {
 	constructor(private config: Config, private rdataSvc: RDataSvc) { console.log('HomePage component created.') }
 	
+	public dialog = mainDialog;
+
+
 	public title: String = this.config.appName + ": App is working!"	
 	public data: any;
 
