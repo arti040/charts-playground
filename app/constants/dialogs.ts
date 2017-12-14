@@ -16,7 +16,7 @@ export const mainDialog: dialog = {
         {
             name: 'welcome',
             text: ['Hello!^100\n', 'How can I help you?'],
-            answers: ['getTits', 'getAge'],
+            answers: ['getTits', 'getAge', 'getName'],
             //multiple: 2 
         },
         {
@@ -31,7 +31,7 @@ export const mainDialog: dialog = {
         },
         {
             name: 'dontHaveAny',
-            text: ['Because I\'m a computer program and don\'t have any'],
+            text: ['Because I\'m a computer<br> program and don\'t have any...'],
             answers: ['showChart']
         },
         {
@@ -43,6 +43,11 @@ export const mainDialog: dialog = {
             name: 'somethingElse',
             text: ['Can I do something else for you?'],
             answers: ['showChart']
+        },
+        {
+            name: 'showName',
+            text: ['My name is Samanta.'],
+            answers: ['getTits', 'getAge', 'showChart']
         }
     ],
     user: [
@@ -50,6 +55,11 @@ export const mainDialog: dialog = {
             name: 'getTits',
             text: ['Show me your tits!'],
             answers: ['noWay']
+        },
+        {
+            name: 'getName',
+            text: ['What\s your name?'],
+            answers: ['showName']
         },
         {
             name: 'getAge',
