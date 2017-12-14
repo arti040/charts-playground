@@ -2,7 +2,7 @@ import { colors } from './chartColors';
 import { labels } from './labels';
 
 export const chartOpts = {
-  width: 900,
+  width: 710,
   marginRight: 220,
   legend: {
     align: 'right', 

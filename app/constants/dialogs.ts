@@ -7,7 +7,7 @@ export interface dialog  {
 export interface sentence {
     name: string,
     text: Array<string>,
-    action?: () => void,
+    action?: string,
     answers?: Array<string>
 }
 
@@ -16,62 +16,59 @@ export const mainDialog: dialog = {
         {
             name: 'welcome',
             text: ['Hello!^100\n', 'How can I help you?'],
-            action: () => {},
-            answers: ['getTits', 'getAge'] 
+            answers: ['getTits', 'getAge'],
+            //multiple: 2 
         },
         {
             name: 'showAge',
             text: ['I\'m 17, and you?'],
-            action: () => {},
-            answers: ['showAge']
+            answers: ['showAge','showChart']
         },
         {
             name: 'noWay',
             text: ['No way!'],
-            action: () => {},
-            answers: ['whyNoTits']
+            answers: ['whyNoTits', 'getAge', 'showChart']
         },
         {
             name: 'dontHaveAny',
             text: ['Because I\'m a computer program and don\'t have any'],
-            action: () => {},
             answers: ['showChart']
         },
         {
             name: 'showChart',
-            text: ['Here you are:'],
-            action: () => { console.log('Showing chart...'); },
+            text: ['Here you are :-)'],
+            action: 'SHOW_CHART'
+        },
+        {
+            name: 'somethingElse',
+            text: ['Can I do something else for you?'],
+            answers: ['showChart']
         }
     ],
     user: [
         {
             name: 'getTits',
             text: ['Show me your tits!'],
-            action: () => { console.log('Getting tits...'); },
             answers: ['noWay']
         },
         {
             name: 'getAge',
             text: ['How old are you?'],
-            action: () => { console.log('Getting age...'); },
             answers: ['showAge']
         },
         {
             name: 'showAge',
             text: ['I could be your father, bye!'],
-            action: () => {},
-            answers: []
+            answers: ['somethingElse']
         },
         {
             name: 'whyNoTits',
             text: ['But, why?!'],
-            action: () => {},
             answers: ['dontHaveAny']
         },
         {
             name: 'showChart',
             text: ['Then show me some chart, please.'],
-            action: () => {},
             answers: ['showChart']
         }
     ]

@@ -18,7 +18,8 @@ import { SamantaComponent } from './components/samanta/samanta.component';
 import { UserComponent } from './components/user/user.component';
 
 /* Services */
-import { ApiService } from './providers//api.service';
+import { DialogSvc } from './providers/dialog.service';
+import { ApiService } from './providers/api.service';
 import { RDataSvc } from './providers/rdata.service';
 import { appRoutes } from './routes/routes';
 import { Config } from './app.config';
@@ -27,7 +28,7 @@ import { Config } from './app.config';
 
 /* Vendors */
 import { ChartModule } from 'angular2-highcharts';
-
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 const routes: Routes = appRoutes;
 
@@ -45,11 +46,12 @@ const routes: Routes = appRoutes;
   imports: [
     HttpModule,     
     BrowserModule, 
-    HttpClientModule, 
+    HttpClientModule,
     RouterModule.forRoot(routes),
+    //MatButtonModule, MatCheckboxModule,
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))
   ],
   bootstrap: [ AppComponent ],
-  providers: [ ApiService, RDataSvc, Config ]
+  providers: [ ApiService, RDataSvc, Config, DialogSvc ]
 })
 export class AppModule { }

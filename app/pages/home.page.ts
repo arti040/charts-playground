@@ -19,8 +19,6 @@ import { mainDialog } from '../constants/dialogs';
 	selector: '<home-page></home-page>',
 	template: `
 		<dialog-component [dialog]="dialog"></dialog-component>
-		<!--<samanta-asks-component [modificator]="'fullsize'" [data]="sentence"></samanta-asks-component>-->	
-		<!-- <chart-component [modificator]="'fullsize'" [data]="data"></chart-component>-->
 	`
 })
 
@@ -29,19 +27,8 @@ export class HomePageComponent {
 	
 	public dialog = mainDialog;
 
-
 	public title: String = this.config.appName + ": App is working!"	
 	public data: any;
-
-	public sentences: Array<Array<string>> = [
-		['Nice night for a walk, he?', 'Wash day tomorrow. Nothing clean, right?'],
-		['Nothing clean. Right.'],
-		['I think this guy\'s a couple of cans short of a six-pack.'],
-		['Your clothes, give them to me.'],
-		['You won\'t be needing any clothes.']
-	];
-	private counter = 0;
-	public sentence = new Subject();
 
 	ngOnInit() {
 		this.data = this.getRDataMock().map(res => parseChartData(res.json()));
@@ -49,12 +36,6 @@ export class HomePageComponent {
 
 	getRDataMock() {
 		return this.rdataSvc.getRDataForChart();
-	}
-
-	setSentence() {
-		this.sentence.next(this.sentences[this.counter]);
-		this.counter < this.sentences.length-1 ?
-			this.counter++ : this.counter = 0;
 	}
 
 }

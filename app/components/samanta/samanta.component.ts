@@ -42,7 +42,8 @@ export class SamantaComponent {
       if(!res) { return; }
       this.sentence && this.sentence.destroy();
       this.opts.strings = res[0].text;
-      this.next = res[0].answers;
+      this.next = { answers: res[0].answers, action: res[0].action || null };
+
       this.sentence = new Typed('span', this.opts);
     });   
   }

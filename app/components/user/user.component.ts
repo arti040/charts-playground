@@ -9,9 +9,7 @@ import { sentence } from '../../constants/dialogs';
 @Component({
   template: `
     <div class="user user--{{modificator}}">
-      <div *ngFor="let item of data | async" (click)="askSamanta($event, { data: item.answers })">
-        {{item.text}}
-      </div>
+      <button [ngClass]="{ 'visible': item.text.length }" class="btn" *ngFor="let item of data | async" (click)="askSamanta($event, { data: { answers: item.answers, action: null } })">{{item.text}}</button>
     </div>`,
 	selector: 'user-component',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -30,11 +28,6 @@ export class UserComponent {
   constructor() { console.log('User component created.') }
 
   ngOnInit() {
-    // this.answers
-    // .takeWhile(() => this.alive)
-    // .subscribe((res) => {
-    //   console.log(res);
-    // });
     if(!this.data) { return console.log('User Component: no data provided.') }
   }
 
