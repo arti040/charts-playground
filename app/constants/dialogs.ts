@@ -15,7 +15,7 @@ export const mainDialog: dialog = {
     samanta: [
         {
             name: 'welcome',
-            text: ['Hello!^100\n', 'How can I help you?'],
+            text: ['Hello!^500\n', 'How can I help you?'],
             answers: ['getTits', 'getAge', 'getName'],
             //multiple: 2 
         },

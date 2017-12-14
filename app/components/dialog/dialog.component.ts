@@ -18,14 +18,14 @@ import { ChartData, chartDataModel } from '../../models/chartData.model';
 
 @Component({
     template: `
-        <div class="dialog sentence--{{modificator}}">
-            <samanta-component class="samanta" [modificator]="'fullsize'" [data]="samanta" (onTypeEnded)="setUserSentence($event)"></samanta-component>
-            <user-component class="user" [modificator]="'fullsize'" [data]="user" (onAnswerSelected)="setSamantaSentence($event)"></user-component>
-        </div>
-        <div class="panel panel--white">
-            <div class="chart-overlay" [ngClass]="{ hidden: chartVisible }"></div>
-            <chart-component class="chart-component" [modificator]="'fullsize'" [data]="data"></chart-component>     
-        </div>   
+    <div class="dialog sentence--{{modificator}}">
+        <samanta-component class="samanta" [modificator]="'fullsize'" [data]="samanta" (onTypeEnded)="setUserSentence($event)"></samanta-component>
+        <user-component class="user" [modificator]="'fullsize'" [data]="user" (onAnswerSelected)="setSamantaSentence($event)"></user-component>
+    </div>
+    <div class="panel panel--white">
+        <div class="chart-overlay" [ngClass]="{ hidden: chartVisible }"></div>
+        <chart-component class="chart-component" [modificator]="'fullsize'" [data]="data"></chart-component>     
+    </div>  
     `,
 	selector: 'dialog-component',
     changeDetection: ChangeDetectionStrategy.OnPush
