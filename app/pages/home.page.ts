@@ -12,7 +12,7 @@ import { RDataSvc } from '../providers/rdata.service';
 import { chartRDataItemModel } from '../models/chartRData.model';
 import { parseChartData } from '../components/chart/chart.parser';
 import { ChartData, chartDataModel } from '../models/chartData.model';
-import { mainDialog } from '../constants/dialogs';
+import { firstPage } from '../constants/dialogs';
 
 
 @Component({
@@ -25,7 +25,7 @@ import { mainDialog } from '../constants/dialogs';
 export class HomePageComponent {
 	constructor(private config: Config, private rdataSvc: RDataSvc) { console.log('HomePage component created.') }
 	
-	public dialog = mainDialog;
+	public dialog = firstPage;
 
 	public title: String = this.config.appName + ": App is working!"	
 	public data: any;

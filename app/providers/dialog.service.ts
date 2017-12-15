@@ -21,6 +21,10 @@ export class DialogSvc {
 
 	SHOW_CHART() { 
     return true;
-  }
+	}
+	
+	SHOW_FILTERS() {
+		console.log('Showing filters...');
+	}
 
 }

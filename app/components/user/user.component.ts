@@ -5,11 +5,18 @@ import * as Typed from 'typed.js';
 
 /* Models & Constants */
 import { sentence } from '../../constants/dialogs';
+import { onTypeEnded } from '../../constants/dialog.constants';
 
 @Component({
   template: `
     <div class="user user--{{modificator}}">
-      <button [ngClass]="{ 'visible': item.text.length }" class="btn" *ngFor="let item of data | async" (click)="askSamanta($event, { data: { answers: item.answers, action: null } })">{{item.text}}</button>
+      <button 
+        class="btn" 
+        *ngFor="let item of data | async" 
+        (click)="askSamanta({ answers: item.answers, action: null })"
+      >
+      {{item.beforeActionText[0]}}
+      </button>
     </div>`,
 	selector: 'user-component',
     changeDetection: ChangeDetectionStrategy.OnPush
@@ -20,7 +27,7 @@ export class UserComponent {
 
   @Input() data: any; // main data object
   @Input() modificator: string; // CSS BEM class modificator
-  @Output() onAnswerSelected = new EventEmitter<Array<string>>(); 
+  @Output() onAnswerSelected = new EventEmitter<onTypeEnded>(); 
   
 
   private alive: boolean = true;
@@ -31,8 +38,8 @@ export class UserComponent {
     if(!this.data) { return console.log('User Component: no data provided.') }
   }
 
-  askSamanta(event, answers) {
-    this.onAnswerSelected.emit(answers);
+  askSamanta(answers) {
+    this.onAnswerSelected.emit({ answers: answers });
   }
 
   ngOnDestroy() { this.alive = false; }
