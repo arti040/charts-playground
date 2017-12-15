@@ -1,37 +1,53 @@
-
-export interface dialog  {
-    samanta: Array<sentence>,
-    user?: Array<sentence>
+export interface pageDialog {
+  samanta: sentence
+  user?: sentence
 }
 
 export interface sentence {
-    name: string,
-    beforeActionText: Array<string>,
-    afterActionText?: Array<string>
-    action?: string,
-    answers?: Array<string>
+  text: Array<string>,
+  action?: string,
 }
 
-export const firstPage: dialog = {
-    samanta: [
-        {
-            name: 'welcome',
-            beforeActionText: ['Hi, this is: '],
-            afterActionText: ['on which I see following events worth exploring:'],
-            action: 'SHOW_FILTERS',
-            answers: ['thankYou']
-        }
-    ],
-    user: [
-        {
-            name: 'thankYou',
-            beforeActionText: ['Thank you, Samanta.'],
-            afterActionText: null,
-            action: null,
-            answers: null
-        }
-    ]
+export const firstPageDialog: pageDialog = {
+  samanta:  { 
+    text: ['Hi, this is: ', 'on which I see following events worth exploring:'], 
+    action: 'SHOW_CHART'
+  },
+  user: {
+    text: ['I choose traditional period:'],
+    action: 'FILTER_PERIODS'
+  }
 }
+
+
+
+
+
+// export interface dialog {
+//     samanta: Array<sentence>,
+//     user?: Array<sentence>
+// }
+
+// export const firstPage: dialog = {
+//     samanta: [
+//         {
+//             name: 'welcome',
+//             beforeActionText: ['Hi, this is: '],
+//             afterActionText: ['on which I see following events worth exploring:'],
+//             action: 'SHOW_FILTERS',
+//             answers: ['thankYou']
+//         }
+//     ],
+//     user: [
+//         {
+//             name: 'thankYou',
+//             beforeActionText: ['Thank you, Samanta.'],
+//             afterActionText: null,
+//             action: null,
+//             answers: null
+//         }
+//     ]
+// }
 
 // export const mainDialog: dialog = {
 //     samanta: [

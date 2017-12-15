@@ -19,6 +19,7 @@ import { firstPage } from '../constants/dialogs';
 	selector: '<home-page></home-page>',
 	template: `
 		<dialog-component [dialog]="dialog"></dialog-component>
+		
 	`
 })
 
