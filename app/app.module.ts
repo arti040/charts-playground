@@ -11,10 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 /* Components */
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home.page';
-import { DummyComponent } from './components/dummy.component';
 import { ChartComponent } from './components/chart/chart.component';
-import { DialogComponent } from './components/dialog/dialog.component';
-import { SamantaComponent } from './components/samanta/samanta.component';
+import { TypedtextComponent } from './components/typedtext/typedtext.component';
 import { UserComponent } from './components/user/user.component';
 
 /* Services */
@@ -36,10 +34,8 @@ const routes: Routes = appRoutes;
   declarations: [ 
     AppComponent, 
     HomePageComponent, 
-    DummyComponent, 
     ChartComponent, 
-    DialogComponent,
-    SamantaComponent,
+    TypedtextComponent,
     UserComponent 
   ],
   entryComponents: [ HomePageComponent ],
