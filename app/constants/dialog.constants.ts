@@ -1,6 +1,5 @@
 
 export interface onTypeEnded {
-  answers?: Array<string>,
   action?: string
 }
 

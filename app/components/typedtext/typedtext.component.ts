@@ -1,10 +1,10 @@
 /* Angular */
-import { Component, Input, Output, OnInit, OnDestroy, EventEmitter, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as Typed from 'typed.js';  
 
 /* Models & Constants */
-import { sentence } from '../../constants/dialogs';
+import { sentence, dialogGroup } from '../../constants/dialogs';
 import { typedOpts, onTypeEnded } from '../../constants/dialog.constants';
 
 @Component({
@@ -19,48 +19,42 @@ import { typedOpts, onTypeEnded } from '../../constants/dialog.constants';
 
 export class TypedtextComponent {
 
-  @Input() data: Observable<Array<string>>; // main data object
-  @Input() typedOpts?: typedOpts; // TODO - custom opts for typed.js
+  @Input() data: sentence; // main data object from /constant/dialogs.ts
+  @Input() typedOpts?: typedOpts; // TODO - custom opts for typed.js, if needed
   @Input() modificator: string; // CSS BEM class modificator
+  @Input() autostart?: Observable<boolean>; //typed.js will wait until this variable is true
   @Output() onTypeEnded = new EventEmitter<onTypeEnded>(); 
 
-  constructor() { console.log('Typedtext component created.'); }
+  constructor(private el: ElementRef ) { console.log('Typedtext component created.'); }
   
   opts: typedOpts = {
     strings: [],
     typeSpeed: 20,
     backSpeed: 0,
-    fadeOut: true
+    fadeOut: true,
+    onComplete: (self) => { this.onTypeEnded.emit({ action: this.data.action }); }
   }
 
-  private alive: boolean = true;
-  private action: any;
+  private start: boolean;
   private sentence: Typed = null;
   
   ngOnInit() {
-    if(!this.data) { return console.log('Typedtext Component: no data provided.') }
-    this.data.subscribe((res) => {
-      if(!res) { return; }
-
-      let opts = JSON.parse(JSON.stringify(this.opts));
-      opts.strings = res;
-
-      // opts.onComplete = (self) => { 
-      //   this.onTypeEnded.emit({ answers: this.answers, action: this.action }); 
-      // } 
-
-      this.initTyped('span', this.sentence, opts);    
-
-    });   
+    if(!this.data) { return console.log('Typedtext Component: no data provided.') }  
+    this.start = this.data.autostart; 
+    this.autostart.subscribe(res => this.start = res);
   }
 
-  initTyped(el, sentence, opts) {
-    // Remove instance of Typed if any exists.
-    // Typed.restart() seems to not work...
-    sentence && sentence.destroy();
-    sentence = new Typed(el, opts);
+  ngAfterViewInit() {
+    let typedContainer = this.el.nativeElement.querySelector('span');
+    if(this.start) {
+      this.sentence = new Typed(typedContainer, this.createTypedOpts());
+    }       
   }
 
-  ngOnDestroy() { this.alive = false; }  
+  createTypedOpts() {
+    let opts = JSON.parse(JSON.stringify(this.opts));
+    opts.strings = this.data.text;
+    return opts;
+  }
 
 }

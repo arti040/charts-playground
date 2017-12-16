@@ -13,7 +13,7 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home.page';
 import { ChartComponent } from './components/chart/chart.component';
 import { TypedtextComponent } from './components/typedtext/typedtext.component';
-import { UserComponent } from './components/user/user.component';
+//import { UserComponent } from './components/user/user.component';
 
 /* Services */
 import { DialogSvc } from './providers/dialog.service';
@@ -36,7 +36,7 @@ const routes: Routes = appRoutes;
     HomePageComponent, 
     ChartComponent, 
     TypedtextComponent,
-    UserComponent 
+    //UserComponent 
   ],
   entryComponents: [ HomePageComponent ],
   imports: [

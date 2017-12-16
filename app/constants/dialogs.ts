@@ -1,20 +1,28 @@
 export interface pageDialog {
-  samanta: sentence
-  user?: sentence
+  samanta: dialogGroup
+  user?: dialogGroup
+}
+
+export interface dialogGroup {
+   sentences: Array<sentence>,
 }
 
 export interface sentence {
-  text: Array<string>,
-  action?: string,
+  action?: string,     
+  autostart: boolean, 
+  text: Array<string>
 }
 
 export const firstPageDialog: pageDialog = {
   samanta:  { 
-    text: ['Hi, this is: ', 'on which I see following events worth exploring:'], 
-    action: 'SHOW_CHART'
+    sentences: [ 
+        { text: ['Hi, this is: '], autostart: true, action: 'SHOW_CHART'}, 
+        { text: ['on which I see following events worth exploring:'], autostart: false }
+    ]  
   },
   user: {
-    text: ['I choose traditional period:'],
-    action: 'FILTER_PERIODS'
+    sentences: [ 
+        { text: ['I choose traditional period:'], autostart: false, action: 'FILTER_PERIODS' }
+    ]
   }
 }
