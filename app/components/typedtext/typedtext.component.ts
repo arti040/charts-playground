@@ -22,7 +22,7 @@ export class TypedtextComponent {
   @Input() data: sentence; // main data object from /constant/dialogs.ts
   @Input() typedOpts?: typedOpts; // TODO - custom opts for typed.js, if needed
   @Input() modificator: string; // CSS BEM class modificator
-  @Input() autostart?: Observable<boolean>; //typed.js will wait until this variable is true
+  @Input() startTyping?: Observable<boolean>; //typed.js will wait until this variable is true
   @Output() onTypeEnded = new EventEmitter<onTypeEnded>(); 
 
   constructor(private el: ElementRef ) { console.log('Typedtext component created.'); }
@@ -37,11 +37,15 @@ export class TypedtextComponent {
 
   private start: boolean;
   private sentence: Typed = null;
+  private alive: boolean = true;
   
   ngOnInit() {
-    if(!this.data) { return console.log('Typedtext Component: no data provided.') }  
-    this.start = this.data.autostart; 
-    this.autostart.subscribe(res => this.start = res);
+    if(!this.data) { return console.log('Typedtext Component: no data provided.') }
+    this.startTyping.takeWhile(() => this.alive).subscribe((res) => { console.log(res); this.start = res; });  
+  }
+
+  ngOnDestroy() {
+    this.alive = false;
   }
 
   ngAfterViewInit() {
