@@ -27,6 +27,7 @@ import { Config } from './app.config';
 /* Vendors */
 import { ChartModule } from 'angular2-highcharts';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { Ng4DropdownModule } from 'ng4-material-dropdown';
 
 const routes: Routes = appRoutes;
 
@@ -43,6 +44,7 @@ const routes: Routes = appRoutes;
     HttpModule,     
     BrowserModule, 
     HttpClientModule,
+    Ng4DropdownModule,
     RouterModule.forRoot(routes),
     //MatButtonModule, MatCheckboxModule,
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))

@@ -18,15 +18,7 @@ import { sentence, dialogGroup } from '../constants/dialogs';
 
 @Component({
 	selector: '<home-page></home-page>',
-	template: `
-		<typedtext-component [data]="this.typed_1" [startTyping]="this.typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component><br>
- 		<!--<filters-component [data]="market"></filters-component>-->
-		<typedtext-component [data]="this.typed_2" [startTyping]="this.typed_2_start"></typedtext-component><br>
-  	<!--<chart-component class="chart-component" [data]="chartData"></chart-component>-->
-		<typedtext-component [data]="this.typed_3" [startTyping]="this.typed_3_start"></typedtext-component>
-		<!--<filters-component [data]="periods"></filters-component>-->
-  	<!--<table></table>-->	
-	`
+	templateUrl: './home.page.template.html' 
 })
 
 export class HomePageComponent {
