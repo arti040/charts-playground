@@ -1,78 +1,60 @@
-[
-   {
-      "productline":[
-         {
-            "name":"Procter & Gamble",
-            "id":"pg",
-            "kpi":[
-               {
-                  "name":"Value Share",
-                  "id":"VALUE_SHARE",
-                  "market":[
-                     {
-                        "name":"TOTAL GREAT BRITAIN",
-                        "id":"TOTAL_MARKET",
-                        "sharebase":[
-                           "LAUNDRY DETERGENTS V2 CATEGORY",
-                           "GEL",
-                           "LIQUID"
-                        ]
-                     }
-                  ]
-               },
-               {
-                  "name":"Volume Share",
-                  "id":"VOLUME_SHARE",
-                  "market":[
-                     {
-                        "name":"TOTAL GREAT BRITAIN",
-                        "id":"TOTAL_MARKET",
-                        "sharebase":[
-                           "LAUNDRY DETERGENTS V2 CATEGORY",
-                           "GEL",
-                           "LIQUID"
-                        ]
-                     }
-                  ]
-               }
-            ]
-         },
-         {
-            "name":"Ariel",
-            "id":"ariel",
-            "kpi":[
-               {
-                  "name":"Value Share",
-                  "id":"VALUE_SHARE",
-                  "market":[
-                     {
-                        "name":"TOTAL GREAT BRITAIN",
-                        "id":"TOTAL_MARKET",
-                        "sharebase":[
-                           "LAUNDRY DETERGENTS V2 CATEGORY",
-                           "GEL",
-                           "LIQUID"
-                        ]
-                     }
-                  ]
-               },
-               {
-                  "name":"Volume Share",
-                  "id":"VOLUME_SHARE",
-                  "market":[
-                     {
-                        "name":"TOTAL GREAT BRITAIN",
-                        "id":"TOTAL_MARKET",
-                        "sharebase":[
-                           "LAUNDRY DETERGENTS V2 CATEGORY",
-                           "GEL",
-                           "LIQUID"
-                        ]
-                     }
-                  ]
-               }
-            ]
-         }
-      ]
-   }
-]
+[{
+  "productline": [
+      {
+          "name": "PROCTER&GAMBLE",
+          "id": "pg",
+          "kpi": [
+              {
+                  "name": "Value share",
+                  "id": "VALUE_SHARE",
+                  "market": [
+                      {
+                          "name": "TOTAL GREAT BRITAIN",
+                          "id": "TOTAL_MARKET",
+                          "sharebase": ["LAUNDRY DETERGENTS V2 CATEGORY", "GEL", "LIQUID"]
+                      }
+                      ]
+              },
+              {
+                  "name": "Volume share",
+                  "id": "VOLUME_SHARE",
+                  "market": [
+                      {
+                          "name": "TOTAL GREAT BRITAIN",
+                          "id": "TOTAL_MARKET",
+                          "sharebase": ["LAUNDRY DETERGENTS V2 CATEGORY", "GEL", "LIQUID"]
+                      }
+                      ]
+              }
+          ]
+      },
+      {
+          "name": "ARIEL",
+          "id": "ariel",
+          "kpi": [
+              {
+                  "name": "Value share",
+                  "id": "VALUE_SHARE",
+                  "market": [
+                      {
+                          "name": "TOTAL GREAT BRITAIN",
+                          "id": "TOTAL_MARKET",
+                          "sharebase": ["LAUNDRY DETERGENTS V2 CATEGORY", "GEL", "LIQUID"]
+                      }
+                      ]
+              },
+              {
+                  "name": "Volume share",
+                  "id": "VOLUME_SHARE",
+                  "market": [
+                      {
+                          "name": "TOTAL GREAT BRITAIN",
+                          "id": "TOTAL_MARKET",
+                          "sharebase": ["LAUNDRY DETERGENTS V2 CATEGORY", "GEL", "LIQUID"]
+                      }
+                      ]
+              }
+          ]
+      }
+  ]
+}]
