@@ -31,30 +31,32 @@ export class TypedtextComponent {
     strings: [],
     typeSpeed: 20,
     backSpeed: 0,
-    fadeOut: true
+    fadeOut: true,
+    showCursor: false
   }
 
-  private start: boolean;
   private sentence: Typed = null;
   private alive: boolean = true;
   
   ngOnInit() {
     if(!this.data) { return console.log('Typedtext Component: no data provided.') }
-    this.startTyping.takeWhile(() => this.alive).subscribe(res => this.start = res);  
+    this.startTyping.takeWhile(() => this.alive).subscribe((res) => { 
+      this.runTyped(res);
+    });  
   }
 
   ngOnDestroy() {
     this.alive = false;
   }
 
-  ngAfterViewInit() {
-    let typedContainer = this.el.nativeElement.querySelector('span');
-    if(this.start) {
+  private runTyped(autorun) {
+    if(autorun) {
+      let typedContainer = this.el.nativeElement.querySelector('span');      
       this.sentence = new Typed(typedContainer, this.createTypedOpts());
-    }       
+    }  
   }
 
-  createTypedOpts() {
+  private createTypedOpts() {
     let opts = JSON.parse(JSON.stringify(this.opts));
     opts.strings = this.data.text;
     opts.onComplete = (self) => { this.onTypeEnded.emit({ action: this.data.action }); }     

@@ -77,7 +77,6 @@ export class HomePageComponent {
 	private showFilters() {
 		console.log('Showing filters...');
 		this.typed_2_start.next(true);
-		
 	}
 
 }
