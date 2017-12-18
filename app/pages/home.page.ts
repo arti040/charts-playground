@@ -19,7 +19,7 @@ import { sentence, dialogGroup } from '../constants/dialogs';
 @Component({
 	selector: '<home-page></home-page>',
 	template: `
-		<typedtext-component [data]="this.typed_1" [startTyping]="this.typed_1_start"></typedtext-component><br>
+		<typedtext-component [data]="this.typed_1" [startTyping]="this.typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component><br>
  		<!--<filters-component [data]="market"></filters-component>-->
 		<typedtext-component [data]="this.typed_2" [startTyping]="this.typed_2_start"></typedtext-component><br>
   	<!--<chart-component class="chart-component" [data]="chartData"></chart-component>-->
@@ -49,7 +49,7 @@ export class HomePageComponent {
 		this.setTypeds();
 	}
 
-	setTypeds(): void {
+	private setTypeds(): void {
 		// TODO this could be dynamically created
 		this.typed_1 = this.setTypedData(0, true);
 		this.typed_2 = this.setTypedData(1, true);
@@ -60,7 +60,7 @@ export class HomePageComponent {
 		this.typed_3_start = new BehaviorSubject(this.typed_3.autostart);	
 	}
 
-	setTypedData(idx, samanta?): sentence {
+	private setTypedData(idx, samanta?): sentence {
 		let who = samanta ? 'samanta' : 'user'; 
 
 		return { 
@@ -70,8 +70,14 @@ export class HomePageComponent {
 		}
 	}
 
-	getRDataMock() {
+	private getRDataMock() {
 		return this.rdataSvc.getRDataForChart();
+	}
+
+	private showFilters() {
+		console.log('Showing filters...');
+		this.typed_2_start.next(true);
+		
 	}
 
 }

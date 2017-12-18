@@ -16,7 +16,7 @@ export interface sentence {
 export const firstPageDialog: pageDialog = {
   samanta:  { 
     sentences: [ 
-        { text: ['Hi, this is: '], autostart: true, action: 'SHOW_CHART'}, 
+        { text: ['Hi, this is: '], autostart: true, action: 'SHOW_FILTERS'}, 
         { text: ['on which I see following events worth exploring:'], autostart: false }
     ]  
   },

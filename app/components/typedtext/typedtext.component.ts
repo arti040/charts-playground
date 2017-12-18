@@ -1,5 +1,5 @@
 /* Angular */
-import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy, AfterViewInit, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as Typed from 'typed.js';  
 
@@ -23,7 +23,7 @@ export class TypedtextComponent {
   @Input() typedOpts?: typedOpts; // TODO - custom opts for typed.js, if needed
   @Input() modificator: string; // CSS BEM class modificator
   @Input() startTyping?: Observable<boolean>; //typed.js will wait until this variable is true
-  @Output() onTypeEnded = new EventEmitter<onTypeEnded>(); 
+  @Output() onTypeEnded = new EventEmitter<onTypeEnded>(); // this fires when text typing is finished
 
   constructor(private el: ElementRef ) { console.log('Typedtext component created.'); }
   
@@ -31,8 +31,7 @@ export class TypedtextComponent {
     strings: [],
     typeSpeed: 20,
     backSpeed: 0,
-    fadeOut: true,
-    onComplete: (self) => { this.onTypeEnded.emit({ action: this.data.action }); }
+    fadeOut: true
   }
 
   private start: boolean;
@@ -41,7 +40,7 @@ export class TypedtextComponent {
   
   ngOnInit() {
     if(!this.data) { return console.log('Typedtext Component: no data provided.') }
-    this.startTyping.takeWhile(() => this.alive).subscribe((res) => { console.log(res); this.start = res; });  
+    this.startTyping.takeWhile(() => this.alive).subscribe(res => this.start = res);  
   }
 
   ngOnDestroy() {
@@ -58,6 +57,7 @@ export class TypedtextComponent {
   createTypedOpts() {
     let opts = JSON.parse(JSON.stringify(this.opts));
     opts.strings = this.data.text;
+    opts.onComplete = (self) => { this.onTypeEnded.emit({ action: this.data.action }); }     
     return opts;
   }
 
