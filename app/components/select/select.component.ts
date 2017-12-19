@@ -11,16 +11,20 @@ import { select } from '../../constants/select';
 })
 export class SelectComponent {
 
-	@Input() data: Observable<Array<select>>
-	@Input() modificator: string
+	@Input() data: Observable<Array<select>>;
+	@Input() label: string;
+	@Input() modificator: string;
 
 	@Output() onItemSelected = new EventEmitter<select>();
 
-	private items: Array<{ name: string, value: number }>;
+	private items: Array<select>;
 
 	constructor() {}
 	
 	onSelect(event) {
-		this.onItemSelected.emit({ value: event.target.value });
+		this.onItemSelected.emit({ 
+				group: event.target.attributes['data-group'].value, 
+				id: event.target.attributes['data-id'].value 
+			});
 	}
 }

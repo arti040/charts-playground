@@ -1,5 +1,6 @@
 
 export interface select {
+	group: string,
 	name?: string,
-	value: string | number
+	id: string
 }

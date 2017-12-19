@@ -8,6 +8,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 /* Services */
 import { Config } from '../app.config';
 import { RDataSvc } from '../providers/rdata.service';
+import { select } from '../constants/select';
 
 /* Constants & Models */
 import { chartRDataItemModel } from '../models/chartRData.model';
@@ -34,20 +35,14 @@ export class HomePageComponent {
 	public typed_1_start: BehaviorSubject<boolean>;
 	public typed_2_start: BehaviorSubject<boolean>;
 	public typed_3_start: BehaviorSubject<boolean>;
-	
-	public filter = new Observable(observer => {
-		let data = [
-			{ name: 'Lorem ipsum', value: 1 },
-			{ name: 'Dolor sit amet', value: 0 }
-		]
-		observer.next(data);
-		observer.complete();
-	});
+
+	public filters: BehaviorSubject<Array<Array<select>>>;
 
 	
 	ngOnInit() {
 		//this.data = this.getRDataMock().map(res => parseChartData(res.json()));
 		this.setTypeds();
+		this.setFilters();
 	}
 
 	private setTypeds(): void {
@@ -75,13 +70,30 @@ export class HomePageComponent {
 		return this.rdataSvc.getRDataForChart();
 	}
 
+	private getFilters() {
+		return this.rdataSvc.getMainFiltersData();
+	}
+
 	private showFilters() {
 		console.log('Showing filters...');
 		this.typed_2_start.next(true);
 	}
 
-	getSelectedValue(val) {
-		console.log(val.value);
+	private setFilters() {
+		this.getFilters().subscribe(res => {
+			this.filters = new BehaviorSubject(this.parseFilters(res.json()));
+		});
+	}
+
+	private parseFilters(obj) {
+		let filters: Array<select> = [];
+		let group: Array<Array<select>> = [];
+
+		obj[0].productline.forEach(element => {
+			filters.push({ group: 'productline', name: element.name, id: element.id });
+		}); 
+		group.push(filters);
+		return group;
 	}
 
 }

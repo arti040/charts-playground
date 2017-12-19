@@ -1,0 +1,7 @@
+<select-component 
+	*ngFor="let item of data | async" 
+	[data]="item" 
+	[label]="item.label"
+	(onItemSelected)="getSelectedValue($event)" 
+	[modificator]="'btn-color--white'"
+></select-component>

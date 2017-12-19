@@ -12,8 +12,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './pages/home.page';
 import { ChartComponent } from './components/chart/chart.component';
-import { TypedtextComponent } from './components/typedtext/typedtext.component';
 import { SelectComponent } from './components/select/select.component';
+import { TypedtextComponent } from './components/typedtext/typedtext.component';
+import { SelectGroupComponent } from './components/selectGroup/select-group.component';
 //import { UserComponent } from './components/user/user.component';
 
 /* Services */
@@ -38,7 +39,8 @@ const routes: Routes = appRoutes;
     ChartComponent, 
     SelectComponent,
     HomePageComponent,  
-    TypedtextComponent 
+    TypedtextComponent,
+    SelectGroupComponent
     //UserComponent 
   ],
   entryComponents: [ HomePageComponent ],
