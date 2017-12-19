@@ -18,7 +18,7 @@ import { sentence, dialogGroup } from '../constants/dialogs';
 
 @Component({
 	selector: '<home-page></home-page>',
-	templateUrl: './home.page.template.html' 
+	templateUrl: './home.page.html' 
 })
 
 export class HomePageComponent {
@@ -35,6 +35,15 @@ export class HomePageComponent {
 	public typed_2_start: BehaviorSubject<boolean>;
 	public typed_3_start: BehaviorSubject<boolean>;
 	
+	public filter = new Observable(observer => {
+		let data = [
+			{ name: 'Lorem ipsum', value: 1 },
+			{ name: 'Dolor sit amet', value: 0 }
+		]
+		observer.next(data);
+		observer.complete();
+	});
+
 	
 	ngOnInit() {
 		//this.data = this.getRDataMock().map(res => parseChartData(res.json()));
@@ -69,6 +78,10 @@ export class HomePageComponent {
 	private showFilters() {
 		console.log('Showing filters...');
 		this.typed_2_start.next(true);
+	}
+
+	getSelectedValue(val) {
+		console.log(val.value);
 	}
 
 }

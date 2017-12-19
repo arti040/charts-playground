@@ -2,7 +2,7 @@
 module.exports = {
     frameworks: {
         bootstrap: false,
-        gridBootstrapOnly: true,
+        gridBootstrapOnly: false,
         sources: {
             bootstrap: 'bootstrap-loader',
             grid: 'bootstrap-sass-grid'

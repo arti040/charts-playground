@@ -1,0 +1,6 @@
+<div ngbDropdown>
+  <button class="btn btn-outline-primary {{modificator}}" ngbDropdownToggle>Toggle</button>
+  <div ngbDropdownMenu aria-labelledby="dropdownConfig">
+    <button (click)="onSelect($event)" *ngFor="let item of data | async" class="dropdown-item" data-value="{{item.value}}">{{item.name}}</button>
+  </div>
+</div>
