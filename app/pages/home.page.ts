@@ -36,7 +36,7 @@ export class HomePageComponent {
 	public typed_2_start: BehaviorSubject<boolean>;
 	public typed_3_start: BehaviorSubject<boolean>;
 
-	public filters: BehaviorSubject<Array<Array<select>>>;
+	public filters: BehaviorSubject<Array<Array<select>>> = new BehaviorSubject([]);
 
 	
 	ngOnInit() {
@@ -92,7 +92,11 @@ export class HomePageComponent {
 		obj[0].productline.forEach(element => {
 			filters.push({ group: 'productline', name: element.name, id: element.id });
 		}); 
-		group.push(filters);
+
+		
+
+		group.push(filters,[{group: 'kpi'}],[{group: 'market'}]);
+		console.log('hp sends: ', filters);
 		return group;
 	}
 

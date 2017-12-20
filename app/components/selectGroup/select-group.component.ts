@@ -1,6 +1,7 @@
 import {Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import { Observable } from 'rxjs';
 import { SelectComponent } from '../select/select.component';
+import { Subject } from 'rxjs/Subject';
 
 /* Models & Constants */
 import { select } from '../../constants/select';
@@ -16,8 +17,6 @@ export class SelectGroupComponent {
 	@Input() modificator: string
 
 	@Output() onItemsSelected = new EventEmitter<select>();
-
-	private items: Array<select>;
 
 	constructor() {}
 

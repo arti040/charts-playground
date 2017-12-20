@@ -1,5 +1,9 @@
-<div ngbDropdown>
-  <button class="btn btn-outline-primary {{modificator}}" ngbDropdownToggle>{{label}}</button>
+<div ngbDropdown class="ngb-dropdown">
+  <button 
+    class="btn btn-outline-primary {{modificator}}" 
+    [disabled]="!data[0].id"
+    ngbDropdownToggle
+  >{{label}}</button>
   <div ngbDropdownMenu aria-labelledby="dropdownConfig">
     <button 
       (click)="onSelect($event)" 

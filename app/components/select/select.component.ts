@@ -17,14 +17,16 @@ export class SelectComponent {
 
 	@Output() onItemSelected = new EventEmitter<select>();
 
-	private items: Array<select>;
-
 	constructor() {}
+
+	ngOnInit() {
+		console.log('select gets: ', this.data);
+	}
 	
 	onSelect(event) {
 		this.onItemSelected.emit({ 
-				group: event.target.attributes['data-group'].value, 
-				id: event.target.attributes['data-id'].value 
-			});
+			group: event.target.attributes['data-group'].value, 
+			id: event.target.attributes['data-id'].value 
+		});
 	}
 }
