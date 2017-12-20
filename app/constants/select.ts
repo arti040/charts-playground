@@ -1,6 +1,9 @@
 
 export interface select {
-	group: string,
+	group?: string,
+	parent?: string,
+	children?: string,
 	name?: string,
-	id?: string
+	id?: string,
+	selected?: boolean
 }

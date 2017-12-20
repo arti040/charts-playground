@@ -11,22 +11,38 @@ import { select } from '../../constants/select';
 })
 export class SelectComponent {
 
-	@Input() data: Observable<Array<select>>;
+	@Input() data: Array<select>;
 	@Input() label: string;
 	@Input() modificator: string;
 
 	@Output() onItemSelected = new EventEmitter<select>();
 
+	private items: Array<select>;
+
 	constructor() {}
 
 	ngOnInit() {
 		console.log('select gets: ', this.data);
+		this.emitSelected();
+	}
+
+	emitSelected() {
+		this.data.forEach(element => {
+			element.selected && this.onSelect(element);
+		});
 	}
 	
-	onSelect(event) {
-		this.onItemSelected.emit({ 
-			group: event.target.attributes['data-group'].value, 
-			id: event.target.attributes['data-id'].value 
-		});
+	onSelect(element) {
+		let data: select = {}
+		if(element.target) {
+			data.children = element.target.attributes['data-children'].value;
+			data.id = element.target.attributes['data-id'].value
+		}
+		else {
+			data.children = element.children;
+			data.id = element.id;
+			data.parent = element.parent;
+		}
+		this.onItemSelected.emit(data);
 	}
 }

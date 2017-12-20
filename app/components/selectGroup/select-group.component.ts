@@ -13,20 +13,22 @@ import { select } from '../../constants/select';
 })
 export class SelectGroupComponent {
 
-	@Input() data: Observable<Array<select>>
-	@Input() modificator: string
+	@Input() data: Observable<Array<select>>;
+	@Input() modificator: string;
 
-	@Output() onItemsSelected = new EventEmitter<select>();
+	@Output() onSingleItemSelected = new EventEmitter<select>();
+	@Output() onAllItemsSelected = new EventEmitter<select>();
 
 	constructor() {}
 
 	ngOnInit() {}
 	
-	onAllItemsSelected() {
-		this.onItemsSelected.emit();
+	onAllItemsSelectedHandler() {
+		this.onAllItemsSelected.emit();
 	}
 
 	getSelectedValue(event) {
-		console.log(event);
+		console.log('group sends: ', event);
+		this.onSingleItemSelected.emit(event);
 	}
 }

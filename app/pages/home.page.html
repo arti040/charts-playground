@@ -7,4 +7,8 @@
 <filters-component [data]="periods"></filters-component>
 <table></table>	 -->
 
-<select-group-component [data]="filters"></select-group-component>
+<select-group-component 
+	[data]="filters$" 
+	(onAllItemsSelected)="getChartData($event)" 
+	(onSingleItemSelected)="handleSelected($event)"
+></select-group-component>

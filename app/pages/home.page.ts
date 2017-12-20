@@ -36,7 +36,9 @@ export class HomePageComponent {
 	public typed_2_start: BehaviorSubject<boolean>;
 	public typed_3_start: BehaviorSubject<boolean>;
 
-	public filters: BehaviorSubject<Array<Array<select>>> = new BehaviorSubject([]);
+	private rawFilters: Array<any>;
+	private filtersArr: Array<Array<select>>;
+	public filters$: BehaviorSubject<Array<Array<select>>> = new BehaviorSubject([]);
 
 	
 	ngOnInit() {
@@ -80,8 +82,11 @@ export class HomePageComponent {
 	}
 
 	private setFilters() {
-		this.getFilters().subscribe(res => {
-			this.filters = new BehaviorSubject(this.parseFilters(res.json()));
+		this.getFilters()
+		.subscribe(res => {
+			this.rawFilters = res.json();
+			this.filtersArr = this.parseFilters(this.rawFilters);
+			this.filters$ = new BehaviorSubject(this.filtersArr);
 		});
 	}
 
@@ -89,15 +94,65 @@ export class HomePageComponent {
 		let filters: Array<select> = [];
 		let group: Array<Array<select>> = [];
 
-		obj[0].productline.forEach(element => {
-			filters.push({ group: 'productline', name: element.name, id: element.id });
+		obj[0].productline.forEach((element,idx) => {
+			let item: select = { parent: null, group: 'productline', children: 'kpi', name: element.name, id: element.id };
+			if(idx === 0) { item.selected = true }
+			filters.push(item);
 		}); 
 
-		
-
-		group.push(filters,[{group: 'kpi'}],[{group: 'market'}]);
+		group.push(filters);
 		console.log('hp sends: ', filters);
 		return group;
 	}
 
+	private getChartData(filters) {
+
+	}
+
+	private getKpi(from: string) {
+		let filters: Array<select> = [];
+		this.rawFilters[0].productline.forEach((element, idx) => {
+			if(element.id === from) {
+				
+				element.kpi.forEach(kpiElement => {
+					let item: select = { parent: element.id, group: 'kpi', children: 'market', name: kpiElement.name, id: kpiElement.id };
+					if(idx === 0) { item.selected = true }
+					filters.push(item);
+				});
+
+				this.filtersArr.push(filters);
+				let a = this.filtersArr
+				this.filters$.next([]);
+				this.filters$.next(this.filtersArr);
+			}
+		});
+	}
+
+	private getMarket(from: string) {
+		let filters: Array<select> = [];
+		this.rawFilters[0].productline.forEach(element => {
+			if(element.id === from) {
+				element.market.forEach((marketElement, idx) => {
+					let item: select = { group: 'market', children: null, name: marketElement.name, id: marketElement.id };
+					if(idx === 0) { item.selected = true }
+					filters.push(item);
+				});
+
+				this.filtersArr.push(filters);
+				console.log('Market: ', this.filtersArr);
+				this.filters$.next(this.filtersArr);
+			}
+		});
+	}
+
+	private handleSelected(event) {
+		console.log('hp receives: ', event);	
+		if(event.children === 'kpi') {
+			this.getKpi(event.id);
+		}
+		else if(event.children === 'market') {
+			this.getMarket(event.id);
+		}
+		else { return null; }
+	}
 }
