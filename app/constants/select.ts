@@ -5,5 +5,7 @@ export interface select {
 	children?: string,
 	name?: string,
 	id?: string,
-	selected?: boolean
+	selected?: boolean,
+	market?: Array<any>,
+	sharebase?: Array<string>
 }

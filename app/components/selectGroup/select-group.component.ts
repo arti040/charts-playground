@@ -13,7 +13,7 @@ import { select } from '../../constants/select';
 })
 export class SelectGroupComponent {
 
-	@Input() data: Observable<Array<select>>;
+	@Input() data: Observable<Array<select>>; []
 	@Input() modificator: string;
 
 	@Output() onSingleItemSelected = new EventEmitter<select>();

@@ -1,5 +1,5 @@
 <select-component 
-	*ngFor="let item of data | async" 
+	*ngFor="let item of data" 
 	[data]="item" 
 	[label]="item[0].group"
 	(onItemSelected)="getSelectedValue($event)" 

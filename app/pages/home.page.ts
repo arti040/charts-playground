@@ -43,9 +43,64 @@ export class HomePageComponent {
 	
 	ngOnInit() {
 		//this.data = this.getRDataMock().map(res => parseChartData(res.json()));
-		this.setTypeds();
+		//this.setTypeds();
+		
 		this.setFilters();
 	}
+
+
+	private getKpiFilters(node) {
+
+		let filters: any;
+		
+		this.rawFilters.forEach((item) => { 
+			if(item.id === node) {
+				filters = item.kpi;
+			}
+		});
+
+		console.log(filters);
+		return filters;
+	}
+
+	private getMarketFilters(node) {
+		let filters: Array<any> = [];
+		
+		this.rawFilters.forEach((item) => { 
+			if(item.id === node) {
+				item.kpi.forEach(kpi => {
+					kpi.market.forEach(market => {
+						filters.push(market);
+					});
+				});
+			}
+		});
+
+		console.log(filters);
+		return filters;
+	}
+
+	private getSharebaseFilters(node) {
+		let filters: Array<any> = [];
+		
+		this.rawFilters.forEach((item) => { 
+			if(item.id === node) {
+				item.kpi.forEach(kpi => {
+					kpi.market.forEach(market => {
+						filters.push(market.sharebase);		
+					});
+				});
+			}
+		});
+
+		console.log(filters);
+		return filters;
+	}
+
+
+
+
+	
 
 	private setTypeds(): void {
 		// TODO this could be dynamically created
@@ -86,7 +141,7 @@ export class HomePageComponent {
 		.subscribe(res => {
 			this.rawFilters = res.json();
 			this.filtersArr = this.parseFilters(this.rawFilters);
-			this.filters$ = new BehaviorSubject(this.filtersArr);
+			//this.filters$ = new BehaviorSubject(this.filtersArr);
 		});
 	}
 
@@ -94,11 +149,11 @@ export class HomePageComponent {
 		let filters: Array<select> = [];
 		let group: Array<Array<select>> = [];
 
-		obj[0].productline.forEach((element,idx) => {
-			let item: select = { parent: null, group: 'productline', children: 'kpi', name: element.name, id: element.id };
-			if(idx === 0) { item.selected = true }
-			filters.push(item);
-		}); 
+		// obj[0].productline.forEach((element,idx) => {
+		// 	let item: select = { parent: null, group: 'productline', children: 'kpi', name: element.name, id: element.id };
+		// 	if(idx === 0) { item.selected = true }
+		// 	filters.push(item);
+		// }); 
 
 		group.push(filters);
 		console.log('hp sends: ', filters);
