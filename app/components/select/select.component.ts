@@ -23,8 +23,12 @@ export class SelectComponent {
 	constructor() {}
 
 	ngOnInit() {
-		console.log('select gets: ', this.data);
-		this.emitSelected();
+		//console.log('select gets: ', this.data);
+		//this.emitSelected();
+	}
+
+	ngOnChanges() {
+		console.log('select updated:', this.data);
 	}
 
 	emitSelected() {
@@ -43,7 +47,7 @@ export class SelectComponent {
 			data.id = element.id;
 			data.next = this.next;
 		}
-		console.log('Emitting...');
+		//console.log('Emitting...');
 		this.onItemSelected.emit(data);
 	}
 }

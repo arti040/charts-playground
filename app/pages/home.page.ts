@@ -65,7 +65,7 @@ export class HomePageComponent {
 				filters.data.push(filter);
 			});
 		});
-		console.log(filters);
+		//console.log(filters);
 		return filters;
 	}
 
@@ -82,7 +82,7 @@ export class HomePageComponent {
 			}
 		});
 
-		console.log(filters);
+		//console.log(filters);
 		return filters;
 	}
 
@@ -104,7 +104,7 @@ export class HomePageComponent {
 			}
 		});
 
-		console.log(filters);
+		//console.log(filters);
 		return filters;
 	}
 
@@ -125,7 +125,7 @@ export class HomePageComponent {
 			}
 		});
 
-		console.log(filters);
+		//console.log(filters);
 		return filters;
 	}
 
@@ -150,7 +150,7 @@ export class HomePageComponent {
 			empties.push(select);
 			--i;
 		}
-		console.log('empeties: ', empties);
+		//console.log('empeties: ', empties);
 		return empties;
 	}
 
@@ -197,7 +197,7 @@ export class HomePageComponent {
 	}
 
 	private handleSelected(event) {
-		console.log('hp receives: ', event);	
+		//console.log('hp receives: ', event);	
 		let copy = this.filtersArr;
 		this.filtersArr = [];	
 

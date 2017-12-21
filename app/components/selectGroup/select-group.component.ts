@@ -19,11 +19,13 @@ export class SelectGroupComponent {
 	@Output() onSingleItemSelected = new EventEmitter<select>();
 	@Output() onAllItemsSelected = new EventEmitter<select>();
 
-	private items: Observable<Array<select>>;
-
 	constructor() {}
 
 	ngOnInit() {}
+
+	ngOnChanges() {
+		console.log('group updated: ', this.data);
+	}
 	
 	onAllItemsSelectedHandler() {
 		this.onAllItemsSelected.emit();
