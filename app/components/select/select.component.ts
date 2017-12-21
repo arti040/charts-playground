@@ -2,22 +2,23 @@ import {Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy}
 import { Observable } from 'rxjs';
 
 /* Models & Constants */
-import { select } from '../../constants/select';
+import { selectItem } from '../../constants/select';
 
 @Component({
   selector: 'select-component',
   templateUrl: './select.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectComponent {
 
-	@Input() data: Array<select>;
+	@Input() data: Array<selectItem>;
 	@Input() label: string;
+	@Input() next: string;
 	@Input() modificator: string;
 
-	@Output() onItemSelected = new EventEmitter<select>();
+	@Output() onItemSelected = new EventEmitter<selectItem>();
 
-	private items: Array<select>;
+	private items: Array<selectItem>;
 
 	constructor() {}
 
@@ -33,16 +34,16 @@ export class SelectComponent {
 	}
 	
 	onSelect(element) {
-		let data: select = {}
+		let data: selectItem = { id: null };
 		if(element.target) {
-			data.children = element.target.attributes['data-children'].value;
-			data.id = element.target.attributes['data-id'].value
+			data.id = element.target.attributes['data-id'].value;
+			data.next = element.target.attributes['data-next'].value; 			
 		}
 		else {
-			data.children = element.children;
 			data.id = element.id;
-			data.parent = element.parent;
+			data.next = this.next;
 		}
+		console.log('Emitting...');
 		this.onItemSelected.emit(data);
 	}
 }

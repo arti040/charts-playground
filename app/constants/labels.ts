@@ -7,5 +7,8 @@ export const labels = {
   slope: 'Slope',
   slopes: 'Slopes',
   monthsBefore: 'Months before',
-  monthsAfter: 'Months after'
+  monthsAfter: 'Months after',
+  kpi: 'kpi',
+  market: 'market',
+  sharebase: 'sharebase'
 }

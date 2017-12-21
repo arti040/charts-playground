@@ -9,15 +9,17 @@ import { select } from '../../constants/select';
 @Component({
   selector: 'select-group-component',
   templateUrl: './select-group.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  //changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SelectGroupComponent {
 
-	@Input() data: Observable<Array<select>>; []
+	@Input() data: Observable<Array<select>>;
 	@Input() modificator: string;
 
 	@Output() onSingleItemSelected = new EventEmitter<select>();
 	@Output() onAllItemsSelected = new EventEmitter<select>();
+
+	private items: Observable<Array<select>>;
 
 	constructor() {}
 

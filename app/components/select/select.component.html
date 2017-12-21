@@ -1,7 +1,7 @@
 <div ngbDropdown class="ngb-dropdown">
   <button 
     class="btn btn-outline-primary {{modificator}}" 
-    [disabled]="!data[0].id"
+    [disabled]="!data.length"
     ngbDropdownToggle
   >{{label}}</button>
   <div ngbDropdownMenu aria-labelledby="dropdownConfig">
@@ -10,7 +10,7 @@
       *ngFor="let item of data" 
       class="dropdown-item" 
       [attr.data-id]="item.id"
-      [attr.data-children]="item.children"
+      [attr.data-next]="next"
     >{{item.name}}</button>
   </div>
 </div>

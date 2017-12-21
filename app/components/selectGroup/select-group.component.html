@@ -1,7 +1,8 @@
 <select-component 
 	*ngFor="let item of data" 
-	[data]="item" 
-	[label]="item[0].group"
+	[data]="item.data" 
+	[label]="item.label"
+	[next]="item.next"
 	(onItemSelected)="getSelectedValue($event)" 
 	[modificator]="'btn-color--white'"
 ></select-component>
