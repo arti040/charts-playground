@@ -19,6 +19,5 @@ export interface select {
 export interface selectItem {
 	name?: string,
 	id: string,
-	selected?: boolean,
 	next?: string
 }

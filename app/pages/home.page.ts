@@ -1,16 +1,14 @@
 
 /* Angular */
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core'
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 /* Services */
 import { Config } from '../app.config';
-import { RDataSvc } from '../providers/rdata.service';
 
 /* Constants & Models */
-import { chartRDataItemModel } from '../models/chartRData.model';
 import { parseChartData } from '../components/chart/chart.parser';
 import { ChartData, chartDataModel } from '../models/chartData.model';
 import { firstPageDialog } from '../constants/dialogs';
@@ -24,7 +22,7 @@ import { select, selectItem } from '../constants/select';
 })
 
 export class HomePageComponent {
-	constructor(private config: Config, private rdataSvc: RDataSvc, private cd: ChangeDetectorRef ) { console.log('HomePage component created.') }
+	constructor(private config: Config) { console.log('HomePage component created.') }
 	
 	public dialog = firstPageDialog;
 	public chartData: any;
@@ -37,7 +35,7 @@ export class HomePageComponent {
 	public typed_2_start: BehaviorSubject<boolean>;
 	public typed_3_start: BehaviorSubject<boolean>;
 
-	private rawFilters: Array<any>;
+	private rawFilters: any;
 	private filtersArr: Array<select> = [];
 	public filters$: BehaviorSubject<Array<select>> = new BehaviorSubject([]);
 
@@ -46,113 +44,23 @@ export class HomePageComponent {
 		//this.data = this.getRDataMock().map(res => parseChartData(res.json()));
 		//this.setTypeds();
 		
-		this.setFilters();
+		//this.setFilters();
 	}
 
 
-	/* Parsers */
-	private getMainNodes() {
-		let filters: select = {
-			label: null,
-			next: labels.kpi,
-			data: []
-		}
-		this.rawFilters.forEach(node => {
-			filters.label = Object.keys(node)[0];
-			node.productline.forEach((item, idx) => {
-				let filter: selectItem = { name: item.name, id: item.id };
-				filter.selected = idx === 0;
-				filters.data.push(filter);
-			});
-		});
-		//console.log(filters);
-		return filters;
-	}
 
-	private getKpiFilters(node) {
-		let filters: select = {
-			label: labels.kpi,
-			next: labels.market,
-			data: []
-		}		
-		this.rawFilters[0].productline.forEach((item) => { 
-			if(item.id === node) {
-				filters.data = item.kpi;
-				filters.data[0].selected = true;
-			}
-		});
-
-		//console.log(filters);
-		return filters;
-	}
-
-	private getMarketFilters(node) {
-		let filters: select = {
-			label: labels.market,
-			next: labels.sharebase,
-			data: []
-		}	
-		
-		this.rawFilters[0].productline.forEach((item) => { 
-			if(item.id === node) {
-				item.kpi.forEach(kpi => {
-					kpi.market.forEach(market => {
-						filters.data.push(market);
-					});
-					filters.data[0].selected = true;
-				});
-			}
-		});
-
-		//console.log(filters);
-		return filters;
-	}
-
-	private getSharebaseFilters(node) {
-		let filters: select = {
-			label: labels.sharebase,
-			next: null,
-			data: []
-		}	
-		
-		this.rawFilters[0].productline.forEach((item) => { 
-			if(item.id === node) {
-				item.kpi.forEach(kpi => {
-					kpi.market.forEach(market => {
-						filters.data = market.sharebase;	
-					});
-				});
-			}
-		});
-
-		//console.log(filters);
-		return filters;
-	}
-
-	private setFilters() {
-		this.getFilters()
-		.subscribe(res => {
-			this.rawFilters = res.json();
-			this.filtersArr.push(this.getMainNodes());
-			// this.getMainNodes();
-			// this.getKpiFilters('pg');
-			// this.getMarketFilters('pg');
-			// this.getSharebaseFilters('pg');
-			this.filters$.next(this.filtersArr);
-		});
-	}
-
-	private createEmptySelect(count) {
-		let i = count;
-		let empties = [];
-		let select: select = { label: null, data: [], next: null }
-		while(i){
-			empties.push(select);
-			--i;
-		}
-		//console.log('empeties: ', empties);
-		return empties;
-	}
+	// private setFilters() {
+	// 	this.selectsSvc.getFilters()
+	// 	.subscribe(res => {
+	// 		this.rawFilters = res.json();
+	// 		// this.filtersArr.push(this.getMainNodes());
+	// 		// this.getMainNodes();
+	// 		// this.getKpiFilters('pg');
+	// 		// this.getMarketFilters('pg');
+	// 		// this.getSharebaseFilters('pg');
+	// 		//this.filters$.next(this.filtersArr);
+	// 	});
+	// }
 
 	/* Typed */
 	private setTypeds(): void {
@@ -177,15 +85,7 @@ export class HomePageComponent {
 	}
 
 
-	/* API */
-	private getRDataMock() {
-		return this.rdataSvc.getRDataForChart();
-	}
-
-	private getFilters() {
-		return this.rdataSvc.getMainFiltersData();
-	}
-
+	/* API handlers */
 	private getChartData() {
 
 	}	
@@ -196,22 +96,22 @@ export class HomePageComponent {
 		this.typed_2_start.next(true);
 	}
 
-	private handleSelected(event) {
-		//console.log('hp receives: ', event);	
-		let copy = this.filtersArr;
-		this.filtersArr = [];	
+	// private handleSelected(event) {
+	// 	//console.log('hp receives: ', event);	
+	// 	let copy = this.filtersArr;
+	// 	this.filtersArr = [];	
 
-		if(event.next === labels.kpi) {
-			copy.push(this.getKpiFilters(event.id));
-			this.filters$.next(copy);
-			this.filtersArr = copy;
-		}
-		else if(event.next === labels.market) {
-			this.getMarketFilters(event.id);
-		}
-		else if(event.next === labels.sharebase) {
-			this.getSharebaseFilters(event.id);
-		}
-		else { return null; }
-	}
+	// 	if(event.next === labels.kpi) {
+	// 		copy.push(this.getKpiFilters(event.id));
+	// 		this.filters$.next(copy);
+	// 		this.filtersArr = copy;
+	// 	}
+	// 	else if(event.next === labels.market) {
+	// 		this.getMarketFilters(event.id);
+	// 	}
+	// 	else if(event.next === labels.sharebase) {
+	// 		this.getSharebaseFilters(event.id);
+	// 	}
+	// 	else { return null; }
+	// }
 }

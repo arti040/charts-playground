@@ -33,7 +33,7 @@ export class SelectComponent {
 
 	emitSelected() {
 		this.data.forEach(element => {
-			element.selected && this.onSelect(element);
+			//element.selected && this.onSelect(element);
 		});
 	}
 	

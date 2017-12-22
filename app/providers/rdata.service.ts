@@ -25,13 +25,6 @@ export class RDataSvc {
 	
 	getMainFiltersData(params?) {
 		return this.api.get('/api/filters.json', null);
-
-		// return new Observable<any>((observer) => {
-		// 	let data: any = '';
-
-		// 	observer.next(data);
-		// 	observer.complete();
-		// })
 	}
 
 }

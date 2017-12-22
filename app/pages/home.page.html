@@ -6,9 +6,11 @@
 <typedtext-component [data]="this.typed_3" [startTyping]="this.typed_3_start"></typedtext-component>
 <filters-component [data]="periods"></filters-component>
 <table></table>	 -->
-
-<select-group-component 
+<!-- <select-group-component 
 	[data]="filters$ | async" 
 	(onAllItemsSelected)="getChartData($event)" 
 	(onSingleItemSelected)="handleSelected($event)"
-></select-group-component>
+></select-group-component> -->
+
+
+<main-filters></main-filters>

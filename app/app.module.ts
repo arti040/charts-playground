@@ -14,7 +14,8 @@ import { HomePageComponent } from './pages/home.page';
 import { ChartComponent } from './components/chart/chart.component';
 import { SelectComponent } from './components/select/select.component';
 import { TypedtextComponent } from './components/typedtext/typedtext.component';
-import { SelectGroupComponent } from './components/selectGroup/select-group.component';
+import { MainFiltersComponent } from './components/main-filters/main-filters.component';
+//import { SelectGroupComponent } from './components/selectGroup/select-group.component';
 //import { UserComponent } from './components/user/user.component';
 
 /* Services */
@@ -23,7 +24,7 @@ import { appRoutes } from './routes/routes';
 import { ApiService } from './providers/api.service';
 import { RDataSvc } from './providers/rdata.service';
 import { DialogSvc } from './providers/dialog.service';
-
+import { SelectsSvc } from './providers/selects.service';
 
 /* Constants & Models */
 
@@ -40,7 +41,8 @@ const routes: Routes = appRoutes;
     SelectComponent,
     HomePageComponent,  
     TypedtextComponent,
-    SelectGroupComponent
+    MainFiltersComponent
+    //SelectGroupComponent
     //UserComponent 
   ],
   entryComponents: [ HomePageComponent ],
@@ -53,6 +55,6 @@ const routes: Routes = appRoutes;
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))
   ],
   bootstrap: [ AppComponent ],
-  providers: [ ApiService, RDataSvc, Config, DialogSvc ]
+  providers: [ ApiService, RDataSvc, Config, DialogSvc, SelectsSvc ]
 })
 export class AppModule { }
