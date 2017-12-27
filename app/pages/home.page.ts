@@ -43,24 +43,7 @@ export class HomePageComponent {
 	ngOnInit() {
 		//this.data = this.getRDataMock().map(res => parseChartData(res.json()));
 		//this.setTypeds();
-		
-		//this.setFilters();
 	}
-
-
-
-	// private setFilters() {
-	// 	this.selectsSvc.getFilters()
-	// 	.subscribe(res => {
-	// 		this.rawFilters = res.json();
-	// 		// this.filtersArr.push(this.getMainNodes());
-	// 		// this.getMainNodes();
-	// 		// this.getKpiFilters('pg');
-	// 		// this.getMarketFilters('pg');
-	// 		// this.getSharebaseFilters('pg');
-	// 		//this.filters$.next(this.filtersArr);
-	// 	});
-	// }
 
 	/* Typed */
 	private setTypeds(): void {

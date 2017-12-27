@@ -18,38 +18,18 @@ export class MainFiltersComponent {
 
   private raw: Array<any>;
   private alive: boolean = true;
-
-  private productlines: select;
-  private kpis: select;
-  private markets: select;
-  private sharebases: Array<string> = [];
-
-  private selectedProductline: string;
-  private selectedKpi: string;
-  private selectedMarket: string;
-  private selectedSharebase: string;
-
-  private selectedProductlineLabel: string;
-  private selectedKpiLabel: string;
-  private selectedMarketLabel: string;
-  private selectedSharebaseLabel: string;
-
-  private query: any = {}
-
-  /* reimplementiation*/
   private selects: Array<select> = [];
-
-
+  private query: any = {}
+  
   constructor(private _selectsSvc: SelectsSvc) {
     console.log('MainFilters component created!'); 
   }
 
   ngOnInit() {
-    this.loadRawData();
+    this.getMainNodes();
   }
   
   /* Event handlers */
-
   private loadNextSelectData(e) {
     switch(e.next) {
       case labels.kpi:
@@ -69,7 +49,7 @@ export class MainFiltersComponent {
   }
 
   
-  /* helpers */
+  /* Helpers */
   private emptySelect(label) {
     let item: select = {
       label: label,
@@ -96,7 +76,7 @@ export class MainFiltersComponent {
   }
 
   /* API handlers */
-  private loadRawData() {
+  private getMainNodes() {
     this._selectsSvc.getFilters()
     .takeWhile(() => this.alive)
     .subscribe(res => {
