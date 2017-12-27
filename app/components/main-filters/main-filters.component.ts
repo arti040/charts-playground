@@ -6,6 +6,7 @@ import { SelectsSvc } from '../../providers/selects.service';
 
 /* Models & Constants */
 import { select, selectItem } from '../../constants/select';
+import { labels } from '../../constants/labels';
 
 
 @Component({
@@ -33,7 +34,11 @@ export class MainFiltersComponent {
   private selectedMarketLabel: string;
   private selectedSharebaseLabel: string;
 
-  private query: any;
+  private query: any = {}
+
+  /* reimplementiation*/
+  private selects: Array<select> = [];
+
 
   constructor(private _selectsSvc: SelectsSvc) {
     console.log('MainFilters component created!'); 
@@ -44,53 +49,50 @@ export class MainFiltersComponent {
   }
   
   /* Event handlers */
-  private onSelectProductline(event) {
-    this.resetAllSelects();    
-    this.selectedProductline = event.target.attributes['data-id'].value;
-    this.selectedProductlineLabel = event.target.attributes['data-name'].value;
-    this.kpis = this.getKpis(this.raw, this.selectedProductline);
+
+  private loadNextSelectData(e) {
+    switch(e.next) {
+      case labels.kpi:
+        this.resetSelectsState(); // clear rest of the fileters first     
+
+        this.query.productline_id = e.selected;
+        this.selects[1] = this.getKpis(this.raw, e.selected);
+      break;
+      case labels.market:
+        this.query.kpi_id = e.selected;
+        this.selects[2] = this.getMarkets(this.raw, this.query.productline_id, e.selected);
+      break;
+      case labels.sharebase:
+        this.selects[3] = this.getSharebases(this.raw, this.query.productline_id, this.query.kpi_id, e.selected);
+      break;
+    }
   }
 
-  private onSelectKpi(event) {
-    this.selectedKpi = event.target.attributes['data-id'].value;
-    this.selectedKpiLabel = event.target.attributes['data-name'].value;
-    this.markets = this.getMarkets(this.raw, this.selectedProductline, this.selectedKpi);
+  
+  /* helpers */
+  private emptySelect(label) {
+    let item: select = {
+      label: label,
+      data: []
+    }
+    return item; 
   }
 
-  private onSelectMarket(event) {
-    this.selectedMarket = event.target.attributes['data-id'].value;
-    this.selectedMarketLabel = event.target.attributes['data-name'].value;
-    this.sharebases = this.getSharebases(this.raw, this.selectedProductline, this.selectedKpi, this.selectedMarket);
-  }
-
-  private onSelectSharebase(event) {
-    this.selectedSharebase = event.target.attributes['data-id'].value;
-    this.selectedSharebaseLabel = event.target.attributes['data-name'].value;
-    console.log('All selected! Voila!');
-  }
-
-  private resetAllSelects() {
-    this.resetSelectData();
-    this.resetLabels();
-    this.resetSelected()   
-  }
-
-  private resetSelectData() {
-    this.kpis = null;
-    this.markets = null;
-    this.sharebases = [];
-  }
-
-  private resetSelected() {
-    this.selectedKpi = null
-    this.selectedMarket = null;
-    this.selectedSharebase = null;
-  }
-
-  private resetLabels() {
-    this.selectedKpiLabel = null
-    this.selectedMarketLabel = null;
-    this.selectedSharebaseLabel = null;
+  private resetSelectsState(all?) {  
+    if(all) {
+      this.selects = [];
+      this.selects.push(
+        this._selectsSvc.getMainNodes(this.raw), 
+        this.emptySelect(labels.kpi), 
+        this.emptySelect(labels.market), 
+        this.emptySelect(labels.sharebase)
+      );
+    } 
+    else {
+      this.selects[1] = this.emptySelect(labels.kpi);
+      this.selects[2] = this.emptySelect(labels.market);
+      this.selects[3] = this.emptySelect(labels.sharebase);
+    }
   }
 
   /* API handlers */
@@ -99,7 +101,7 @@ export class MainFiltersComponent {
     .takeWhile(() => this.alive)
     .subscribe(res => {
       this.raw = res.json();
-      this.productlines = this._selectsSvc.getMainNodes(this.raw);
+      this.resetSelectsState(true);
     });
   }
 

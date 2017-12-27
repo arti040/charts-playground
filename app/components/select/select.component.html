@@ -11,6 +11,7 @@
       class="dropdown-item" 
       [attr.data-id]="item.id"
       [attr.data-next]="next"
-    >{{item.name}}</button>
+      [attr.data-label]="item.name"
+    >{{item.name || item}}</button>
   </div>
 </div>

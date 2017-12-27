@@ -16,38 +16,22 @@ export class SelectComponent {
 	@Input() next: string;
 	@Input() modificator: string;
 
-	@Output() onItemSelected = new EventEmitter<selectItem>();
+	@Output() onItemSelected = new EventEmitter<any>();
 
 	private items: Array<selectItem>;
 
-	constructor() {}
+	constructor() { console.log('Select component created!')}
 
 	ngOnInit() {
-		//console.log('select gets: ', this.data);
-		//this.emitSelected();
-	}
-
-	ngOnChanges() {
-		console.log('select updated:', this.data);
-	}
-
-	emitSelected() {
-		this.data.forEach(element => {
-			//element.selected && this.onSelect(element);
-		});
+		//console.log('Select receives: ', this.data, this.label, this.next);
 	}
 	
-	onSelect(element) {
-		let data: selectItem = { id: null };
-		if(element.target) {
-			data.id = element.target.attributes['data-id'].value;
-			data.next = element.target.attributes['data-next'].value; 			
+	onSelect(e) {
+		let data = { 
+			next: e.target.attributes['data-next'].value,
+			selected: e.target.attributes['data-id'].value
 		}
-		else {
-			data.id = element.id;
-			data.next = this.next;
-		}
-		//console.log('Emitting...');
 		this.onItemSelected.emit(data);
+		this.label = e.target.attributes['data-label'].value;		
 	}
 }

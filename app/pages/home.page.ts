@@ -96,7 +96,8 @@ export class HomePageComponent {
 		this.typed_2_start.next(true);
 	}
 
-	// private handleSelected(event) {
+	private handleSelected(e) {
+		console.log(e);
 	// 	//console.log('hp receives: ', event);	
 	// 	let copy = this.filtersArr;
 	// 	this.filtersArr = [];	
@@ -113,5 +114,5 @@ export class HomePageComponent {
 	// 		this.getSharebaseFilters(event.id);
 	// 	}
 	// 	else { return null; }
-	// }
+	}
 }

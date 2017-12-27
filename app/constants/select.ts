@@ -11,13 +11,12 @@
 // }
 
 export interface select {
-	label: string,
+	label?: string,
 	next?: string,
 	data: Array<selectItem>
 }
 
 export interface selectItem {
 	name?: string,
-	id: string,
-	next?: string
+	id: string
 }

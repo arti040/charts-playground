@@ -87,25 +87,29 @@ export class SelectsSvc {
 
 	public getSharebaseFilters(from, id, kpi_id, market_id) {
 
-		let filters: Array<string> = [];
+		let filters: select = {
+			label: labels.sharebase,
+			next: 'null',
+			data: []
+    }	
 		
 		from[0].productline.forEach((item) => { 
 			if(item.id === id) {
 				item.kpi.forEach(kpi => {
-					kpi.market.forEach(market => {
-            if(market.id === market_id) {
-              market.sharebase.forEach(item => {
-                if(filters.indexOf(item) === -1) {
-                  filters.push(item);	
-                }
-              });
-            }
+					if(kpi.id === kpi_id) {
+						kpi.market.forEach(market => {
+							if(market.id === market_id) {
+								market.sharebase.forEach(item => {								
+									filters.data.push({ name: item, id: 'null' });	
+								});
+							}
 					});
+					}
 				});
 			}
 		});
 
-		//console.log(filters);
+		//console.log('f: ', filters);
 		return filters;
   }
   

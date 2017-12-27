@@ -1,66 +1,8 @@
-
-<div ngbDropdown class="ngb-dropdown" *ngIf="productlines">
-  <button 
-    class="btn btn-outline-primary {{modificator}} btn-color--white" 
-    ngbDropdownToggle
-  >{{selectedProductlineLabel || productlines.label}}</button>
-  <div ngbDropdownMenu aria-labelledby="dropdownConfig">
-    <button 
-      (click)="onSelectProductline($event)" 
-      *ngFor="let item of productlines.data" 
-      class="dropdown-item" 
-      [attr.data-id]="item.id"
-      [attr.data-name]="item.name"
-    >{{item.name}}</button>
-  </div>
-</div>
-
-
-<div ngbDropdown class="ngb-dropdown" *ngIf="kpis">
-  <button 
-    class="btn btn-outline-primary {{modificator}} btn-color--white" 
-    ngbDropdownToggle
-  >{{selectedKpiLabel || kpis.label}}</button>
-  <div ngbDropdownMenu aria-labelledby="dropdownConfig">
-    <button 
-      (click)="onSelectKpi($event)" 
-      *ngFor="let item of kpis.data" 
-      class="dropdown-item" 
-      [attr.data-id]="item.id"
-      [attr.data-name]="item.name"
-    >{{item.name}}</button>
-  </div>
-</div>
-
-<div ngbDropdown class="ngb-dropdown" *ngIf="markets">
-  <button 
-    class="btn btn-outline-primary {{modificator}} btn-color--white" 
-    ngbDropdownToggle
-  >{{selectedMarketLabel || markets.label}}</button>
-  <div ngbDropdownMenu aria-labelledby="dropdownConfig">
-    <button 
-      (click)="onSelectMarket($event)" 
-      *ngFor="let item of markets.data" 
-      class="dropdown-item" 
-      [attr.data-id]="item.id"
-      [attr.data-name]="item.name"
-    >{{item.name}}</button>
-  </div>
-</div>
-
-<div ngbDropdown class="ngb-dropdown" *ngIf="sharebases.length">
-    <button 
-      class="btn btn-outline-primary {{modificator}} btn-color--white" 
-      ngbDropdownToggle
-    >{{selectedSharebaseLabel || 'Sharebases'}}</button>
-    <div ngbDropdownMenu aria-labelledby="dropdownConfig">
-      <button 
-        (click)="onSelectSharebase($event)" 
-        *ngFor="let item of sharebases" 
-        class="dropdown-item" 
-        [attr.data-id]="item"
-        [attr.data-name]="item"
-      >{{item}}</button>
-    </div>
-  </div>
-
+<select-component 
+	*ngFor="let item of selects" 
+	[data]="item.data" 
+	[label]="item.label"
+	[next]="item.next"
+	(onItemSelected)="loadNextSelectData($event)" 
+	[modificator]="'btn-color--white'"
+></select-component>
