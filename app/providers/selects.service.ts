@@ -103,13 +103,13 @@ export class SelectsSvc {
 									filters.data.push({ name: item, id: 'null' });	
 								});
 							}
-					});
+						});
 					}
 				});
 			}
 		});
 
-		//console.log('f: ', filters);
+		//console.log(filters);
 		return filters;
   }
   
