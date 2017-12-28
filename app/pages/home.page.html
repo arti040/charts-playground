@@ -1,16 +1,10 @@
 
-<!-- <typedtext-component [data]="this.typed_1" [startTyping]="this.typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component>
-<filters-component [data]="market"></filters-component>
+<typedtext-component [data]="this.typed_1" [startTyping]="this.typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component>
+<main-filters (onAllFiltersSelected)="handleSelected($event)" *ngIf="filtersVisible"></main-filters>
 <typedtext-component [data]="this.typed_2" [startTyping]="this.typed_2_start"></typedtext-component>
-<chart-component class="chart-component" [data]="chartData"></chart-component>
-<typedtext-component [data]="this.typed_3" [startTyping]="this.typed_3_start"></typedtext-component>
-<filters-component [data]="periods"></filters-component>
-<table></table>	 -->
-<!-- <select-group-component 
-	[data]="filters$ | async" 
-	(onAllItemsSelected)="getChartData($event)" 
-	(onSingleItemSelected)="handleSelected($event)"
-></select-group-component> -->
+<chart-component class="chart-component" [data]="chartData | async"></chart-component>
 
+<!-- <typedtext-component [data]="this.typed_3" [startTyping]="this.typed_3_start"></typedtext-component> -->
+<!-- <filters-component [data]="periods"></filters-component> -->
+<!-- <table></table>	 -->
 
-<main-filters (onAllFiltersSelected)="handleSelected($event)"></main-filters>

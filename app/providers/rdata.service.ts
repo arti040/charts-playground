@@ -11,20 +11,33 @@ import { Observable } from 'rxjs';
 /* Services */
 import { ApiService } from './api.service';
 
-/* Models */
+/* Models & Constants */
 import { chartRDataItemModel } from '../models/chartRData.model';
-
+import { chartDataQuery } from '../constants/select';
 
 @Injectable()
 export class RDataSvc {
   constructor(private api: ApiService) { }
 
-  getRDataForChart(params?) {
-    return this.api.get('/api/chart.json', null);
+
+	/* Mocks */
+  getMockRDataForChart(params: chartDataQuery) {
+    return this.api.get('/api/chart.json');
 	}
 	
-	getMainFiltersData(params?) {
-		return this.api.get('/api/filters.json', null);
+	getMockMainFiltersData() {
+		return this.api.get('/api/filters.json');
 	}
+
+	/* Real calls */
+	getMainFiltersData() {
+		return this.api.get('endpoint here');
+	}
+
+	getRDataForChart(params: chartDataQuery) {
+		let body = JSON.stringify(params);
+		return this.api.get('endpoint here', body, null);
+	}
+
 
 }

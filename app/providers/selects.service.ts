@@ -25,7 +25,8 @@ export class SelectsSvc {
   }
 
   public getFilters() {
-		return this.rdataSvc.getMainFiltersData();
+		return this.rdataSvc.getMockMainFiltersData(); // Mocked data
+		//return this.rdataSvc.getMainFiltersData(); // Real data
   }
 
   public getMainNodes(from) {   
@@ -100,7 +101,7 @@ export class SelectsSvc {
 						kpi.market.forEach(market => {
 							if(market.id === market_id) {
 								market.sharebase.forEach(item => {								
-									filters.data.push({ name: item, id: 'null' });	
+									filters.data.push({ name: item, id: item });	
 								});
 							}
 						});

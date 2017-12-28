@@ -2,7 +2,7 @@ import {Component, Input, Output, OnInit, EventEmitter, ChangeDetectionStrategy}
 import { Observable } from 'rxjs';
 
 /* Models & Constants */
-import { selectItem } from '../../constants/select';
+import { selectItem, selected } from '../../constants/select';
 
 @Component({
   selector: 'select-component',
@@ -16,7 +16,7 @@ export class SelectComponent {
 	@Input() next: string;
 	@Input() modificator: string;
 
-	@Output() onItemSelected = new EventEmitter<any>();
+	@Output() onItemSelected = new EventEmitter<selected>();
 
 	private items: Array<selectItem>;
 

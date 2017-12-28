@@ -7,6 +7,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 /* Services */
 import { Config } from '../app.config';
+import { RDataSvc } from '../providers/rdata.service';
 
 /* Constants & Models */
 import { parseChartData } from '../components/chart/chart.parser';
@@ -14,18 +15,20 @@ import { ChartData, chartDataModel } from '../models/chartData.model';
 import { firstPageDialog } from '../constants/dialogs';
 import { sentence, dialogGroup } from '../constants/dialogs';
 import { labels } from '../constants/labels';
-import { select, selectItem } from '../constants/select';
+import { select, selectItem, chartDataQuery } from '../constants/select';
 
 @Component({
 	selector: '<home-page></home-page>',
-	templateUrl: './home.page.html' 
+	templateUrl: './home.page.html',
+	providers: [RDataSvc]
 })
 
 export class HomePageComponent {
-	constructor(private config: Config) { console.log('HomePage component created.') }
+	constructor(private config: Config, private _rdataSvc: RDataSvc) { console.log('HomePage component created.') }
 	
 	public dialog = firstPageDialog;
-	public chartData: any;
+	public filtersVisible: boolean = false;
+	public chartData: Observable<chartDataModel>;
 
 	public typed_1: sentence; 
 	public typed_2: sentence;
@@ -35,14 +38,10 @@ export class HomePageComponent {
 	public typed_2_start: BehaviorSubject<boolean>;
 	public typed_3_start: BehaviorSubject<boolean>;
 
-	private rawFilters: any;
-	private filtersArr: Array<select> = [];
-	public filters$: BehaviorSubject<Array<select>> = new BehaviorSubject([]);
 
 	
 	ngOnInit() {
-		//this.data = this.getRDataMock().map(res => parseChartData(res.json()));
-		//this.setTypeds();
+		this.setTypeds();
 	}
 
 	/* Typed */
@@ -69,17 +68,22 @@ export class HomePageComponent {
 
 
 	/* API handlers */
-	private getChartData() {
-
+	private getChartData(params: chartDataQuery) {
+		this._rdataSvc.getMockRDataForChart(params)
+		.subscribe(
+			res => this.chartData = new Observable(observer => {
+			observer.next(parseChartData(res.json()));
+		}))
 	}	
 
 	/* Event handlers */
-	private showFilters() {
-		console.log('Showing filters...');
-		this.typed_2_start.next(true);
+	private showFilters() {	
+		this.filtersVisible = true;
+		this.typed_2_start.next(true);	
 	}
 
 	private handleSelected(e) {
-		console.log(e);
+		//console.log('handleSelected() returns: ', e);
+		this.getChartData(e);
 	}
 }

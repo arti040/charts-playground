@@ -5,7 +5,9 @@ import { colors } from '../../constants/chartColors';
 import { ChartData, chartDataModel } from '../../models/chartData.model';
 import { chartOpts, breakLabelOpts, rangeOpts, periodLabelOpts, serieOpts, breakOpts, periodOpts } from '../../constants/chartOpts';  
 
-
+/* This is RData -> Highchart.js parser function. 
+ * Ask Tomasz Zdunek for details 
+ */
 export function parseChartData(rdata) {
 
 	let chartData: chartDataModel = new ChartData();
@@ -18,6 +20,8 @@ export function parseChartData(rdata) {
 	Object.keys(serieOpts).map(key => chartData.series.push(serieOpts[key]));
 	chartData.series[4] = Object.assign({}, chartData.series[4], rangeOpts);
 
+
+	/* Main parser loop */
 	rdata.forEach((item, idx, rdata) => {
 
 		// Counting trend
@@ -52,7 +56,7 @@ export function parseChartData(rdata) {
 		slopes.push(getSlope(idx, item.SLOPE));	
 	});
 
-	// Remove empty elements from Array
+	// Remove empty elements from breaks array
 	chartData.xAxis.plotBands = breaks.filter((e) => { return e; });
 
 	// Generating slopes` labels
@@ -61,6 +65,8 @@ export function parseChartData(rdata) {
 	return chartData;
 }
 
+
+/* Helpers */
 function countTrend(
 		data: any, 
 		trend: number, 

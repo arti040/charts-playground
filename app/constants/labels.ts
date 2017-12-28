@@ -10,5 +10,6 @@ export const labels = {
   monthsAfter: 'Months after',
   kpi: 'kpi',
   market: 'market',
-  sharebase: 'sharebase'
+  sharebase: 'sharebase',
+  monthly: 'monthly'
 }

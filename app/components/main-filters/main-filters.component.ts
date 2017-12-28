@@ -1,11 +1,11 @@
 /* Angular */
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 /* Services */
 import { SelectsSvc } from '../../providers/selects.service';
 
 /* Models & Constants */
-import { select, selectItem } from '../../constants/select';
+import { select, selectItem, chartDataQuery } from '../../constants/select';
 import { labels } from '../../constants/labels';
 
 
@@ -16,10 +16,14 @@ import { labels } from '../../constants/labels';
 })
 export class MainFiltersComponent {
 
+  @Output() onAllFiltersSelected = new EventEmitter<chartDataQuery>()
+
   private raw: Array<any>;
   private alive: boolean = true;
   private selects: Array<select> = [];
-  private query: any = {}
+
+  // 28.12.2017 This is hardcoded value (monthly). Don't know what will be later...
+  private query: chartDataQuery = new ChartDataQuery(labels.monthly, null, null, null, null);
   
   constructor(private _selectsSvc: SelectsSvc) {
     console.log('MainFilters component created!'); 
@@ -35,15 +39,20 @@ export class MainFiltersComponent {
       case labels.kpi:
         this.resetSelectsState(); // clear rest of the fileters first     
 
-        this.query.productline_id = e.selected;
+        this.query.product_line = e.selected;
         this.selects[1] = this.getKpis(this.raw, e.selected);
       break;
       case labels.market:
-        this.query.kpi_id = e.selected;
-        this.selects[2] = this.getMarkets(this.raw, this.query.productline_id, e.selected);
+        this.query.kpi = e.selected;
+        this.selects[2] = this.getMarkets(this.raw, this.query.product_line, e.selected);
       break;
       case labels.sharebase:
-        this.selects[3] = this.getSharebases(this.raw, this.query.productline_id, this.query.kpi_id, e.selected);
+        this.query.market = e.selected;
+        this.selects[3] = this.getSharebases(this.raw, this.query.product_line, this.query.kpi, e.selected);
+      break;
+      default:
+        this.query.share_base = e.selected;
+        this.onAllFiltersSelected.emit(this.query);
       break;
     }
   }
@@ -96,4 +105,14 @@ export class MainFiltersComponent {
   private getSharebases(from, id, kpi_id, market_id) {
     return this._selectsSvc.getSharebaseFilters(from, id, kpi_id, market_id);
   }
+}
+
+export class ChartDataQuery {
+  constructor(
+    public frequency: string, 
+    public product_line: string,
+    public kpi: string,
+    public market: string,
+    public share_base: string 
+  ) {}
 }
