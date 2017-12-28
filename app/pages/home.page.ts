@@ -2,11 +2,10 @@
 /* Angular */
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Subject } from 'rxjs/Subject';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 /* Services */
-import { Config } from '../app.config';
 import { RDataSvc } from '../providers/rdata.service';
 
 /* Constants & Models */
@@ -24,41 +23,35 @@ import { select, selectItem, chartDataQuery } from '../constants/select';
 })
 
 export class HomePageComponent {
-	constructor(private config: Config, private _rdataSvc: RDataSvc) { console.log('HomePage component created.') }
+	constructor(private _rdataSvc: RDataSvc) { console.log('HomePage component created.') }
 	
 	public dialog = firstPageDialog;
 	public filtersVisible: boolean = false;
-	public chartData: Observable<chartDataModel>;
+	
+	private rawChartData: chartDataModel;
+	public chartData: Subject<chartDataModel> = new Subject();
 
 	public typed_1: sentence; 
 	public typed_2: sentence;
-	public typed_3: sentence;
 
 	public typed_1_start: BehaviorSubject<boolean>;
 	public typed_2_start: BehaviorSubject<boolean>;
-	public typed_3_start: BehaviorSubject<boolean>;
 
 
-	
 	ngOnInit() {
 		this.setTypeds();
 	}
 
 	/* Typed */
 	private setTypeds(): void {
-		// TODO this could be dynamically created
 		this.typed_1 = this.setTypedData(0, true);
 		this.typed_2 = this.setTypedData(1, true);
-		this.typed_3 = this.setTypedData(0);
 
 		this.typed_1_start = new BehaviorSubject(this.typed_1.autostart);
 		this.typed_2_start = new BehaviorSubject(this.typed_2.autostart);
-		this.typed_3_start = new BehaviorSubject(this.typed_3.autostart);	
 	}
-
 	private setTypedData(idx, samanta?): sentence {
 		let who = samanta ? 'samanta' : 'user'; 
-
 		return { 
 			autostart: this.dialog[who].sentences[idx].autostart, 
 			text: this.dialog[who].sentences[idx].text, 
@@ -71,9 +64,10 @@ export class HomePageComponent {
 	private getChartData(params: chartDataQuery) {
 		this._rdataSvc.getMockRDataForChart(params)
 		.subscribe(
-			res => this.chartData = new Observable(observer => {
-			observer.next(parseChartData(res.json()));
-		}))
+			(res) => {
+				this.rawChartData = parseChartData(res.json());
+				this.chartData.next(this.rawChartData);
+		})
 	}	
 
 	/* Event handlers */
@@ -81,9 +75,10 @@ export class HomePageComponent {
 		this.filtersVisible = true;
 		this.typed_2_start.next(true);	
 	}
-
 	private handleSelected(e) {
-		//console.log('handleSelected() returns: ', e);
 		this.getChartData(e);
+	}
+	private resetChart(e) {
+		this.chartData.next(null);
 	}
 }

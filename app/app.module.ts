@@ -15,8 +15,6 @@ import { ChartComponent } from './components/chart/chart.component';
 import { SelectComponent } from './components/select/select.component';
 import { TypedtextComponent } from './components/typedtext/typedtext.component';
 import { MainFiltersComponent } from './components/main-filters/main-filters.component';
-//import { SelectGroupComponent } from './components/selectGroup/select-group.component';
-//import { UserComponent } from './components/user/user.component';
 
 /* Services */
 import { Config } from './app.config';
@@ -42,8 +40,6 @@ const routes: Routes = appRoutes;
     HomePageComponent,  
     TypedtextComponent,
     MainFiltersComponent
-    //SelectGroupComponent
-    //UserComponent 
   ],
   entryComponents: [ HomePageComponent ],
   imports: [

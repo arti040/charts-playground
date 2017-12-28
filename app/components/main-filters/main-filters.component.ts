@@ -17,6 +17,7 @@ import { labels } from '../../constants/labels';
 export class MainFiltersComponent {
 
   @Output() onAllFiltersSelected = new EventEmitter<chartDataQuery>()
+  @Output() onFiltersReset = new EventEmitter();
 
   private raw: Array<any>;
   private alive: boolean = true;
@@ -37,6 +38,7 @@ export class MainFiltersComponent {
   private loadNextSelectData(e) {
     switch(e.next) {
       case labels.kpi:
+        this.onFiltersReset.emit();
         this.resetSelectsState(); // clear rest of the fileters first     
 
         this.query.product_line = e.selected;

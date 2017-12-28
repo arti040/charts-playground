@@ -18,10 +18,6 @@ import { chartRDataItemModel } from '../models/chartRData.model';
 @Injectable()
 export class DialogSvc {
   constructor(private api: ApiService) { }
-
-	SHOW_CHART() { 
-    return true;
-	}
 	
 	SHOW_FILTERS() {
 		console.log('Showing filters...');
