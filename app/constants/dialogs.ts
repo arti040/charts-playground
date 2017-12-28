@@ -19,10 +19,5 @@ export const firstPageDialog: pageDialog = {
         { text: ['Hi, this is '], autostart: true, action: 'SHOW_FILTERS'}, 
         { text: ['on which I see following events worth exploring:'], autostart: false }
     ]  
-  },
-  user: {
-    sentences: [ 
-        { text: ['I choose traditional period:'], autostart: false, action: 'FILTER_PERIODS' }
-    ]
   }
 }
