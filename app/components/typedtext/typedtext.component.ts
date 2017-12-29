@@ -1,11 +1,10 @@
 /* Angular */
-import { Component, Input, Output, OnInit, OnDestroy, AfterViewInit, EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, OnInit, OnDestroy,EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import * as Typed from 'typed.js';  
 
 /* Models & Constants */
-import { sentence, dialogGroup } from '../../constants/dialogs';
-import { typedOpts, onTypeEnded } from '../../constants/dialog.constants';
+import { sentence, dialogGroup, typedOpts, onTypeEnded } from '../../constants/dialogs';
 
 @Component({
   template: `
@@ -23,11 +22,12 @@ export class TypedtextComponent {
   @Input() typedOpts?: typedOpts; // TODO - custom opts for typed.js, if needed
   @Input() modificator: string; // CSS BEM class modificator
   @Input() startTyping?: Observable<boolean>; //typed.js will wait until this variable is true
+  
   @Output() onTypeEnded = new EventEmitter<onTypeEnded>(); // this fires when text typing is finished
 
   constructor(private el: ElementRef ) { console.log('Typedtext component created.'); }
   
-  opts: typedOpts = {
+  private opts: typedOpts = {
     strings: [],
     typeSpeed: 20,
     backSpeed: 0,
@@ -40,23 +40,23 @@ export class TypedtextComponent {
   
   ngOnInit() {
     if(!this.data) { return console.log('Typedtext Component: no data provided.') }
-    this.startTyping.takeWhile(() => this.alive).subscribe((res) => { 
+    this.startTyping
+    .takeWhile(() => this.alive)
+    .subscribe((res) => { 
       this.runTyped(res);
     });  
   }
 
-  ngOnDestroy() {
-    this.alive = false;
-  }
+  ngOnDestroy(): void { this.alive = false; }
 
-  private runTyped(autorun) {
+  private runTyped(autorun): void {
     if(autorun) {
       let typedContainer = this.el.nativeElement.querySelector('span');      
       this.sentence = new Typed(typedContainer, this.createTypedOpts());
     }  
   }
 
-  private createTypedOpts() {
+  private createTypedOpts(): typedOpts {
     let opts = JSON.parse(JSON.stringify(this.opts));
     opts.strings = this.data.text;
     opts.onComplete = (self) => { this.onTypeEnded.emit({ action: this.data.action }); }     

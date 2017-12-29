@@ -1,4 +1,3 @@
-
 /* Angular */
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -59,7 +58,6 @@ export class HomePageComponent {
 		}
 	}
 
-
 	/* API handlers */
 	private getChartData(params: chartDataQuery) {
 		this._rdataSvc.getMockRDataForChart(params)
@@ -71,14 +69,11 @@ export class HomePageComponent {
 	}	
 
 	/* Event handlers */
-	private showFilters() {	
+	private showFilters():void {	
 		this.filtersVisible = true;
 		this.typed_2_start.next(true);	
 	}
-	private handleSelected(e) {
+	private handleSelected(e):void {
 		this.getChartData(e);
-	}
-	private resetChart(e) {
-		this.chartData.next(null);
 	}
 }

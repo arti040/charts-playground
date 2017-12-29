@@ -24,3 +24,18 @@ export const firstPageDialog: pageDialog = {
     sentences: []
   }
 }
+
+
+export interface onTypeEnded {
+  action?: string
+}
+
+export interface typedOpts {
+  strings: Array<string>,
+  typeSpeed?: number,
+  backSpeed?: number,
+  fadeOut?: boolean,
+  showCursor?: boolean,
+  onComplete?(any): void
+  onStringTyped?(arrayPos: number, self: any): void
+}

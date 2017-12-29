@@ -30,12 +30,12 @@ export class MainFiltersComponent {
     console.log('MainFilters component created!'); 
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getMainNodes();
   }
   
   /* Event handlers */
-  private loadNextSelectData(e) {
+  private loadNextSelectData(e): void {
     switch(e.next) {
       case labels.kpi:
         this.onFiltersReset.emit();
@@ -58,10 +58,9 @@ export class MainFiltersComponent {
       break;
     }
   }
-
-  
+ 
   /* Helpers */
-  private emptySelect(label) {
+  private emptySelect(label): select {
     let item: select = {
       label: label,
       data: []
@@ -69,7 +68,10 @@ export class MainFiltersComponent {
     return item; 
   }
 
-  private resetSelectsState(all?) {  
+  /* resetSelectsState() generates 4 selectes as main filters, were 3 of them are empty 
+   * OR resets states of those last 3, when first is being changed. 
+   */
+  private resetSelectsState(all?): void {  
     if(all) {
       this.selects = [];
       this.selects.push(
@@ -87,7 +89,7 @@ export class MainFiltersComponent {
   }
 
   /* API handlers */
-  private getMainNodes() {
+  private getMainNodes(): void {
     this._selectsSvc.getFilters()
     .takeWhile(() => this.alive)
     .subscribe(res => {
@@ -96,19 +98,20 @@ export class MainFiltersComponent {
     });
   }
 
-  private getKpis(from, id) {
+  private getKpis(from, id): any {
     return this._selectsSvc.getKpiFilters(from, id);
   }
 
-  private getMarkets(from, id, kpi_id) {
+  private getMarkets(from, id, kpi_id): any {
     return this._selectsSvc.getMarketFilters(from, id, kpi_id);
   }
 
-  private getSharebases(from, id, kpi_id, market_id) {
+  private getSharebases(from, id, kpi_id, market_id):any {
     return this._selectsSvc.getSharebaseFilters(from, id, kpi_id, market_id);
   }
 }
 
+/* Simple class for generating empty query object */
 export class ChartDataQuery {
   constructor(
     public frequency: string, 
