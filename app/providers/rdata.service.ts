@@ -36,7 +36,7 @@ export class RDataSvc {
 
 	getRDataForChart(params: chartDataQuery) {
 		let body = JSON.stringify(params);
-		return this.api.get('endpoint here', body, null);
+		return this.api.get('/ocpu/user/zdunek.t/library/SamantaAPI/R/uk_laundry_disruption_df/json', body, null);
 	}
 
 

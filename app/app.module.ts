@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
 /* Modules */
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 //import { HttpClientModule } from '@angular/common/http';
 
 /* Components */
@@ -51,6 +51,6 @@ const routes: Routes = appRoutes;
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))
   ],
   bootstrap: [ AppComponent ],
-  providers: [ ApiService, RDataSvc, Config, DialogSvc, SelectsSvc ]
+  providers: [ ApiService, RDataSvc, Config, DialogSvc, SelectsSvc, Title ]
 })
 export class AppModule { }

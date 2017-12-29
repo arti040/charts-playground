@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class Config {
-  //apiUrl = ' http://137.185.232.100/ocpu/user/zdunek.t/library/samanta/R/';
+  //apiUrl = 'http://137.185.232.100';
   apiUrl = 'http://localhost:8080';
-  appName = 'Dummy App';
+  appName = 'Samanta 2.0';
 }
