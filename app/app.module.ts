@@ -14,6 +14,7 @@ import { HomePageComponent } from './pages/home.page';
 import { ChartComponent } from './components/chart/chart.component';
 import { SelectComponent } from './components/select/select.component';
 import { TypedtextComponent } from './components/typedtext/typedtext.component';
+import { DatatableComponent } from './components/table/table.component';
 import { MainFiltersComponent } from './components/main-filters/main-filters.component';
 
 /* Services */
@@ -28,7 +29,8 @@ import { SelectsSvc } from './providers/selects.service';
 
 /* Vendors */
 import { ChartModule } from 'angular2-highcharts';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 const routes: Routes = appRoutes;
 
@@ -39,6 +41,7 @@ const routes: Routes = appRoutes;
     SelectComponent,
     HomePageComponent,  
     TypedtextComponent,
+    DatatableComponent,
     MainFiltersComponent
   ],
   entryComponents: [ HomePageComponent ],
@@ -46,6 +49,7 @@ const routes: Routes = appRoutes;
     HttpModule,     
     BrowserModule, 
     //HttpClientModule,
+    NgxDatatableModule,
     NgbModule.forRoot(),
     RouterModule.forRoot(routes),
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))

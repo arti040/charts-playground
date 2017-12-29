@@ -15,6 +15,7 @@ import { sentence, dialogGroup } from '../constants/dialogs';
 import { labels } from '../constants/labels';
 import { select, selectItem, chartDataQuery } from '../constants/select';
 
+
 @Component({
 	selector: '<home-page></home-page>',
 	templateUrl: './home.page.html',
@@ -35,8 +36,7 @@ export class HomePageComponent {
 
 	public typed_1_start: BehaviorSubject<boolean>;
 	public typed_2_start: BehaviorSubject<boolean>;
-
-
+	
 	ngOnInit() {
 		this.setTypeds();
 	}
