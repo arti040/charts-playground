@@ -1,6 +1,6 @@
 
 <typedtext-component [data]="this.typed_1" [startTyping]="this.typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component>
-<main-filters (onAllFiltersSelected)="handleSelected($event)" (onFiltersReset)="resetChart()" *ngIf="filtersVisible"></main-filters>
+<main-filters (onAllFiltersSelected)="handleSelected($event)" *ngIf="filtersVisible"></main-filters>
 <typedtext-component [data]="this.typed_2" [startTyping]="this.typed_2_start"></typedtext-component>
 <chart-component class="chart-component" [data]="chartData | async"></chart-component>
 
