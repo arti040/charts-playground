@@ -1,0 +1,23 @@
+
+
+.table
+  &__cell
+    padding: $spacing-small
+    &--marked
+      position: relative
+    &--centered
+      text-align: center
+
+.sortable 
+  cursor: pointer
+  font-weight: bold
+
+.mark-triangle
+  top: 0
+  right: 0
+  width: 0
+  height: 0
+  position: absolute
+  border-style: solid
+  border-width: 4px 0 0 4px
+  border-color: transparent transparent transparent $color-red

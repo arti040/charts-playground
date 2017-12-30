@@ -1,10 +1,13 @@
 
 {
   "title": "Jul 17 - Sep 17 vs. Apr 17 - Jun 17:",
+  "opts": {
+    "scrollable": true
+  },
   "columns": [
-    { "name": "Market", "col_sortable": true, "col_width": 90 },
-    { "name": "Val Shr", "col_sortable": false },
-    { "name": "Val Shr DPP", "col_sortable": false },
+    { "name": "Market", "col_sortable": true, "col_width": 90, "centered": true },
+    { "name": "Val Shr", "centered": true },
+    { "name": "Val Shr DPP" },
     { "name": "Market Size", "col_sortable": true },
     { "name": "Market Size DPP", "col_sortable": true },
     { "name": "Gain", "col_sortable": true },
@@ -13,14 +16,14 @@
   ],
   "rows": [
     { 
-      "market": "Total Great Birtain", 
-      "valShr": 55.8, 
-      "valShrDpp": "+2.2", 
-      "marketSize": 87.918, 
-      "marketSizeDpp": "-314",
-      "gain": 1.983, 
-      "pomeShareOfTotalFrance": 6.7, 
-      "pomeShareOfTotalFranceIpp": 108 
+      "market": { "value": "Total Great Birtain", "action": "SHOW_DETAILED_TABLE" }, 
+      "valShr": { "value": 55.8, "marked": true, "centered": true }, 
+      "valShrDpp": { "value": "+2.2", "color": "orange" }, 
+      "marketSize": { "value": 87.918 }, 
+      "marketSizeDpp": { "value": "-314", "bgColor": "grey--light", "color": "grey--dark" },
+      "gain": { "value": 1.983 }, 
+      "pomeShareOfTotalFrance": { "value": 6.7 }, 
+      "pomeShareOfTotalFranceIpp": { "value": 108 }
     }
   ]
 }

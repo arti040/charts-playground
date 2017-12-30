@@ -1,19 +1,37 @@
 <div *ngIf="data">
   <h4>{{data.title}}</h4>
   <ngx-datatable
+    class="material"
     [rows]="data.rows"
     [columns]="data.columns"
-    >
+    [scrollbarV]="data.opts.scrollable"
+  >
 
     <ngx-datatable-column 
-      *ngFor="let column of data.columns" 
-      name="{{column.name}}" 
-      [width]="column.col_width || config.table.column.width.default"
-      [sortable]="column.col_sortable || false"
+      *ngFor="let item of data.columns" 
+      name="{{item.name}}"      
+      [width]="item.col_width || config.table.column.width.default"
+      [sortable]="item.col_sortable || false"
     >
+      <!-- ngx header template -->
+      <ng-template let-column="column" ngx-datatable-header-template>
+        <div class="table__cell {{ item.centered ? 'table__cell--centered' : '' }}">{{column.name}}</div>
+      </ng-template>
+
+      <!-- ngx row template -->
       <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-        {{value}}
-        <!-- <div [style.backgroundColor]="row.bgColor" [style.color]="row.markColor">{{row.value}}</div> -->
+        <div 
+          [ngClass]="{ 'table__cell--marked': value.marked }"
+          class="
+            table__cell 
+            {{ value.centered ? 'table__cell--centered' : '' }}
+            {{ value.color ? 'color-' + value.color : '' }} 
+            {{ value.bgColor ? 'bg-color-' + value.bgColor : '' }}" 
+        >
+          <div *ngIf="value.marked" class="mark-triangle"></div>
+          <span *ngIf="!value.action">{{value.value}}</span>
+          <a class="link link--bold" *ngIf="value.action" (click)="tableActions['value.action']">{{value.value}}</a>
+        </div>
       </ng-template>
     </ngx-datatable-column>
 

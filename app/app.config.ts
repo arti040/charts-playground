@@ -13,7 +13,7 @@ export class Config {
     column: {
       width: {
         min: 10,
-        default: 70
+        default: 50
       }
     }
   }

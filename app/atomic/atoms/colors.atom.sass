@@ -1,5 +1,55 @@
 
 $color-black: #111
 $color-white: white
+
 $color-blue: #93bdff
 $color-blue--dark: #2158af
+
+$color-grey--light: #f7f7f7
+$color-grey: #e0e0e0
+$color-grey--dark: #a2a2a2
+
+$color-red: #f00
+$color-orange: #ffbd4c
+
+.color
+  &-black
+    color: $color-black
+  &-white
+    color: $color-white
+  &-blue
+    color: $color-blue
+    &--dark
+      color: $color-blue--dark
+  &-grey
+    color: $color-grey
+    &--light
+      color: $color-grey--light
+    &--dark
+      color: $color-grey--dark
+  
+  &-red
+    color: $color-red
+  &-orange
+    color: $color-orange
+
+.bg-color
+  &-black
+    background-color: $color-black
+  &-white
+    background-color: $color-white
+  &-blue
+    background-color: $color-blue
+    &--dark
+      background-color: $color-blue--dark
+  &-grey
+    background-color: $color-grey
+    &--light
+      background-color: $color-grey--light
+    &--dark
+      background-color: $color-grey--dark
+  
+  &-red
+    background-color: $color-red
+  &-orange
+    background-color: $color-orange

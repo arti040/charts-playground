@@ -24,32 +24,34 @@ import { ngx } from '../constants/ngx';
 })
 
 export class HomePageComponent {
-	constructor(private _rdataSvc: RDataSvc) { console.log('HomePage component created.') }
+	constructor(private _rdataSvc: RDataSvc) { console.log('HomePage component created.'); }
 	
 	private alive: boolean = true;
 
-	public dialog: pageDialog = firstPageDialog;
-	public filtersVisible: boolean = false;
+	/* dialgos related */
+	private dialog: pageDialog = firstPageDialog;
+	private filtersVisible: boolean = false;
+	private typed_1: sentence; 
+	private typed_2: sentence;
+	private typed_1_start: BehaviorSubject<boolean>;
+	private typed_2_start: BehaviorSubject<boolean>;
 	
+	/* chart related */
 	private rawChartData: chartDataModel;
-	public chartData: Subject<chartDataModel> = new Subject();
+	private chartData: Subject<chartDataModel> = new Subject();
 
+	/* ngx related */
 	private rawSmallTableData: ngx;
-	public smallTableData: Subject<ngx> = new Subject();
+	private smallTableData: Subject<ngx> = new Subject();
 
-	public typed_1: sentence; 
-	public typed_2: sentence;
-
-	public typed_1_start: BehaviorSubject<boolean>;
-	public typed_2_start: BehaviorSubject<boolean>;
 	
-	ngOnInit() {
+	ngOnInit():void {
 		this.setTypeds();
 		this.getSmallTableData();
 	}
 
 	/* Typed */
-	private setTypeds(): void {
+	private setTypeds():void {
 		this.typed_1 = this.setTypedData(0, true);
 		this.typed_2 = this.setTypedData(1, true);
 
@@ -66,7 +68,7 @@ export class HomePageComponent {
 	}
 
 	/* API handlers */
-	private getChartData(params: chartDataQuery) {
+	private getChartData(params: chartDataQuery):void {
 		this._rdataSvc.getMockRDataForChart(params)
 		.subscribe(
 			(res) => {
@@ -74,7 +76,7 @@ export class HomePageComponent {
 				this.chartData.next(this.rawChartData);
 		});
 	}	
-	private getSmallTableData() {
+	private getSmallTableData():void {
 		this._rdataSvc.getDataForSmallTable()
 		.takeWhile(() => this.alive )
 		.subscribe(
