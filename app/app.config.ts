@@ -9,4 +9,12 @@ export class Config {
   //apiUrl = 'http://137.185.232.100';
   apiUrl = 'http://localhost:8080';
   appName = 'Samanta 2.0';
+  table = {
+    column: {
+      width: {
+        min: 10,
+        default: 70
+      }
+    }
+  }
 }

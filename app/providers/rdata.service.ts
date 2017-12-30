@@ -29,6 +29,11 @@ export class RDataSvc {
 		return this.api.get('/api/filters.json');
 	}
 
+	/* For local dev purpose only*/
+	getDataForSmallTable() {
+		return this.api.get('/api/small-table.json');
+	}
+
 	/* Real calls */
 	getMainFiltersData() {
 		return this.api.get('endpoint here');

@@ -10,10 +10,11 @@ import { RDataSvc } from '../providers/rdata.service';
 /* Constants & Models */
 import { parseChartData } from '../components/chart/chart.parser';
 import { ChartData, chartDataModel } from '../models/chartData.model';
-import { firstPageDialog } from '../constants/dialogs';
+import { firstPageDialog, pageDialog } from '../constants/dialogs';
 import { sentence, dialogGroup } from '../constants/dialogs';
 import { labels } from '../constants/labels';
 import { select, selectItem, chartDataQuery } from '../constants/select';
+import { ngx } from '../constants/ngx'; 
 
 
 @Component({
@@ -25,11 +26,16 @@ import { select, selectItem, chartDataQuery } from '../constants/select';
 export class HomePageComponent {
 	constructor(private _rdataSvc: RDataSvc) { console.log('HomePage component created.') }
 	
-	public dialog = firstPageDialog;
+	private alive: boolean = true;
+
+	public dialog: pageDialog = firstPageDialog;
 	public filtersVisible: boolean = false;
 	
 	private rawChartData: chartDataModel;
 	public chartData: Subject<chartDataModel> = new Subject();
+
+	private rawSmallTableData: ngx;
+	public smallTableData: Subject<ngx> = new Subject();
 
 	public typed_1: sentence; 
 	public typed_2: sentence;
@@ -39,6 +45,7 @@ export class HomePageComponent {
 	
 	ngOnInit() {
 		this.setTypeds();
+		this.getSmallTableData();
 	}
 
 	/* Typed */
@@ -65,8 +72,17 @@ export class HomePageComponent {
 			(res) => {
 				this.rawChartData = parseChartData(res.json());
 				this.chartData.next(this.rawChartData);
-		})
+		});
 	}	
+	private getSmallTableData() {
+		this._rdataSvc.getDataForSmallTable()
+		.takeWhile(() => this.alive )
+		.subscribe(
+			(res) => {
+				this.rawSmallTableData = res.json();
+				this.smallTableData.next(this.rawSmallTableData);
+		});
+	}
 
 	/* Event handlers */
 	private showFilters():void {	

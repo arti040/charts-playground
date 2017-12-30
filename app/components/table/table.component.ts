@@ -1,9 +1,10 @@
 /* Angular */
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs';
 
 /* Models & Constants */
 import { ngx } from '../../constants/ngx'; 
+import { Config } from '../../app.config';
 
 /* Vendors */
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
@@ -11,46 +12,16 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'datatable',
-  template: `
-    <div>
-      <ngx-datatable
-        [rows]="rows"
-        [columns]="columns">
-        
-        //   <ng-template let-row="row" let-value="value">
-        //     <div>Name: {{row.name.label}}, {{value}}</div>
-        //   </ng-template>
-
-        <ngx-datatable-column name="Name" [width]="300">
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <div [style.backgroundColor]="value.bgColor" [style.color]="value.markColor">{{value.label}}</div>
-          </ng-template>
-        </ngx-datatable-column>
-
-        <ngx-datatable-column name="gender" [width]="100">
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <div [style.backgroundColor]="value.bgColor" [style.color]="value.markColor">{{value}}</div>
-          </ng-template>
-        </ngx-datatable-column>
-
-        </ngx-datatable>
-  
-    </div>
-    
-  `
+  templateUrl: './table.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush  
 })
 export class DatatableComponent {
 
-  @Input() data: Observable<ngx>;
+  @Input() data: ngx;
 
-  private rows = [
-    { name: { label: 'Austin', bgColor: '#fc0', markColor: 'red', markTriangle: true }, gender: 'Male', company: 'Swimlane' },
-    { name: { label: 'Dany', bgColor: '#111', markColor: 'white', markTriangle: false }, gender: 'Male', company: 'KFC' },
-    { name: { label: 'Molly', markColor: 'green' }, gender: 'Female', company: 'Burger King' },
-  ];
-  private columns = [
-    { prop: 'name' },
-    { name: 'Gender' },
-    { name: 'Company' }
-  ];
+  constructor(private config: Config) {}
+
+  ngOnChanges() {
+    console.log(this.data);
+  }
 }
