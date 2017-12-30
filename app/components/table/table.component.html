@@ -8,13 +8,15 @@
   >
 
     <ngx-datatable-column 
-      *ngFor="let item of data.columns" 
+      *ngFor="let item of data.columns; let idx = index" 
       name="{{item.name}}"      
       [width]="item.col_width || config.table.column.width.default"
       [sortable]="item.col_sortable || false"
     >
       <!-- ngx header template -->
       <ng-template let-column="column" ngx-datatable-header-template>
+
+        {{column.width}} {{ data.columns[idx+1].col_width || config.table.column.width.default }}
         <div class="table__cell {{ item.centered ? 'table__cell--centered' : '' }}">{{column.name}}</div>
       </ng-template>
 
