@@ -43,11 +43,15 @@ export class HomePageComponent {
 	/* ngx related */
 	private rawSmallTableData: ngx;
 	private smallTableData: Subject<ngx> = new Subject();
+	private rawBigTableData: ngx;
+	private bigTableData: Subject<ngx> = new Subject();
+
 
 	
 	ngOnInit():void {
 		this.setTypeds();
-		this.getSmallTableData();
+		//this.getSmallTableData();
+		this.getBigTableData()
 	}
 
 	/* Typed */
@@ -83,6 +87,15 @@ export class HomePageComponent {
 			(res) => {
 				this.rawSmallTableData = res.json();
 				this.smallTableData.next(this.rawSmallTableData);
+		});
+	}
+	private getBigTableData():void {
+		this._rdataSvc.getDataForBigTable()
+		.takeWhile(() => this.alive )
+		.subscribe(
+			(res) => {
+				this.rawBigTableData = res.json();
+				this.bigTableData.next(this.rawBigTableData);
 		});
 	}
 

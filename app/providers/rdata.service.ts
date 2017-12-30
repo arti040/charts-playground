@@ -33,6 +33,9 @@ export class RDataSvc {
 	getDataForSmallTable() {
 		return this.api.get('/api/small-table.json');
 	}
+	getDataForBigTable() {
+		return this.api.get('/api/big-table.json');
+	}
 
 	/* Real calls */
 	getMainFiltersData() {

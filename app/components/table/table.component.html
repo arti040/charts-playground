@@ -1,5 +1,5 @@
 <div *ngIf="data">
-  <h4>{{data.title}}</h4>
+  <h4 *ngIf="data.title">{{data.title}}</h4>
   <ngx-datatable
     class="material"
     [rows]="data.rows"
@@ -29,6 +29,7 @@
             {{ value.bgColor ? 'bg-color-' + value.bgColor : '' }}" 
         >
           <div *ngIf="value.marked" class="mark-triangle"></div>
+          <i *ngIf="value.icon" class="material-icons" [style.fontSize]="value.iconSize || config.table.icon.size.small">{{value.icon}}</i>
           <span *ngIf="!value.action">{{value.value}}</span>
           <a class="link link--bold" *ngIf="value.action" (click)="tableActions['value.action']">{{value.value}}</a>
         </div>

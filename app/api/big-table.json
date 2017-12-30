@@ -1,0 +1,21 @@
+
+{
+  "title": "",
+  "opts": {
+    "scrollable": false
+  },
+  "columns": [
+    { "name": "Product", "col_sortable": true, "col_width": 190 },
+    { "name": "Trend"},
+    { "name": "Val Shr"},
+    { "name": "Val Shr Dpp"},
+    { "name": "Value"},
+    { "name": "IPP"}
+  ],
+  "rows": [
+    { 
+      "product": { "value": "Procter&Gamble", "action": "SHOW_GRAPH", "icon": "share", "iconSize": "12px" },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "18px" } 
+    }
+  ]
+}

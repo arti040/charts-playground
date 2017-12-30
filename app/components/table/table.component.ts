@@ -20,7 +20,7 @@ export class DatatableComponent {
   @Input() data: ngx;
 
   constructor(private config: Config) { console.log('Table component created.'); }
-  // ngOnChanges() { console.log(this.data); }
+  ngOnChanges() { console.log(this.data); }
 }
 
 

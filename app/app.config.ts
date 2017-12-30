@@ -15,6 +15,12 @@ export class Config {
         min: 10,
         default: 50
       }
+    },
+    icon: {
+      size: {
+        small: '12px'
+      },
+      color: {}
     }
   }
 }
