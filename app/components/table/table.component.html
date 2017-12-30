@@ -1,0 +1,21 @@
+<div *ngIf="data">
+  <h4>{{data.title}}</h4>
+  <ngx-datatable
+    [rows]="data.rows"
+    [columns]="data.columns"
+    >
+
+    <ngx-datatable-column 
+      *ngFor="let column of data.columns" 
+      name="{{column.name}}" 
+      [width]="column.col_width || config.table.column.width.default"
+      [sortable]="column.col_sortable || false"
+    >
+      <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+        {{value}}
+        <!-- <div [style.backgroundColor]="row.bgColor" [style.color]="row.markColor">{{row.value}}</div> -->
+      </ng-template>
+    </ngx-datatable-column>
+
+  </ngx-datatable>
+</div>
