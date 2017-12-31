@@ -2,8 +2,8 @@ import { colors } from './chartColors';
 import { labels } from './labels';
 
 export const chartOpts = {
-  width: 710,
-  marginRight: 220,
+  width: 1160,
+  marginRight: 160,
   legend: {
     align: 'right', 
     verticalAlign: 'middle', 
@@ -29,7 +29,8 @@ export const breakOpts = {
   color: null,
   label: breakLabelOpts,
   from: null,
-  to: null
+  to: null,
+  events: {}
 }
 
 export const rangeOpts = {

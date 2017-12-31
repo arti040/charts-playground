@@ -1,5 +1,6 @@
 /* Angular */
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter,
+  trigger, state, animate, transition, style } from '@angular/core';
 
 /* Services */
 import { SelectsSvc } from '../../providers/selects.service';
@@ -12,16 +13,25 @@ import { labels } from '../../constants/labels';
 @Component({
   selector: 'main-filters',
   templateUrl: './main-filters.component.html',
-  providers: [SelectsSvc]
+  providers: [SelectsSvc],
+  animations: [
+    trigger('visibilityChanged', [
+      state('shown' , style({ opacity: 1 })),
+      state('hidden', style({ opacity: 0 })),
+      transition('hidden => shown', animate('0.5s')),
+    ])
+  ]
 })
 export class MainFiltersComponent {
 
+  @Input() isVisible: boolean = false;
   @Output() onAllFiltersSelected = new EventEmitter<chartDataQuery>()
   @Output() onFiltersReset = new EventEmitter();
 
   private raw: Array<any>;
   private alive: boolean = true;
   private selects: Array<select> = [];
+  private visibility: string = 'hidden';
 
   // 28.12.2017 This is hardcoded value (monthly). Don't know what will be later...
   private query: chartDataQuery = new ChartDataQuery(labels.monthly, null, null, null, null);
@@ -32,6 +42,11 @@ export class MainFiltersComponent {
 
   ngOnInit(): void {
     this.getMainNodes();
+  }
+
+  ngOnChanges() {
+    console.log('Visibility changed.');
+    this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
   
   /* Event handlers */

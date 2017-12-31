@@ -1,7 +1,6 @@
 <div *ngIf="data">
   <h4 *ngIf="data.title">{{data.title}}</h4>
   <ngx-datatable
-    class="material"
     [rows]="data.rows"
     [columns]="data.columns"
     [scrollbarV]="data.opts.scrollable"

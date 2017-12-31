@@ -106,6 +106,7 @@ function addPlotBreaks(opts: any, idx: number, brk_ind: number, brk_shifts_abs: 
 		if(brk_ind === 1) {		
 			copy.from = idx-1;
 			copy.to = idx;
+			copy.events.click = () => { console.log('Click!'); }
 			brk_shifts_abs > 0 ? copy.color = colors.green : copy.color = colors.rose;
 			return copy;
 		}

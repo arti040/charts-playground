@@ -7,7 +7,7 @@
   "columns": [
     { "name": "product", "label": "Product", "frozen": true, "col_sortable": true, "col_width": 260 },
     { "name": "trend", "label": "Trend", "frozen": true },
-    { "name": "valShr", "label": "Val Share", "frozen": true },
+    { "name": "valShr", "label": "Val Share", "frozen": true, "col_width": 80, "centered": true },
     { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 80, "frozen": true },
     { "name": "tdpValue", "label": "Value", "group": "TDP WD", "centered": true },
     { "name": "tdpIpp", "label": "IPP", "col_width": 50, "centered": true },

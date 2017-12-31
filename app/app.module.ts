@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 
 /* Modules */
 import { BrowserModule, Title } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { HttpClientModule } from '@angular/common/http';
 
 /* Components */
@@ -51,6 +52,7 @@ const routes: Routes = appRoutes;
     //HttpClientModule,
     NgxDatatableModule,
     NgbModule.forRoot(),
+    BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))
   ],

@@ -12,13 +12,14 @@
 
 
 .ngx-datatable
-  font-size: 1rem
+  font-size: 12px
   margin-top: $spacing-medium
   margin-bottom: $spacing-huge
 
+
 .table
   &__cell
-    padding: $spacing-small
+    //padding: $spacing-small
     &--marked
       position: relative
     &--centered
@@ -27,11 +28,12 @@
   &__column-group-wrapper
     position: relative
   &__column-group
-    top: -$spacing-large
+    top: -$spacing-small * 4
     left: 2px
     position: absolute
     text-align: center
-    border-bottom: 1px $color-white solid
+    font-size: 11px
+    border-bottom: 1px $color-grey solid
 
 
 

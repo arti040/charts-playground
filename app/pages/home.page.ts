@@ -28,13 +28,15 @@ export class HomePageComponent {
 	
 	private alive: boolean = true;
 
-	/* dialgos related */
+	/* dialogs related */
 	private dialog: pageDialog = firstPageDialog;
-	private filtersVisible: boolean = false;
 	private typed_1: sentence; 
 	private typed_2: sentence;
 	private typed_1_start: BehaviorSubject<boolean>;
 	private typed_2_start: BehaviorSubject<boolean>;
+
+	/* main filters related */
+	private filtersVisible: boolean = false;
 	
 	/* chart related */
 	private rawChartData: chartDataModel;
@@ -50,8 +52,8 @@ export class HomePageComponent {
 	
 	ngOnInit():void {
 		this.setTypeds();
-		this.getSmallTableData();
-		this.getBigTableData()
+		//this.getSmallTableData();
+		//this.getBigTableData()
 	}
 
 	/* Typed */
