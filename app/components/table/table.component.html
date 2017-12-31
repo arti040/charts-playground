@@ -12,6 +12,7 @@
       name="{{item.name}}"      
       [width]="item.col_width || config.table.column.width.default"
       [sortable]="item.col_sortable || false"
+      [frozenLeft]="item.frozen"
     >
       <!-- ngx header template -->
       <ng-template let-column="column" ngx-datatable-header-template>

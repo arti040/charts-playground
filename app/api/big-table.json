@@ -2,13 +2,13 @@
 {
   "title": "",
   "opts": {
-    "scrollable": false
+    "scrollable": true
   },
   "columns": [
-    { "name": "product", "label": "Product", "col_sortable": true, "col_width": 260 },
-    { "name": "trend", "label": "Trend"},
-    { "name": "valShr", "label": "Val Share"},
-    { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 80 },
+    { "name": "product", "label": "Product", "frozen": true, "col_sortable": true, "col_width": 260 },
+    { "name": "trend", "label": "Trend", "frozen": true },
+    { "name": "valShr", "label": "Val Share", "frozen": true },
+    { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 80, "frozen": true },
     { "name": "tdpValue", "label": "Value", "group": "TDP WD", "centered": true },
     { "name": "tdpIpp", "label": "IPP", "col_width": 50, "centered": true },
     { "name": "avgSuValue", "label": "Value", "group": "Avg SU Price" },

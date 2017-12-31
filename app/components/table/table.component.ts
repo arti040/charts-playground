@@ -39,3 +39,4 @@ export class DatatableComponent {
 // iconSize - size of an icon (px) or default one from app.config file
 // iconColor - color of an icons as string - see colors.atom
 // padding - padding for first row item
+// frozen - pinning of columns
