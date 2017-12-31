@@ -1,4 +1,15 @@
 
+/* This is a hack for groupped columns only 
+ * Remove it when ngx-datatable will get true groupped
+ * columns feature
+ */
+
+.ngx-datatable,
+.ngx-datatable .table__column-group,
+.ngx-datatable .datatable-header,
+.ngx-datatable .datatable-header-cell
+  overflow: visible !important
+
 
 .table
   &__cell
@@ -7,6 +18,16 @@
       position: relative
     &--centered
       text-align: center
+
+  &__column-group-wrapper
+    position: relative
+  &__column-group
+    top: -10px
+    left: 2px
+    position: absolute
+    text-align: center
+    border-bottom: 1px $color-white solid
+
 
 
 /* Elements in tables */
@@ -26,3 +47,4 @@
 
 .material-icons
   vertical-align: middle
+

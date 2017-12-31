@@ -9,8 +9,16 @@
     { "name": "Trend"},
     { "name": "Val Shr"},
     { "name": "Val Shr Dpp"},
-    { "name": "Value"},
-    { "name": "IPP"}
+    { "name": "Value", "group": "TDP WD" },
+    { "name": "IPP", "col_width": 50, "centered": true },
+    { "name": "Value", "group": "Avg SU Price" },
+    { "name": "IPP", "col_width": 50, "centered": true },
+    { "name": "Value", "group": "Promo SU Price" },
+    { "name": "IPP", "col_width": 50, "centered": true },
+    { "name": "Value", "group": "Reg SU Price" },
+    { "name": "IPP", "col_width": 50, "centered": true },
+    { "name": "Value", "group": "Any Promo" },
+    { "name": "IPP", "col_width": 50, "centered": true }
   ],
   "rows": [
     { 

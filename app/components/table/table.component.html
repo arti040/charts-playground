@@ -15,9 +15,23 @@
     >
       <!-- ngx header template -->
       <ng-template let-column="column" ngx-datatable-header-template>
+        <!-- This is a hack. Ngx-datable still has groupped columns feature -->
+        <div *ngIf="item.group" class="table__column-group-wrapper text--center">
+          <div       
+            class="table__column-group" 
+            [style.width]="column.width + data.columns[idx+1].col_width - 4 + 'px'"
+          >
+            {{item.group}}
+          </div>
 
-        {{column.width}} {{ data.columns[idx+1].col_width || config.table.column.width.default }}
-        <div class="table__cell {{ item.centered ? 'table__cell--centered' : '' }}">{{column.name}}</div>
+          <div class="table__cell">
+            <div>{{column.name}}</div>
+          </div>
+        </div>
+        <!-- no groupped columns -->
+        <div *ngIf="!item.group" class="table__cell {{ item.centered ? 'table__cell--centered' : '' }}">
+          <div>{{column.name}}</div>
+        </div>
       </ng-template>
 
       <!-- ngx row template -->
