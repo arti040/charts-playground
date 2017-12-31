@@ -5,25 +5,225 @@
     "scrollable": false
   },
   "columns": [
-    { "name": "Product", "col_sortable": true, "col_width": 190 },
-    { "name": "Trend"},
-    { "name": "Val Shr"},
-    { "name": "Val Shr Dpp"},
-    { "name": "Value", "group": "TDP WD" },
-    { "name": "IPP", "col_width": 50, "centered": true },
-    { "name": "Value", "group": "Avg SU Price" },
-    { "name": "IPP", "col_width": 50, "centered": true },
-    { "name": "Value", "group": "Promo SU Price" },
-    { "name": "IPP", "col_width": 50, "centered": true },
-    { "name": "Value", "group": "Reg SU Price" },
-    { "name": "IPP", "col_width": 50, "centered": true },
-    { "name": "Value", "group": "Any Promo" },
-    { "name": "IPP", "col_width": 50, "centered": true }
+    { "name": "product", "label": "Product", "col_sortable": true, "col_width": 260 },
+    { "name": "trend", "label": "Trend"},
+    { "name": "valShr", "label": "Val Share"},
+    { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 80 },
+    { "name": "tdpValue", "label": "Value", "group": "TDP WD", "centered": true },
+    { "name": "tdpIpp", "label": "IPP", "col_width": 50, "centered": true },
+    { "name": "avgSuValue", "label": "Value", "group": "Avg SU Price" },
+    { "name": "avgSuIpp", "label": "IPP", "col_width": 50, "centered": true },
+    { "name": "promoSuValue", "label": "Value", "group": "Promo SU Price" },
+    { "name": "promoSuIpp", "label": "IPP", "col_width": 50, "centered": true },
+    { "name": "regSuValue", "label": "Value", "group": "Reg SU Price" },
+    { "name": "regSuIpp", "label": "IPP", "col_width": 50, "centered": true },
+    { "name": "anyPromoValue", "label": "Value", "group": "Any Promo" },
+    { "name": "anyPromoIpp", "label": "IPP", "col_width": 50, "centered": true }
   ],
   "rows": [
     { 
-      "product": { "value": "Procter&Gamble", "action": "SHOW_GRAPH", "icon": "share", "iconSize": "12px" },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "18px" } 
+      "product": { "value": "Procter&Gamble", "action": "SHOW_GRAPH", "bgColor": "blue", "icon": "share", "iconSize": "12px" },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "bgColor": "blue", "iconColor": "green" }, 
+      "valShr": { "value": 56.5, "centered": true, "bgColor": "blue" },
+      "valShrDpp": { "value": -1.6, "centered": true, "bgColor": "blue" },
+
+      "tdpValue": { "value": 5.789, "centered": true, "bgColor": "blue" },
+      "tdpIpp": { "value": 104.2, "color": "orange", "centered": true, "bgColor": "blue" },
+
+      "avgSuValue": { "value": 26.1, "centered": true, "bgColor": "blue" },
+      "avgSuIpp": { "value": 104.6, "color": "orange", "centered": true, "bgColor": "blue" },
+
+      "promoSuValue": { "value": 23.2, "centered": true, "bgColor": "blue" },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true , "bgColor": "blue"},
+
+      "regSuValue": { "value": 27.3, "centered": true, "bgColor": "blue" },
+      "regSuIpp": { "value": 100.3, "color": "orange", "centered": true, "bgColor": "blue" },
+
+      "anyPromoValue": { "value": 57.2, "centered": true, "bgColor": "blue" },
+      "anyPromoIpp": { "value": 76.4, "color": "blue--dark", "centered": true, "bgColor": "blue" }
+    },
+    { 
+      "product": { 
+        "value": "JUMBO BOX / TAPED DIAPER / OTHER / BABY DRY / JUNIOR (PAMPERS / POX / LARGE SIZES / 72X)", 
+        "icon": "insert_chart", 
+        "iconSize": "12px",
+        "iconColor": "red",
+        "padding": true
+      },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "valShr": { "value": 1.8, "centered": true },
+      "valShrDpp": { "value": -1.5, "centered": true },
+
+      "tdpValue": { "value": 99, "centered": true },
+      "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
+
+      "avgSuValue": { "value": 26.0, "centered": true },
+      "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
+
+      "promoSuValue": { "value": 23.2, "centered": true },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true },
+
+      "regSuValue": { "value": 30.8, "centered": true },
+      "regSuIpp": { "value": 116.9, "color": "orange", "centered": true },
+
+      "anyPromoValue": { "value": 64.1, "centered": true },
+      "anyPromoIpp": { "value": 64.9, "color": "blue--dark", "centered": true }
+    },
+    { 
+      "product": { 
+        "value": "MEGA PACK / BABY DRY (PAMPERS / TAPED DIAPER / OTHER / POX)", 
+        "icon": "insert_chart", 
+        "iconSize": "12px",
+        "iconColor": "red",
+        "padding": true
+      },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "valShr": { "value": 1.8, "centered": true },
+      "valShrDpp": { "value": -1.5, "centered": true },
+
+      "tdpValue": { "value": 99, "centered": true },
+      "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
+
+      "avgSuValue": { "value": 26.0, "centered": true },
+      "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
+
+      "promoSuValue": { "value": 23.2, "centered": true },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true },
+
+      "regSuValue": { "value": 30.8, "centered": true },
+      "regSuIpp": { "value": 116.9, "color": "orange", "centered": true },
+
+      "anyPromoValue": { "value": 64.1, "centered": true },
+      "anyPromoIpp": { "value": 64.9, "color": "blue--dark", "centered": true }
+    },
+    { 
+      "product": { 
+        "value": "VALUE / POX / LARGE SIZES / TAPED DIAPER / BABY DRY / GIANT/XL", 
+        "icon": "insert_chart", 
+        "iconSize": "12px",
+        "iconColor": "green",
+        "padding": true
+      },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "valShr": { "value": 1.8, "centered": true },
+      "valShrDpp": { "value": -1.5, "centered": true },
+
+      "tdpValue": { "value": 99, "centered": true },
+      "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
+
+      "avgSuValue": { "value": 26.0, "centered": true },
+      "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
+
+      "promoSuValue": { "value": 23.2, "centered": true },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true },
+
+      "regSuValue": { "value": 30.8, "centered": true },
+      "regSuIpp": { "value": 116.9, "color": "orange", "centered": true },
+
+      "anyPromoValue": { "value": 64.1, "centered": true },
+      "anyPromoIpp": { "value": 64.9, "color": "blue--dark", "centered": true }
+    },
+    { 
+      "product": { "value": "RETAILER BRAND COMPANIES", "action": "SHOW_GRAPH", "bgColor": "blue", "icon": "share", "iconSize": "12px" },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "bgColor": "blue", "iconColor": "green" }, 
+      "valShr": { "value": 56.5, "centered": true, "bgColor": "blue" },
+      "valShrDpp": { "value": -1.6, "centered": true, "bgColor": "blue" },
+
+      "tdpValue": { "value": 5.789, "centered": true, "bgColor": "blue" },
+      "tdpIpp": { "value": 104.2, "color": "orange", "centered": true, "bgColor": "blue" },
+
+      "avgSuValue": { "value": 26.1, "centered": true, "bgColor": "blue" },
+      "avgSuIpp": { "value": 104.6, "color": "orange", "centered": true, "bgColor": "blue" },
+
+      "promoSuValue": { "value": 23.2, "centered": true, "bgColor": "blue" },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true , "bgColor": "blue"},
+
+      "regSuValue": { "value": 27.3, "centered": true, "bgColor": "blue" },
+      "regSuIpp": { "value": 100.3, "color": "orange", "centered": true, "bgColor": "blue" },
+
+      "anyPromoValue": { "value": 57.2, "centered": true, "bgColor": "blue" },
+      "anyPromoIpp": { "value": 76.4, "color": "blue--dark", "centered": true, "bgColor": "blue" }
+    },
+    { 
+      "product": { 
+        "value": "NUTMEG / OTHER / LARGE SIZES / ULTRA DRY / TAPED DIAPERL", 
+        "icon": "insert_chart", 
+        "iconSize": "12px",
+        "iconColor": "green",
+        "padding": true
+      },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "valShr": { "value": 1.8, "centered": true },
+      "valShrDpp": { "value": -1.5, "centered": true },
+
+      "tdpValue": { "value": 99, "centered": true },
+      "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
+
+      "avgSuValue": { "value": 26.0, "centered": true },
+      "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
+
+      "promoSuValue": { "value": 23.2, "centered": true },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true },
+
+      "regSuValue": { "value": 30.8, "centered": true },
+      "regSuIpp": { "value": 116.9, "color": "orange", "centered": true },
+
+      "anyPromoValue": { "value": 64.1, "centered": true },
+      "anyPromoIpp": { "value": 64.9, "color": "blue--dark", "centered": true }
+    },
+    { 
+      "product": { 
+        "value": "UTMEG / OTHER / LARGE SIZES / ULTRA DRY / NON TAPED DIAPER (POX / GIANT/XL / CARRY / 19X)", 
+        "icon": "insert_chart", 
+        "iconSize": "12px",
+        "iconColor": "green",
+        "padding": true
+      },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "valShr": { "value": 1.8, "centered": true },
+      "valShrDpp": { "value": -1.5, "centered": true },
+
+      "tdpValue": { "value": 99, "centered": true },
+      "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
+
+      "avgSuValue": { "value": 26.0, "centered": true },
+      "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
+
+      "promoSuValue": { "value": 23.2, "centered": true },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true },
+
+      "regSuValue": { "value": 30.8, "centered": true },
+      "regSuIpp": { "value": 116.9, "color": "orange", "centered": true },
+
+      "anyPromoValue": { "value": 64.1, "centered": true },
+      "anyPromoIpp": { "value": 64.9, "color": "blue--dark", "centered": true }
+    },
+    { 
+      "product": { 
+        "value": "NUTMEG / OTHER / LARGE SIZES / ULTRA DRY PANTS / JUNIOR (POX / NON TAPED DIAPER / CARRY / 20X)", 
+        "icon": "insert_chart", 
+        "iconSize": "12px",
+        "iconColor": "green",
+        "padding": true
+      },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "valShr": { "value": 1.8, "centered": true },
+      "valShrDpp": { "value": -1.5, "centered": true },
+
+      "tdpValue": { "value": 99, "centered": true },
+      "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
+
+      "avgSuValue": { "value": 26.0, "centered": true },
+      "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
+
+      "promoSuValue": { "value": 23.2, "centered": true },
+      "promoSuIpp": { "value": 102.7, "color": "orange", "centered": true },
+
+      "regSuValue": { "value": 30.8, "centered": true },
+      "regSuIpp": { "value": 116.9, "color": "orange", "centered": true },
+
+      "anyPromoValue": { "value": 64.1, "centered": true },
+      "anyPromoIpp": { "value": 64.9, "color": "blue--dark", "centered": true }
     }
   ]
 }
