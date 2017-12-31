@@ -39,6 +39,8 @@ $spacing-names: 'left', 'top', 'right', 'bottom'
 /// @name Modifier spacing classes generator
 =generateSpacingModifierClasses($name, $direction:false)
   @if $direction == false
+    &--tiny
+      #{$name}: $spacing-tiny !important
     &--base
       #{$name}: $spacing-base !important
     &--small
@@ -47,9 +49,13 @@ $spacing-names: 'left', 'top', 'right', 'bottom'
       #{$name}: $spacing-medium !important
     &--large
       #{$name}: $spacing-large !important
+    &--huge
+      #{$name}: $spacing-huge !important
     &--none
       #{$name}: 0 !important
   @else
+    &--tiny
+      #{$name}: $spacing-tiny !important
     &--base
       #{$name}-#{$direction}: $spacing-base !important
     &--small
@@ -58,6 +64,8 @@ $spacing-names: 'left', 'top', 'right', 'bottom'
       #{$name}-#{$direction}: $spacing-medium !important
     &--large
       #{$name}-#{$direction}: $spacing-large !important
+    &--huge
+      #{$name}: $spacing-huge !important
     &--none
       #{$name}-#{$direction}: 0 !important
 

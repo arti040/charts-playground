@@ -37,4 +37,5 @@ export class DatatableComponent {
 // marked - adds a red traingle via CSS class to marked ngx' table cell 
 // icon - icon as a google-material-icons CSS class
 // iconSize - size of an icon (px) or default one from app.config file
-// (they sometimes need it - ask Tomek Zdunek for details)
+// iconColor - color of an icons as string - see colors.atom
+// padding - padding for first row item

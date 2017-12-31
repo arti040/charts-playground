@@ -5,23 +5,23 @@
     "scrollable": true
   },
   "columns": [
-    { "name": "Market", "col_sortable": true, "col_width": 90, "centered": true },
-    { "name": "Val Shr", "centered": true },
-    { "name": "Val Shr DPP" },
-    { "name": "Market Size", "col_sortable": true },
-    { "name": "Market Size DPP", "col_sortable": true },
-    { "name": "Gain", "col_sortable": true },
-    { "name": "POME share of TOTAL FRANCE", "col_sortable": true, "col_width": 120 },
-    { "name": "POME share of TOTAL FRANCE:IPP", "col_sortable": true, "col_width": 150 }
+    { "name": "market", "label": "Market", "col_sortable": true, "col_width": 120 },
+    { "name": "valShr", "label": "Val Share", "centered": true, "col_width": 100 },
+    { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 100, "centered": true },
+    { "name": "marketSize", "label": "Market Size", "col_sortable": true, "col_width": 80, "centered": true },
+    { "name": "marketSizeDpp", "label": "Market Size DPP", "col_sortable": true, "col_width": 100, "centered": true },
+    { "name": "gain", "label": "Gain", "col_sortable": true, "col_width": 60, "centered": true },
+    { "name": "pomeShareOfTotalFrance", "label": "Pome Share Of Total France", "col_sortable": true, "col_width": 160 },
+    { "name": "pomeShareOfTotalFranceIpp", "label": "Pome Share Of Total France:IPP", "col_sortable": true, "col_width": 160 }
   ],
   "rows": [
     { 
       "market": { "value": "Total Great Birtain", "action": "SHOW_DETAILED_TABLE" }, 
-      "valShr": { "value": 55.8, "marked": true, "centered": true }, 
-      "valShrDpp": { "value": "+2.2", "color": "orange" }, 
-      "marketSize": { "value": 87.918 }, 
-      "marketSizeDpp": { "value": "-314", "bgColor": "grey--light", "color": "grey--dark" },
-      "gain": { "value": 1.983 }, 
+      "valShr": { "value": 55.8, "centered": true }, 
+      "valShrDpp": { "value": "+2.2", "centered": true }, 
+      "marketSize": { "value": 87.918, "centered": true }, 
+      "marketSizeDpp": { "value": "-314", "centered": true  },
+      "gain": { "value": 1.983, "centered": true }, 
       "pomeShareOfTotalFrance": { "value": 6.7 }, 
       "pomeShareOfTotalFranceIpp": { "value": 108 }
     }

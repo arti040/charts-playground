@@ -50,7 +50,7 @@ export class HomePageComponent {
 	
 	ngOnInit():void {
 		this.setTypeds();
-		//this.getSmallTableData();
+		this.getSmallTableData();
 		this.getBigTableData()
 	}
 
