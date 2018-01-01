@@ -1,3 +1,5 @@
+// === Selects
+// @desc Interfaces related to select/main-selects components.
 
 /* data structure for select-component data Input */
 export interface select {

@@ -1,3 +1,8 @@
+// === Chart Component
+// @name ChartComponent
+// @desc It's a wrapper for true highcharts chart component
+// @inputs data: chartDataModel, modificator: string (CSS class)
+
 
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { chartDataModel } from '../../models/chartData.model';

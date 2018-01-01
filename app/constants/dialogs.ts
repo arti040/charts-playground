@@ -1,3 +1,7 @@
+// === Dialogs
+// @desc Dialogs' definitions and interfaces for typed.js related components/events.
+
+
 export interface pageDialog {
   samanta: dialogGroup
   user?: dialogGroup
@@ -13,6 +17,8 @@ export interface sentence {
   text: Array<string>
 }
 
+
+// @desc First page dialog
 export const firstPageDialog: pageDialog = {
   samanta:  { 
     sentences: [ 
@@ -24,7 +30,6 @@ export const firstPageDialog: pageDialog = {
     sentences: []
   }
 }
-
 
 export interface onTypeEnded {
   action?: string

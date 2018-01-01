@@ -1,3 +1,7 @@
+
+// === RData
+// @desc Interface for RData used by components/chart/chart.parser
+
 export interface chartRDataItemModel {
 	DATE: string,
 	MARKET: string,

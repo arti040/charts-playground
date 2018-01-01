@@ -1,8 +1,6 @@
 // === Api HTTP Service
 // @name ApiService
 // @desc Implements low-level HTTP related actions for API.
-// @params none
-// @returns none
 
 /* Angular */
 import { Injectable } from '@angular/core';

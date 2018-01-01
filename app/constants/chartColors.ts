@@ -1,4 +1,8 @@
 
+// === Chart's colors constants
+// @name colors
+// @desc Colors used on charts
+
 export const colors = {
   blue: '#06c',
   darkBlue: '#036',

@@ -1,3 +1,10 @@
+// === Main Filters Component
+// @name MainFiltersComponent
+// @desc It's a wrapper for 4 main filters
+// @inputs isVisible: boolean (for animations)
+// @outputs onAllFiltersSelected: Event<chartDataQuery>, onFiltersReset: Event
+
+
 /* Angular */
 import { Component, Input, Output, EventEmitter,
   trigger, state, animate, transition, style } from '@angular/core';

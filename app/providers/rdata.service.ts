@@ -1,8 +1,6 @@
 // === RData Service
 // @name RDataSvc
-// @desc Handles RData retrieved form API
-// @params none
-// @returns none
+// @desc Handles OpenCPU/API endpoint calls.
 
 /* Angular */
 import { Injectable } from '@angular/core';

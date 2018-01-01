@@ -1,3 +1,6 @@
+// === Chart's opts
+// @desc Definitions for some default Highcharts' config objects
+
 import { colors } from './chartColors';
 import { labels } from './labels';
 

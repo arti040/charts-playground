@@ -3,5 +3,5 @@
 <main-filters [isVisible]="filtersVisible" (onAllFiltersSelected)="handleSelected($event)"></main-filters>
 <typedtext-component [data]="typed_2" [startTyping]="typed_2_start"></typedtext-component>
 <chart-component class="chart-component" [data]="chartData | async"></chart-component>
-<datatable [data]="smallTableData | async" (onMarketLinkClick)="handleSmallTableClick($event)"></datatable>
+<datatable [data]="smallTableData | async" (onLinkClick)="handleSmallTableClick($event)"></datatable>
 <datatable [data]="bigTableData | async"></datatable>

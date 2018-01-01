@@ -1,8 +1,6 @@
 // === Selects Service
 // @name SelectsSvc
-// @desc Handles Select-group/seelct component data flow
-// @params none
-// @returns none
+// @desc Handles Select/Main-selects components flow.
 
 /* Angular */
 import { Injectable } from '@angular/core';
@@ -42,7 +40,6 @@ export class SelectsSvc {
 				filters.data.push(filter);
 			});
 		});
-		//console.log(filters);
 		return filters;
 	}
 
@@ -57,13 +54,10 @@ export class SelectsSvc {
 				filters.data = item.kpi;
 			}
 		});
-
-		// console.log(filters);
 		return filters;
 	}
 
 	public getMarketFilters(from, id, kpi_id) {
-
 		let filters: select = {
 			label: labels.market,
 			next: labels.sharebase,
@@ -81,19 +75,16 @@ export class SelectsSvc {
 				});
 			}
 		});
-
-		//console.log(filters);
 		return filters;
 	}
 
 	public getSharebaseFilters(from, id, kpi_id, market_id) {
-
 		let filters: select = {
 			label: labels.sharebase,
 			next: 'null',
 			data: []
     }	
-		
+
 		from[0].productline.forEach((item) => { 
 			if(item.id === id) {
 				item.kpi.forEach(kpi => {
@@ -109,8 +100,6 @@ export class SelectsSvc {
 				});
 			}
 		});
-
-		//console.log(filters);
 		return filters;
   }
   

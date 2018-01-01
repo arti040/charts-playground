@@ -1,3 +1,7 @@
+// === Chart Data related models
+// @desc Models for Highchart data object.
+
+
 export class ChartData {
 	constructor(
 			public chart = {},

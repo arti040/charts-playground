@@ -1,4 +1,9 @@
 
+// === RData -> Hichchart.js object parser
+// @desc This function(s) parse RData collection received from openCPU/API and transform
+// it to Highchart.js compatible data object.
+
+
 /* Constants & Models */
 import { labels } from '../../constants/labels';
 import { colors } from '../../constants/chartColors';

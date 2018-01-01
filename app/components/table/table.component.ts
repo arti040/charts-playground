@@ -1,3 +1,9 @@
+// === Table Component
+// @name DatatableComponent
+// @desc It's a wrapper for ngx-datatable component
+// @inputs data: ngx
+// @outputs onLinkClick: event<string> (were string parameter is an action to resolve)
+
 /* Angular */
 import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -18,18 +24,18 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 export class DatatableComponent {
 
   @Input() data: ngx;
-  @Output() onMarketLinkClick = new EventEmitter();
+  @Output() onLinkClick: EventEmitter<string> = new EventEmitter();
 
   constructor(private config: Config) { console.log('Table component created.'); }
 
-  handleClick(e) {
-    this.onMarketLinkClick.emit(e);
+  handleClick(e:string) {
+    this.onLinkClick.emit(e);
   }
 
 }
 
 
-// data object descriptions:
+// data object description:
 // -------------------------
 //
 // title - sets title for ngx table

@@ -1,5 +1,10 @@
+////
+/// @group Ngx table molecule
+////
 
-/* This is a hack for grouped columns only 
+
+/* 
+ * @desc This is a hack for grouped columns only 
  * Remove it when ngx-datatable will get true grouped
  * columns feature
  */
@@ -19,7 +24,6 @@
 
 .table
   &__cell
-    //padding: $spacing-small
     &--marked
       position: relative
     &--centered
@@ -34,10 +38,9 @@
     text-align: center
     font-size: 11px
     border-bottom: 1px $color-grey solid
+    
 
-
-
-/* Elements in tables */
+/// @desc Elements in tables
 .sortable 
   cursor: pointer
   font-weight: bold
@@ -51,7 +54,4 @@
   border-style: solid
   border-width: 4px 0 0 4px
   border-color: transparent transparent transparent $color-red
-
-.material-icons
-  vertical-align: middle
 

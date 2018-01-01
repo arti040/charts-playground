@@ -1,3 +1,7 @@
+// === Labels
+// @desc Constants with all labels used in app
+
+
 export const labels = {
   valShare: 'Val Shr',
   trend: 'Trend',

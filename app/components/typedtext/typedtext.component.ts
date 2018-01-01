@@ -1,3 +1,12 @@
+
+// === Typedtext Component
+// @name TypedtextComponent
+// @desc It's a wrapper for typed.js
+// @inputs data: <sentence>, typedOpts: typedOpts
+// startTyping: Ovservable<boolean>, modificator: string (CSS class)
+// @outputs onTypeEnded: Event<onTypeEnded>
+
+
 /* Angular */
 import { Component, Input, Output, OnInit, OnDestroy,EventEmitter, ElementRef, ChangeDetectionStrategy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';

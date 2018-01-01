@@ -1,8 +1,6 @@
 // === Dialog Service
 // @name DialogSvc
-// @desc Handles Dialog related actions
-// @params none
-// @returns none
+// @desc Handles Dialog related actions. Unused now but I decided to left it, just in case.
 
 /* Angular */
 import { Injectable } from '@angular/core';
