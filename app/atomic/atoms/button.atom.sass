@@ -3,11 +3,17 @@
 ////
 
 .btn
+  cursor: pointer
   &-color
     &--white
       border-color: $color-white
       color: $color-white
+      &:hover
+        color: $color-black
+        border-color: $color-white
+        background-color: $color-white
       &[disabled]
         color: $color-white
         &:hover
+          background-color: transparent
           border-color: $color-white

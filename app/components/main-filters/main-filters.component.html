@@ -1,10 +1,10 @@
-<div [@visibilityChanged]="visibility">
+<div [@visibilityChanged]="visibility" class="margin-left--medium">
 	<select-component 
 		*ngFor="let item of selects" 
 		[data]="item.data" 
 		[next]="item.next"	
 		[label]="item.label"
-		[modificator]=""
+		[modificator]="'btn-color--white'"
 		(onItemSelected)="loadNextSelectData($event)" 	
 	></select-component>
 </div>

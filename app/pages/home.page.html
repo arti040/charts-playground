@@ -1,7 +1,12 @@
 
-<typedtext-component [data]="typed_1" [startTyping]="typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component>
-<main-filters [isVisible]="filtersVisible" (onAllFiltersSelected)="handleSelected($event)"></main-filters>
-<typedtext-component [data]="typed_2" [startTyping]="typed_2_start"></typedtext-component>
+<section class="hero">
+  <div class="hero__inner">
+    <typedtext-component [data]="typed_1" [startTyping]="typed_1_start" (onTypeEnded)="showFilters()"></typedtext-component>
+    <main-filters [isVisible]="filtersVisible" (onAllFiltersSelected)="handleSelected($event)"></main-filters>
+    <typedtext-component [data]="typed_2" [startTyping]="typed_2_start"></typedtext-component>
+  </div>
+</section>
+
 <chart-component class="chart-component" [data]="chartData | async"></chart-component>
 <datatable [data]="smallTableData | async" (onLinkClick)="handleSmallTableClick($event)"></datatable>
 <datatable [data]="bigTableData | async"></datatable>

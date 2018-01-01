@@ -25,9 +25,7 @@ export class ChartComponent {
 	constructor() { console.log('Chart component created.') }
 	
 	ngOnChanges(): void {
-		//console.log('Chart component gets: ', this.data);
 		!this.opts ? this.opts = this.data : this.chart.options = this.data;
-		console.log(this.chart);
 	}
 	
 	private saveInstance(e):void {
