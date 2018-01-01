@@ -6,6 +6,7 @@ import { Subject } from 'rxjs/Subject';
 
 /* Services */
 import { RDataSvc } from '../providers/rdata.service';
+import { ScrollToSvc } from '../providers/scrollTo.service';
 
 /* Constants & Models */
 import { parseChartData } from '../components/chart/chart.parser';
@@ -20,11 +21,14 @@ import { ngx } from '../constants/ngx';
 @Component({
 	selector: '<home-page></home-page>',
 	templateUrl: './home.page.html',
-	providers: [RDataSvc]
+	providers: [RDataSvc, ScrollToSvc]
 })
 
 export class HomePageComponent {
-	constructor(private _rdataSvc: RDataSvc) { console.log('HomePage component created.'); }
+	constructor(
+		private _rdataSvc: RDataSvc, 
+		private _scrollToSvc: ScrollToSvc
+	) { console.log('HomePage component created.'); }
 	
 	private alive: boolean = true;
 
@@ -52,8 +56,6 @@ export class HomePageComponent {
 	
 	ngOnInit():void {
 		this.setTypeds();
-		this.getChartData();
-		this.getSmallTableData();
 	}
 
 	/* Typed */
@@ -107,14 +109,21 @@ export class HomePageComponent {
 		this.typed_2_start.next(true);	
 	}
 	private handleSelected(e):void {
+		this.scrollTo('main-chart');
 		this.getChartData(e);
 		this.getSmallTableData();
 	}
 	private handleSmallTableClick(e):void {
 		switch(e) {
 			case 'SHOW_DETAILED_TABLE':
+				this.scrollTo('main-table');
 				this.getBigTableData();
 			break;
 		}
+	}
+
+	/* Helpers */
+	private scrollTo(el) {
+		this._scrollToSvc.triggerScrollTo(el);
 	}
 }

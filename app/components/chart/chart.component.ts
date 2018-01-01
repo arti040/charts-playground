@@ -9,7 +9,7 @@ import { chartDataModel } from '../../models/chartData.model';
 
 @Component({
 	template: `
-			<div class="panel panel-bgcolor--white panel--root">
+			<div *ngIf="opts" class="panel panel-bgcolor--white panel--root">
 				<chart class="chart chart--{{modificator}}" [options]="opts" (load)="saveInstance($event)"></chart>
 			</div>
 		`,

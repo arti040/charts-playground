@@ -7,8 +7,7 @@
 </section>
 
 <section class="content">
-  
-  <chart-component class="chart-component" [data]="chartData | async"></chart-component>
+  <chart-component id="main-chart" class="chart-component" [data]="chartData | async"></chart-component>
   <datatable [data]="smallTableData | async" (onLinkClick)="handleSmallTableClick($event)"></datatable>
-  <datatable [data]="bigTableData | async"></datatable>
+  <datatable id="main-table" [data]="bigTableData | async"></datatable>
 </section>

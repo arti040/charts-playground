@@ -14,10 +14,13 @@ $header-color--default:   $color-graphite
     color: inherit
 
 /// @name Header sizes
-.header
+.heading
   &--page
+    margin: $spacing-medium 0 $spacing-large 0
     +setFontSet($font-size-header--large,  $font-weight--light)
   &--main
+    margin: $spacing-medium 0 $spacing-large 0
     +setFontSet($font-size-header--normal, $font-weight--light)
   &--normal
+    margin-bottom: $spacing-large
     +setFontSet($font-size-header--small,  $font-weight--light)

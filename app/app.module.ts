@@ -25,6 +25,7 @@ import { ApiService } from './providers/api.service';
 import { RDataSvc } from './providers/rdata.service';
 import { DialogSvc } from './providers/dialog.service';
 import { SelectsSvc } from './providers/selects.service';
+import { ScrollToSvc } from './providers/scrollTo.service';
 
 /* Constants & Models */
 
@@ -32,6 +33,7 @@ import { SelectsSvc } from './providers/selects.service';
 import { ChartModule } from 'angular2-highcharts';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 const routes: Routes = appRoutes;
 
@@ -53,10 +55,11 @@ const routes: Routes = appRoutes;
     NgxDatatableModule,
     NgbModule.forRoot(),
     BrowserAnimationsModule,
+    ScrollToModule.forRoot(),    
     RouterModule.forRoot(routes),
     ChartModule.forRoot(require('highcharts'), require('highcharts-more'), require('highcharts-annotations'))
   ],
   bootstrap: [ AppComponent ],
-  providers: [ ApiService, RDataSvc, Config, DialogSvc, SelectsSvc, Title ]
+  providers: [ ApiService, RDataSvc, Config, DialogSvc, SelectsSvc, Title, ScrollToSvc ]
 })
 export class AppModule { }
