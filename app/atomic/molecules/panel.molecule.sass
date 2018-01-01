@@ -5,6 +5,14 @@
 
 .panel
   position: relative
+  padding: $spacing-medium
+  margin-bottom: $spacing-large
+
+  &--root
+    +shadow--layer3()
+
+  &--inner
+    +shadow--layer1()
 
   &-bgcolor
     &--white

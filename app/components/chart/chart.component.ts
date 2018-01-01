@@ -8,7 +8,11 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { chartDataModel } from '../../models/chartData.model';
 
 @Component({
-	template: '<chart class="chart chart--{{modificator}}" [options]="opts" (load)="saveInstance($event)"></chart>',
+	template: `
+			<div class="panel panel-bgcolor--white panel--root">
+				<chart class="chart chart--{{modificator}}" [options]="opts" (load)="saveInstance($event)"></chart>
+			</div>
+		`,
 	selector: 'chart-component',
 	changeDetection: ChangeDetectionStrategy.OnPush
 })

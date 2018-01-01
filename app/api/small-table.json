@@ -5,14 +5,14 @@
     "scrollable": true
   },
   "columns": [
-    { "name": "market", "label": "Market", "col_sortable": true, "col_width": 120 },
+    { "name": "market", "label": "Market", "col_sortable": false, "col_width": 220 },
     { "name": "valShr", "label": "Val Share", "centered": true, "col_width": 100 },
     { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 100, "centered": true },
-    { "name": "marketSize", "label": "Market Size", "col_sortable": true, "col_width": 80, "centered": true },
-    { "name": "marketSizeDpp", "label": "Market Size DPP", "col_sortable": true, "col_width": 100, "centered": true },
-    { "name": "gain", "label": "Gain", "col_sortable": true, "col_width": 60, "centered": true },
-    { "name": "pomeShareOfTotalFrance", "label": "Pome Share Of Total France", "col_sortable": true, "col_width": 160 },
-    { "name": "pomeShareOfTotalFranceIpp", "label": "Pome Share Of Total France:IPP", "col_sortable": true, "col_width": 160 }
+    { "name": "marketSize", "label": "Market Size", "col_sortable": false, "col_width": 120, "centered": true },
+    { "name": "marketSizeDpp", "label": "Market Size DPP", "col_sortable": false, "col_width": 100, "centered": true },
+    { "name": "gain", "label": "Gain", "col_sortable": false, "col_width": 60, "centered": true },
+    { "name": "pomeShareOfTotalFrance", "label": "Pome Share Of Total France", "col_sortable": false, "col_width": 190 },
+    { "name": "pomeShareOfTotalFranceIpp", "label": "Pome Share Of Total France:IPP", "col_sortable": false, "col_width": 190 }
   ],
   "rows": [
     { 

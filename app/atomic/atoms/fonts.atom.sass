@@ -1,0 +1,63 @@
+////
+/// @group Font atom
+///
+/// IMPORTANT
+///
+/// This is core atom - DON`T CHANGE ANYTHING WITHOUT CONSULTING
+/// You can add modifiers or new stuff if you must here though.
+////
+
+/// @name Import Font Suite
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&subset=latin-ext)
+
+/// @type font-family
+$font-family--base: "Source Sans Pro", sans-serif
+
+/// @type percent
+$font-size-base:            62.5%
+
+/// @type px
+$font-size-text--tiny:     rem(10px)
+/// @type px
+$font-size-text--small:     rem(12px)
+/// @type px
+$font-size-text--base:      rem(16px)
+/// @type px
+$font-size-text--medium:    rem(18px)
+/// @type px
+$font-size-text--large:     rem(24px)
+
+
+/// @type px
+$font-size-header--small:   rem(24px)
+/// @type px
+$font-size-header--normal:  rem(30px)
+/// @type px
+$font-size-header--large:   rem(38px)
+
+
+/// @type integer
+$font-weight--light:        300
+/// @type integer
+$font-weight--normal:       400
+/// @type integer
+$font-weight--semibold:     600
+/// @type integer
+$font-weight--bold:         700
+
+
+/// @name Font Size Mixin
+/// @output { font-size: 1rem; font-size: 14px }
+=fontSize($size)
+  font-size: $size
+  font-size: rem($size)
+
+
+// @name setFontSet Mixin
+=setFontSet($fontSize, $font-weight, $transform: none)
+  font-family: $font-family--base
+  font-weight: $font-weight
+  line-height: $fontSize
+  text-transform: $transform
+  +fontSize($fontSize)
+

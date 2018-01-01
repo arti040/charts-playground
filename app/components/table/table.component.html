@@ -1,5 +1,5 @@
-<div *ngIf="data">
-  <h4 *ngIf="data.title">{{data.title}}</h4>
+<div *ngIf="data" class="panel panel-bgcolor--white panel--inner">
+  <h4 *ngIf="data.title" class="heading heading--normal">{{data.title}}</h4>
   <ngx-datatable
     [rows]="data.rows"
     [columns]="data.columns"

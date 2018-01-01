@@ -2,7 +2,6 @@
 /// @group Ngx table molecule
 ////
 
-
 /* 
  * @desc This is a hack for grouped columns only 
  * Remove it when ngx-datatable will get true grouped
@@ -17,10 +16,21 @@
 
 
 .ngx-datatable
-  font-size: 12px
+  font-size: $font-size-text--small
   margin-top: $spacing-medium
-  margin-bottom: $spacing-huge
+  
+  .datatable-header
+    .datatable-header-cell
+      color: $color-grey--dark
 
+  .datatable-body-row
+    .datatable-row-odd
+      background-color: $color-grey--light
+    
+  .datatable-header-cell > div,
+  .datatable-body-row > div 
+      background-color: $color-white
+  
 
 .table
   &__cell
@@ -32,13 +42,14 @@
   &__column-group-wrapper
     position: relative
   &__column-group
-    top: -$spacing-small * 4
     left: 2px
+    font-size: $font-size-text--tiny
     position: absolute
     text-align: center
-    font-size: 11px
+    top: -$spacing-medium * 2.5
+    padding-bottom: $spacing-small
     border-bottom: 1px $color-grey solid
-    
+
 
 /// @desc Elements in tables
 .sortable 

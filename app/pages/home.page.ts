@@ -52,6 +52,8 @@ export class HomePageComponent {
 	
 	ngOnInit():void {
 		this.setTypeds();
+		this.getChartData();
+		this.getSmallTableData();
 	}
 
 	/* Typed */
@@ -72,7 +74,7 @@ export class HomePageComponent {
 	}
 
 	/* API handlers */
-	private getChartData(params: chartDataQuery):void {
+	private getChartData(params?: chartDataQuery):void {
 		this._rdataSvc.getMockRDataForChart(params)
 		.subscribe(
 			(res) => {

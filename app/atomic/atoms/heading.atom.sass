@@ -1,0 +1,23 @@
+////
+/// @group Text header atom
+////
+
+/// @type hex
+$header-color--default:   $color-graphite
+
+/// @name Headers
+.header
+  +setFontSet($font-size-header--normal, $font-weight--normal)
+  +withoutSpacing()
+  color: $header-color--default
+  a
+    color: inherit
+
+/// @name Header sizes
+.header
+  &--page
+    +setFontSet($font-size-header--large,  $font-weight--light)
+  &--main
+    +setFontSet($font-size-header--normal, $font-weight--light)
+  &--normal
+    +setFontSet($font-size-header--small,  $font-weight--light)
