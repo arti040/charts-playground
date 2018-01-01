@@ -1,5 +1,5 @@
 /* Angular */
-import { Component, Input, Output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Input, Output, ChangeDetectionStrategy, EventEmitter } from '@angular/core';
 import { Observable } from 'rxjs';
 
 /* Models & Constants */
@@ -18,9 +18,14 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 export class DatatableComponent {
 
   @Input() data: ngx;
+  @Output() onMarketLinkClick = new EventEmitter();
 
   constructor(private config: Config) { console.log('Table component created.'); }
-  ngOnChanges() { console.log(this.data); }
+
+  handleClick(e) {
+    this.onMarketLinkClick.emit(e);
+  }
+
 }
 
 

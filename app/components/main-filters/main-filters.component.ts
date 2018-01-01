@@ -45,7 +45,6 @@ export class MainFiltersComponent {
   }
 
   ngOnChanges() {
-    console.log('Visibility changed.');
     this.visibility = this.isVisible ? 'shown' : 'hidden';
   }
   

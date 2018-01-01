@@ -52,8 +52,6 @@ export class HomePageComponent {
 	
 	ngOnInit():void {
 		this.setTypeds();
-		//this.getSmallTableData();
-		//this.getBigTableData()
 	}
 
 	/* Typed */
@@ -108,5 +106,13 @@ export class HomePageComponent {
 	}
 	private handleSelected(e):void {
 		this.getChartData(e);
+		this.getSmallTableData();
+	}
+	private handleSmallTableClick(e):void {
+		switch(e) {
+			case 'SHOW_DETAILED_TABLE':
+				this.getBigTableData();
+			break;
+		}
 	}
 }
