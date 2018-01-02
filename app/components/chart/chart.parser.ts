@@ -111,7 +111,12 @@ function addPlotBreaks(opts: any, idx: number, brk_ind: number, brk_shifts_abs: 
 		if(brk_ind === 1) {		
 			copy.from = idx-1;
 			copy.to = idx;
-			copy.events.click = (e) => {  }
+			
+			/// TODO Find a way to pass data from here to chart component
+			copy.events.click = (e) => {  
+				// some data here, so we can generate small table in a next step
+			}
+
 			brk_shifts_abs > 0 ? copy.color = colors.green : copy.color = colors.rose;
 			return copy;
 		}
