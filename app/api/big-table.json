@@ -5,8 +5,8 @@
     "scrollable": true
   },
   "columns": [
-    { "name": "product", "label": "Product", "frozen": true, "col_sortable": true, "col_width": 360 },
-    { "name": "trend", "label": "Trend", "frozen": true },
+    { "name": "product", "label": "Product", "frozen": true, "col_sortable": true, "col_width": 490 },
+    { "name": "trend", "label": "Trend", "frozen": true, "centered": true },
     { "name": "valShr", "label": "Val Share", "frozen": true, "col_width": 80, "centered": true },
     { "name": "valShrDpp", "label": "Val Share DPP", "col_width": 80, "frozen": true },
     { "name": "tdpValue", "label": "Value", "group": "TDP WD", "centered": true },
@@ -23,8 +23,8 @@
   "rows": [
     { 
       "product": { "value": "Procter&Gamble", "action": "SHOW_GRAPH", "bgColor": "blue", "icon": "share", "iconSize": "12px" },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "bgColor": "blue", "iconColor": "green" }, 
-      "valShr": { "value": 56.5, "centered": true, "bgColor": "blue" },
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "bgColor": "blue", "iconColor": "green", "centered": true }, 
+      "valShr": { "value": 56.5, "centered": true, "bgColor": "orange", "marked": true, "tooltip": "1231.32" },
       "valShrDpp": { "value": -1.6, "centered": true, "bgColor": "blue" },
 
       "tdpValue": { "value": 5.789, "centered": true, "bgColor": "blue" },
@@ -50,11 +50,11 @@
         "iconColor": "red",
         "padding": true
       },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 1.8, "centered": true },
       "valShrDpp": { "value": -1.5, "centered": true },
 
-      "tdpValue": { "value": 99, "centered": true },
+      "tdpValue": { "value": 99, "centered": true, "marked": true, "bgColor": "grey--light", "tooltip": "Dolor sit amet: 11" },
       "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
 
       "avgSuValue": { "value": 26.0, "centered": true },
@@ -77,7 +77,7 @@
         "iconColor": "red",
         "padding": true
       },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 1.8, "centered": true },
       "valShrDpp": { "value": -1.5, "centered": true },
 
@@ -104,7 +104,7 @@
         "iconColor": "green",
         "padding": true
       },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 1.8, "centered": true },
       "valShrDpp": { "value": -1.5, "centered": true },
 
@@ -125,7 +125,7 @@
     },
     { 
       "product": { "value": "RETAILER BRAND COMPANIES", "action": "SHOW_GRAPH", "bgColor": "blue", "icon": "share", "iconSize": "12px" },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "bgColor": "blue", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "bgColor": "blue", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 56.5, "centered": true, "bgColor": "blue" },
       "valShrDpp": { "value": -1.6, "centered": true, "bgColor": "blue" },
 
@@ -152,7 +152,7 @@
         "iconColor": "green",
         "padding": true
       },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 1.8, "centered": true },
       "valShrDpp": { "value": -1.5, "centered": true },
 
@@ -179,14 +179,14 @@
         "iconColor": "green",
         "padding": true
       },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 1.8, "centered": true },
       "valShrDpp": { "value": -1.5, "centered": true },
 
       "tdpValue": { "value": 99, "centered": true },
       "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },
 
-      "avgSuValue": { "value": 26.0, "centered": true, "marked": true },
+      "avgSuValue": { "value": 26.0, "centered": true, "marked": true, "bgColor": "grey--light", "tooltip": "Lorem ipsum: 24" },
       "avgSuIpp": { "value": 114.4, "color": "orange", "centered": true },
 
       "promoSuValue": { "value": 23.2, "centered": true },
@@ -206,9 +206,9 @@
         "iconColor": "green",
         "padding": true
       },
-      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green" }, 
+      "trend": { "value": "", "icon": "show_chart", "iconSize": "16px", "iconColor": "green", "centered": true }, 
       "valShr": { "value": 1.8, "centered": true },
-      "valShrDpp": { "value": -1.5, "centered": true, "marked": true },
+      "valShrDpp": { "value": -1.5, "centered": true, "marked": true, "bgColor": "grey--light", "tooltip": "Yup, i'm tootlip" },
 
       "tdpValue": { "value": 99, "centered": true },
       "tdpIpp": { "value": 99.5, "color": "orange", "centered": true },

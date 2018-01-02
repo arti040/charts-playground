@@ -37,6 +37,7 @@
       <!-- ngx row template -->
       <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
         <div 
+          title="{{value.tooltip}}"
           [ngClass]="{ 'table__cell--marked': value.marked }"
           class="
             table__cell 

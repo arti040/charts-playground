@@ -109,14 +109,14 @@ export class HomePageComponent {
 		this.typed_2_start.next(true);	
 	}
 	private handleSelected(e):void {
-		this.scrollTo('main-chart');
+		this.scrollTo('main-chart'); // this needs to be done better
 		this.getChartData(e);
 		this.getSmallTableData();
 	}
 	private handleSmallTableClick(e):void {
 		switch(e) {
 			case 'SHOW_DETAILED_TABLE':
-				this.scrollTo('main-table');
+				this.scrollTo('main-table'); // this needs to be done better
 				this.getBigTableData();
 			break;
 		}
